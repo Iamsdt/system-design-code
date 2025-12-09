@@ -13,18 +13,18 @@ import router from "./route/index"
 const App = () => {
   return (
     <Suspense fallback={null}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <PersistQueryClientProvider
+      {/* <Provider store={store}> */}
+      {/* <PersistGate loading={null} persistor={persistor}> */}
+      {/* <PersistQueryClientProvider
             client={queryClient}
             persistOptions={{ persister: asyncStoragePersister }}
-          >
-            <ThemeProvider>
-              <RouterProvider router={router} />
-            </ThemeProvider>
-          </PersistQueryClientProvider>
-        </PersistGate>
-      </Provider>
+          > */}
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
+      {/* </PersistQueryClientProvider> */}
+      {/* </PersistGate> */}
+      {/* </Provider> */}
     </Suspense>
   )
 }
