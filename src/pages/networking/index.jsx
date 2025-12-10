@@ -37,6 +37,49 @@ export default function Networking() {
   const serverColors = ["#60A5FA", "#F97316", "#A78BFA", "#34D399", "#F973A4", "#F59E0B", "#E2E8F0"]
   const [autoScale, setAutoScale] = useState(false)
 
+  // Journey of a Request State
+  const [journeyStep, setJourneyStep] = useState(0)
+  const [isJourneyActive, setIsJourneyActive] = useState(false)
+  
+  const internetHops = [
+    { id: 1, name: "Your Device", icon: "💻", desc: "Request starts here (e.g. browser)", color: "bg-slate-100" },
+    { id: 2, name: "Home Router", icon: "📶", desc: "Gateway to local network (NAT)", color: "bg-orange-100" },
+    { id: 3, name: "ISP Modem", icon: "📡", desc: "Connects house to ISP network", color: "bg-blue-100" },
+    { id: 4, name: "ISP Backbone", icon: "🌐", desc: "High-speed fiber optic cables", color: "bg-indigo-100" },
+    { id: 5, name: "IXP", icon: "🔀", desc: "Internet Exchange Point (networks meet)", color: "bg-purple-100" },
+    { id: 6, name: "Target Server", icon: "🏢", desc: "Google / Netflix / Amazon", color: "bg-green-100" },
+  ]
+
+  // TLS Demo State
+  const [tlsStep, setTlsStep] = useState(0)
+
+  const startTlsHandshake = () => {
+    setTlsStep(0)
+    let s = 0
+    const iv = setInterval(() => {
+      s++
+      setTlsStep(s)
+      if (s >= 4) clearInterval(iv)
+    }, 1500)
+  }
+
+  const startJourney = () => {
+    if (isJourneyActive) return
+    setIsJourneyActive(true)
+    setJourneyStep(0)
+    
+    // Animate through hops
+    let step = 0
+    const interval = setInterval(() => {
+      step++
+      setJourneyStep(step)
+      if (step >= internetHops.length - 1) {
+        clearInterval(interval)
+        setTimeout(() => setIsJourneyActive(false), 2000)
+      }
+    }, 1200)
+  }
+
   // OSI Model Data
   const osiLayers = [
     {
@@ -329,6 +372,105 @@ export default function Networking() {
       </section>
 
       <div className="container-custom py-16 space-y-20">
+        {/* Section 0: The Journey */}
+        <section className="scroll-mt-24">
+           <div className="mb-12 text-center max-w-3xl mx-auto">
+            <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
+              01 — The Big Picture
+            </div>
+            <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
+              How the Internet Works
+            </h2>
+            <p className="text-lg text-slate-600">
+              Before we dive into protocols and layers, let's visualize the physical journey your data takes.
+              It's not magic—it's a series of "hops" across the world.
+            </p>
+          </div>
+
+          <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-xl overflow-hidden relative">
+            
+            {/* Control */}
+            <div className="flex justify-center mb-12">
+               <button
+                onClick={startJourney}
+                disabled={isJourneyActive}
+                className={`
+                  relative overflow-hidden group px-8 py-4 rounded-full font-bold text-lg shadow-lg transition-all transform hover:-translate-y-1
+                  ${isJourneyActive ? "bg-slate-100 text-slate-400 cursor-not-allowed" : "bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-blue-500/30"}
+                `}
+              >
+                <span className="relative z-10 flex items-center gap-2">
+                  {isJourneyActive ? "Tracing Route..." : "Trace a Request 🚀"}
+                </span>
+              </button>
+            </div>
+
+            {/* Visualization */}
+            <div className="relative">
+              {/* Connecting Line (Desktop) */}
+              <div className="hidden md:block absolute top-[40px] left-10 right-10 h-2 bg-slate-100 rounded-full overflow-hidden">
+                <div 
+                  className="h-full bg-gradient-to-r from-blue-500 to-indigo-500 transition-all duration-1000 ease-linear"
+                  style={{ width: `${(journeyStep / (internetHops.length - 1)) * 100}%` }}
+                ></div>
+              </div>
+
+              {/* Hops Grid */}
+              <div className="grid grid-cols-2 md:grid-cols-6 gap-4 md:gap-0 relative z-10">
+                {internetHops.map((hop, idx) => (
+                  <div key={hop.id} className="flex flex-col items-center">
+                    
+                    {/* Node Icon */}
+                    <div 
+                      className={`
+                        w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shadow-md transition-all duration-500 mb-4 relative
+                        ${idx <= journeyStep ? `${hop.color} scale-110 ring-4 ring-offset-2 ring-blue-100` : "bg-white border border-slate-200 opacity-50 grayscale"}
+                      `}
+                    >
+                      {hop.icon}
+                      
+                      {/* Active Pulse */}
+                      {idx === journeyStep && isJourneyActive && (
+                        <div className="absolute inset-0 rounded-2xl bg-blue-400 opacity-20 animate-ping"></div>
+                      )}
+                    </div>
+
+                    {/* Label */}
+                    <div className={`text-center transition-all duration-500 ${idx <= journeyStep ? "opacity-100 translate-y-0" : "opacity-40 translate-y-2"}`}>
+                      <div className="font-bold text-slate-900 text-sm md:text-base leading-tight mb-1">{hop.name}</div>
+                      <div className="text-xs text-slate-500 px-2 leading-tight hidden md:block">{hop.desc}</div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Mobile Line connecting vertically? No, we used grid-cols-2 for mobile above, 
+                  but let's just keep the progress bar hidden on mobile for simplicity or add a vertical one later. 
+              */}
+            </div>
+
+            {/* Explanation Box */}
+            <div className="mt-12 bg-slate-50 rounded-2xl p-6 border border-slate-200 transition-all duration-300 min-h-[140px] flex items-center justify-center">
+               <div className="text-center max-w-2xl animate-fade-in key={journeyStep}">
+                  <div className="text-xs font-bold text-blue-500 uppercase tracking-widest mb-2">
+                    Hop {journeyStep + 1} of {internetHops.length}
+                  </div>
+                  <h3 className="text-xl font-bold text-slate-900 mb-2">
+                    {internetHops[journeyStep].name}
+                  </h3>
+                  <p className="text-slate-600">
+                    {journeyStep === 0 && "You type 'google.com' and hit Enter. Your browser creates an HTTP request."}
+                    {journeyStep === 1 && "Your router receives the request via WiFi/Ethernet and forwards it to your ISP."}
+                    {journeyStep === 2 && "The signal travels over phone/cable lines to your Internet Service Provider's local node."}
+                    {journeyStep === 3 && "Your request hits the high-speed Fiber Optic 'Backbone' of the internet, traveling at light speed."}
+                    {journeyStep === 4 && "An Internet Exchange Point (IXP) routes your data between different ISP networks to find the destination."}
+                    {journeyStep === 5 && "Success! The server receives your request and prepares to send the website data back."}
+                  </p>
+               </div>
+            </div>
+
+          </div>
+        </section>
         {/* Section 1: OSI Model */}
         <section
           ref={(element) => (sectionsReference.current[0] = element)}
@@ -1041,6 +1183,122 @@ export default function Networking() {
                 <br />
                 Native Multiplexing
               </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* Section 3C: TLS Handshake (Security) */}
+        <section
+          className="opacity-100 transition-all duration-700"
+        >
+          <div className="mb-8">
+            <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
+              03C — Security
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              TLS/SSL Handshake
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl">
+              How does your browser establish a secure, encrypted connection?
+              It's a conversation called the "Handshake".
+            </p>
+          </div>
+
+          <div className="bg-slate-900 rounded-2xl p-8 mb-8 text-white relative overflow-hidden">
+            <div className="flex justify-between items-start mb-12 relative z-10">
+              {/* Client */}
+              <div className="flex flex-col items-center w-1/3">
+                <div className="text-5xl mb-3">🧑‍💻</div>
+                <div className="font-bold text-lg">Client</div>
+                <div className="text-slate-400 text-sm">Chrome / You</div>
+                {tlsStep >= 3 && (
+                   <div className="mt-4 text-green-400 text-xs font-mono border border-green-500/30 bg-green-500/10 px-2 py-1 rounded animate-fade-in">
+                     🔑 Session Key Generated
+                   </div>
+                )}
+              </div>
+
+               {/* Center Action */}
+               <div className="flex-1 flex flex-col items-center justify-center min-h-[200px]">
+                  {tlsStep === 0 && (
+                    <button
+                      onClick={startTlsHandshake}
+                      className="px-6 py-3 bg-blue-600 hover:bg-blue-500 rounded-full font-bold shadow-lg transition-all animate-bounce"
+                    >
+                      Start Handshake 🔒
+                    </button>
+                  )}
+
+                  {tlsStep === 1 && (
+                    <div className="animate-slide-right flex flex-col items-center">
+                      <div className="bg-blue-600 text-white text-xs px-3 py-1 rounded-full mb-2">ClientHello</div>
+                      <div className="w-40 h-1 bg-gradient-to-r from-blue-500 to-transparent"></div>
+                      <div className="font-mono text-[10px] text-slate-300 mt-2 text-center bg-black/50 p-2 rounded">
+                        "I support RSA, AES-256"<br/>
+                        "Here's a random number: 492..."
+                      </div>
+                    </div>
+                  )}
+
+                  {tlsStep === 2 && (
+                    <div className="animate-slide-left flex flex-col items-center">
+                      <div className="bg-purple-600 text-white text-xs px-3 py-1 rounded-full mb-2">ServerHello</div>
+                      <div className="w-40 h-1 bg-gradient-to-l from-purple-500 to-transparent"></div>
+                       <div className="font-mono text-[10px] text-slate-300 mt-2 text-center bg-black/50 p-2 rounded">
+                        "Let's use AES-256"<br/>
+                        "Here is my Digital Cert 📜"<br/>
+                        "Here's my random number: 881..."
+                      </div>
+                    </div>
+                  )}
+
+                  {tlsStep === 3 && (
+                    <div className="animate-pulse flex flex-col items-center">
+                      <div className="text-4xl mb-2">🤝</div>
+                      <div className="font-bold text-yellow-400">Key Exchange</div>
+                      <div className="font-mono text-[10px] text-slate-300 mt-2 text-center">
+                        Client validates Cert.<br/>
+                        Both generate "Master Secret".
+                      </div>
+                    </div>
+                  )}
+
+                  {tlsStep === 4 && (
+                    <div className="animate-fade-in flex flex-col items-center">
+                      <div className="text-6xl mb-4">🔒</div>
+                      <div className="font-bold text-green-400 text-xl">Specific Channel Established</div>
+                      <button
+                        onClick={() => setTlsStep(0)}
+                        className="mt-6 text-sm text-slate-400 hover:text-white underline"
+                      >
+                        Replay
+                      </button>
+                    </div>
+                  )}
+               </div>
+
+              {/* Server */}
+              <div className="flex flex-col items-center w-1/3">
+                <div className="text-5xl mb-3">🏢</div>
+                <div className="font-bold text-lg">Server</div>
+                <div className="text-slate-400 text-sm">google.com</div>
+                 {tlsStep >= 3 && (
+                   <div className="mt-4 text-green-400 text-xs font-mono border border-green-500/30 bg-green-500/10 px-2 py-1 rounded animate-fade-in">
+                     🔑 Session Key Generated
+                   </div>
+                )}
+              </div>
+            </div>
+
+            {/* Step Indicators */}
+            <div className="flex justify-center gap-2 mt-8">
+              {[1, 2, 3, 4].map((s) => (
+                <div
+                  key={s}
+                  className={`h-2 rounded-full transition-all duration-500 ${tlsStep >= s ? "w-8 bg-blue-500" : "w-2 bg-slate-700"}`}
+                ></div>
+              ))}
             </div>
           </div>
         </section>
