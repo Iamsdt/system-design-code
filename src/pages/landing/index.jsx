@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom"
 
 /**
  * Landing page component for System Design learning platform
- * Created by Shudipto Trafder
+ * Created by Shudipto Trafder — VP of Engineering, 10xScale
  */
 export default function Landing() {
   const nav = useNavigate()
@@ -33,10 +33,10 @@ export default function Landing() {
 
             <div className="mb-6">
               <p className="text-lg text-slate-700 font-medium mb-2">
-                Created by Shudipto Trafder
+                 Created by Shudipto Trafder
               </p>
               <p className="text-sm text-slate-500">
-                Software Engineer | Open Source Contributor | Cloud Enthusiast
+                 VP of Engineering at 10xScale
               </p>
             </div>
 
@@ -46,7 +46,7 @@ export default function Landing() {
               for distributed systems, scalability, and cloud architecture.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8 mt-5">
               <button
                 onClick={() => nav("/foundations")}
                 className="btn-primary inline-flex items-center gap-2"
@@ -132,7 +132,7 @@ export default function Landing() {
               <h2 className="text-3xl font-bold text-slate-900 mb-4">
                 Interactive Tutorials
               </h2>
-              <p className="text-slate-600 max-w-2xl mx-auto">
+              <p className="text-slate-600">
                 Dive deep into system design concepts with our interactive
                 tutorials featuring live demos, calculators, and visualizations
               </p>
@@ -351,142 +351,45 @@ export default function Landing() {
                     Shudipto Trafder
                   </h3>
                   <p className="text-blue-600 font-medium mb-4">
-                    Software Engineer | Open Source Developer
+                    VP of Engineering at 10xScale | Open Source Contributor
                   </p>
                   
                   <p className="text-slate-600 leading-relaxed mb-6">
-                    Passionate about building scalable systems and creating educational content. 
-                    Currently focusing on modern development tools and cloud architecture. 
-                    Active contributor to open-source projects including dependency injection frameworks, 
-                    distributed ID generators, and React development guides.
+                    I lead engineering teams as VP of Engineering at 10xScale. I focus on building reliable, scalable distributed systems and AI-driven tooling — including multi-agent orchestration with AgentFlow. As a team, we've built several open-source projects that help teams ship faster and operate with confidence.
                   </p>
 
-                  <div className="flex flex-wrap gap-3 justify-center md:justify-start">
-                    <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                      🐍 Python
-                    </span>
-                    <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                      ⚛️ React
-                    </span>
-                    <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                      ☁️ Cloud Architecture
-                    </span>
-                    <span className="px-4 py-2 bg-blue-100 text-blue-700 rounded-full text-sm font-medium">
-                      🏗️ System Design
-                    </span>
+                  <div className="mb-4">
+                    <div className="text-sm text-slate-700 font-semibold mb-2">Top projects</div>
+                    <div className="flex flex-wrap items-center gap-3">
+                      <a href="https://github.com/10xHub/injectq" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100">
+                        InjectQ (Dependency Injection)
+                      </a>
+                      <a href="https://github.com/10xHub/snowflakekit" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100">
+                        SnowflakeKit (Distributed ID Generator)
+                      </a>
+                      <a href="https://github.com/10xHub/react-style-guide" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100">
+                        React Style Guide
+                      </a>
+                      <a href="https://github.com/10xHub/agentflow" target="_blank" rel="noopener noreferrer" className="px-3 py-1 bg-blue-50 text-blue-700 rounded-full text-sm font-medium hover:bg-blue-100">
+                        AgentFlow (AI multi-agent framework)
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-4 mt-3">
+                    <div className="text-sm text-slate-700 font-semibold">Connect</div>
+                    <div className="flex items-center gap-3">
+                      <a href="https://github.com/Iamsdt" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-600 hover:text-blue-600">GitHub</a>
+                      <a href="https://www.linkedin.com/in/iamsdt/" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-600 hover:text-blue-600">LinkedIn</a>
+                      <a href="https://medium.com/@iamsdt" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-600 hover:text-blue-600">Medium</a>
+                      <a href="https://twitter.com/iamsdt" target="_blank" rel="noopener noreferrer" className="text-sm text-slate-600 hover:text-blue-600">X</a>
+                      <a href="mailto:shudiptotrafder@gmail.com" className="text-sm text-slate-600 hover:text-blue-600" title="Email">Email</a>
+                    </div>
                   </div>
                 </div>
               </div>
 
-              <div className="mt-8 pt-8 border-t border-slate-200">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-center">
-                  <div>
-                    <div className="text-3xl font-bold text-blue-600 mb-2">136+</div>
-                    <div className="text-sm text-slate-600">GitHub Repositories</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-blue-600 mb-2">63+</div>
-                    <div className="text-sm text-slate-600">Followers</div>
-                  </div>
-                  <div>
-                    <div className="text-3xl font-bold text-blue-600 mb-2">10+</div>
-                    <div className="text-sm text-slate-600">Open Source Projects</div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Features Section */}
-      <section className="py-16 bg-slate-50">
-        <div className="container-custom">
-          <div className="max-w-6xl mx-auto">
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-slate-900 mb-4">
-                Why This Platform?
-              </h2>
-              <p className="text-slate-600 max-w-2xl mx-auto">
-                Learn system design with practical, hands-on approach
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-blue-600 flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
-                  Interactive Learning
-                </h3>
-                <p className="text-slate-600 leading-relaxed">
-                  Hands-on demos, calculators, and visualizations that bring 
-                  complex system design concepts to life
-                </p>
-              </div>
-
-              <div className="text-center bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
-                  Modern Tech Stack
-                </h3>
-                <p className="text-slate-600 leading-relaxed">
-                  Built with React 19, Tailwind CSS, and modern development 
-                  practices for optimal learning experience
-                </p>
-              </div>
-
-              <div className="text-center bg-white rounded-xl p-6 shadow-sm hover:shadow-lg transition-shadow">
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-green-500 to-emerald-600 flex items-center justify-center mx-auto mb-4">
-                  <svg
-                    className="w-8 h-8 text-white"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
-                    />
-                  </svg>
-                </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">
-                  Practical Examples
-                </h3>
-                <p className="text-slate-600 leading-relaxed">
-                  Real-world scenarios and architectural patterns used in 
-                  production systems at scale
-                </p>
-              </div>
+              
             </div>
           </div>
         </div>
