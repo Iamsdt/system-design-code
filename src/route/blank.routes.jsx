@@ -1,6 +1,7 @@
 import Foundations from "@/pages/foundations"
 import Landing from "@/pages/landing"
 import Networking from "@/pages/networking"
+import DataArchitecture from "@/pages/data-architecture"
 
 const blankRoutes = [
   {
@@ -14,6 +15,10 @@ const blankRoutes = [
   {
     path: "/networking",
     element: <Networking />,
+  },
+  {
+    path: "/data-architecture",
+    element: <DataArchitecture />,
   },
 ]
 

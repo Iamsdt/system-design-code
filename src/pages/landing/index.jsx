@@ -140,15 +140,15 @@ export default function Landing() {
 
             {/* Active Tutorials Grid */}
             <div className="max-w-7xl mx-auto mb-16">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8">
                 {/* Foundations Tutorial Card */}
                 <div
                   onClick={() => nav("/foundations")}
-                  className="group cursor-pointer bg-white border-2 border-blue-200 rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-400 flex flex-col"
+                  className="group cursor-pointer bg-white border-2 border-blue-200 rounded-2xl p-6 md:p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-blue-400 flex flex-col"
                 >
                   <div className="flex items-start gap-6 mb-6">
                     <div className="flex-shrink-0">
-                      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         <svg
                           className="w-8 h-8 text-white"
                           fill="none"
@@ -224,11 +224,11 @@ export default function Landing() {
                 {/* Networking Tutorial Card (NEW) */}
                 <div
                   onClick={() => nav("/networking")}
-                  className="group cursor-pointer bg-white border-2 border-indigo-200 rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-indigo-400 flex flex-col"
+                  className="group cursor-pointer bg-white border-2 border-indigo-200 rounded-2xl p-6 md:p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-indigo-400 flex flex-col"
                 >
                   <div className="flex items-start gap-6 mb-6">
                     <div className="flex-shrink-0">
-                      <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
                         <span className="text-3xl">🌐</span>
                       </div>
                     </div>
@@ -271,6 +271,86 @@ export default function Landing() {
                       ~45 min • 7 Topics
                     </span>
                     <div className="flex items-center gap-2 text-indigo-600 font-semibold group-hover:gap-4 transition-all">
+                      <span>Start Learning</span>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Data Architecture Tutorial Card */}
+                <div
+                  onClick={() => nav("/data-architecture")}
+                  className="group cursor-pointer bg-white border-2 border-purple-200 rounded-2xl p-6 md:p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-purple-400 flex flex-col"
+                >
+                  <div className="flex items-start gap-6 mb-6">
+                    <div className="flex-shrink-0">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <svg
+                          className="w-8 h-8 text-white"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4"
+                          />
+                        </svg>
+                      </div>
+                    </div>
+
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="text-2xl font-bold text-slate-900 group-hover:text-purple-600 transition-colors">
+                          Data Architecture & Storage
+                        </h3>
+                        <span className="px-3 py-1 text-xs font-semibold bg-green-100 text-green-700 rounded-full">
+                          Live
+                        </span>
+                      </div>
+                      <p className="text-slate-600 leading-relaxed">
+                        Database selection, caching strategies, sharding techniques,
+                        and compliance considerations.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4 mb-8 flex-1">
+                    {[
+                      { icon: "🗄️", label: "SQL vs NoSQL" },
+                      { icon: "💾", label: "Storage Models" },
+                      { icon: "🔄", label: "Replication" },
+                      { icon: "🛡️", label: "Compliance" },
+                    ].map((feature, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-2 text-sm text-slate-700"
+                      >
+                        <span className="text-xl">{feature.icon}</span>
+                        <span className="font-medium">{feature.label}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto flex items-center justify-between pt-6 border-t border-slate-100">
+                    <span className="text-sm text-slate-500">
+                      ~60 min • 6 Topics
+                    </span>
+                    <div className="flex items-center gap-2 text-purple-600 font-semibold group-hover:gap-4 transition-all">
                       <span>Start Learning</span>
                       <svg
                         className="w-5 h-5"

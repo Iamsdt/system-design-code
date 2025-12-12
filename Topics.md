@@ -75,10 +75,48 @@ Purpose: concise, grouped topics for system design and cloud fundamentals. Empha
 ## 3) Data Architecture & Storage Choices
 
 - How to choose a database: SQL vs NoSQL, ACID vs BASE, schema needs, access patterns, consistency and latency budgets
-- Operational patterns: replication (leader/follower, quorum), partitioning/sharding keys, federation, indexing and query tuning
-- Caching patterns: cache-aside, write-through/back, refresh-ahead; consistent hashing to avoid hot shards
+
+  - Why: Choosing the wrong database can lead to performance bottlenecks, scaling issues, and excessive costs. Different data models optimize for different use cases.
+  - How: Analyze your access patterns (read-heavy vs write-heavy, queries by key vs complex joins), consistency requirements (strong vs eventual), schema flexibility needs, and scale projections. SQL excels at complex queries and transactions; NoSQL shines at horizontal scaling and flexible schemas.
+  - When: During initial architecture design, when migrating legacy systems, or when current database performance becomes a bottleneck.
+  - Trade-offs: SQL provides strong consistency and ACID guarantees but can be harder to scale horizontally. NoSQL (BASE) offers better availability and partition tolerance but often with eventual consistency. The CAP theorem forces you to choose between consistency, availability, and partition tolerance—you can only have two.
+
 - Storage models and when to pick them: key-value, document, wide-column, graph; blob/object storage for media/large files
+
+  - Why: Each storage model is optimized for specific data structures and access patterns. Using the right model reduces complexity and improves performance.
+  - How: Key-value (Redis, DynamoDB) for simple lookups, caching, session stores. Document (MongoDB, DocumentDB) for semi-structured data with nested objects, catalogs, user profiles. Wide-column (Cassandra, Bigtable) for time-series data, high write throughput. Graph (Neo4j, Neptune) for highly connected data, social networks, recommendation engines. Blob/object storage (S3, Cloud Storage) for media files, backups, data lakes.
+  - When: Key-value for sub-millisecond reads; document when schema evolves frequently; wide-column for IoT sensor data or analytics; graph for fraud detection or social features; object storage for static assets and archives.
+  - Trade-offs: Key-value is fast but limited in querying. Documents offer flexibility but can have performance issues with complex aggregations. Wide-column handles massive write throughput but has limited query flexibility. Graph excels at relationships but doesn't scale as well for non-relationship queries. Object storage is cheap and durable but has higher latency than databases.
+
+- Operational patterns: replication (leader/follower, quorum), partitioning/sharding keys, federation, indexing and query tuning
+
+  - Why: Single-server databases become bottlenecks. Replication provides redundancy and read scaling. Partitioning enables horizontal scaling beyond single-machine limits.
+  - How: Leader-follower replication: writes go to leader, replicated to followers for read scaling. Multi-leader: accept writes at multiple nodes (conflict resolution needed). Quorum: require W writes + R reads where W+R > N for consistency. Sharding: partition data by key (user ID, geography, hash) across multiple servers. Choose shard keys carefully to avoid hot spots. Index frequently queried fields; avoid over-indexing (slows writes).
+  - When: Implement read replicas when read load exceeds single server capacity. Add sharding when write load or data size exceeds vertical scaling limits. Use quorum for distributed systems requiring tunable consistency.
+  - Trade-offs: Replication adds operational complexity and eventual consistency lag. Wrong shard key leads to uneven load distribution and difficult migrations. Too many indexes slow down writes and consume storage. Federation (splitting by function/service) provides autonomy but complicates cross-database queries.
+
+- Caching patterns: cache-aside, write-through/back, refresh-ahead; consistent hashing to avoid hot shards
+
+  - Why: Database queries are expensive. Caching reduces latency from hundreds of milliseconds to microseconds and decreases database load.
+  - How: Cache-aside (lazy loading): app checks cache first, on miss reads DB and populates cache. Write-through: write to cache and DB synchronously (strong consistency). Write-back: write to cache first, async flush to DB (better performance, risk of data loss). Refresh-ahead: preemptively update cache before expiration. Consistent hashing: distribute cache keys across nodes so adding/removing nodes only redistributes 1/N keys, not all keys.
+  - When: Cache-aside for read-heavy workloads. Write-through for strong consistency requirements. Write-back for write-heavy workloads where temporary data loss is acceptable. Refresh-ahead for predictable access patterns. Consistent hashing for distributed caches.
+  - Trade-offs: Cache-aside risks stale data and cache stampede (many requests for same missing key). Write-through adds write latency. Write-back risks data loss on crash. Refresh-ahead wastes resources if predictions are wrong. All caching increases complexity and requires invalidation strategies.
+
 - Compliance hooks: data lifecycle, GDPR/PII handling, encryption at rest/in transit
+
+  - Why: Regulatory requirements (GDPR, HIPAA, SOC2) mandate specific data handling. Non-compliance results in fines and legal liability.
+  - How: Classify data by sensitivity. Encrypt sensitive data at rest (AES-256) and in transit (TLS 1.3). Implement data retention policies and automated deletion. For PII, support right-to-access (export user data) and right-to-erasure (delete user data). Use data residency controls to keep data in specific regions. Maintain audit logs for access and modifications.
+  - When: Design data architecture with compliance from day one. Retrofitting is expensive and risky. Review requirements when entering new markets or handling new data types.
+  - Trade-offs: Encryption adds CPU overhead and complexity. Data deletion conflicts with backup/disaster recovery (may require encrypted backups with key destruction). Audit logging increases storage costs and write latency. Strict data residency can increase latency for global users.
+
+### Visuals & Interactive Demos
+
+- Interactive: Database selector tool (input: access patterns, consistency needs, scale → output: recommended DB type with reasoning)
+- Interactive: Caching strategy simulator (demonstrate cache-aside vs write-through with hit/miss visualization)
+- Interactive: Sharding calculator (choose shard key, visualize data distribution, show hot shard risks)
+- Interactive: CAP theorem visualizer (adjust network partition, see effects on consistency/availability)
+- Diagram: Replication topologies (leader-follower, multi-leader, leaderless/quorum)
+- Interactive: Consistent hashing visualizer (add/remove nodes, see key redistribution)
 
 ## 4) Compute & Runtime Models
 
