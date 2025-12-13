@@ -368,6 +368,72 @@ export default function Landing() {
                     </div>
                   </div>
                 </div>
+                {/* Compute & Runtime Tutorial Card */}
+                <div
+                  onClick={() => nav("/compute-runtime")}
+                  className="group cursor-pointer bg-white border-2 border-amber-200 rounded-2xl p-6 md:p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-amber-400 flex flex-col"
+                >
+                  <div className="flex items-start gap-6 mb-6">
+                    <div className="flex-shrink-0">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-amber-500 to-yellow-500 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <span className="text-3xl">⚙️</span>
+                      </div>
+                    </div>
+
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="text-2xl font-bold text-slate-900 group-hover:text-amber-600 transition-colors">
+                          Compute & Runtime Models
+                        </h3>
+                        <span className="px-3 py-1 text-xs font-semibold bg-green-100 text-green-700 rounded-full">
+                          New
+                        </span>
+                      </div>
+                      <p className="text-slate-600 leading-relaxed">
+                        Choose containers, serverless, or Kubernetes and learn safe deployment patterns.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4 mb-8 flex-1">
+                    {[
+                      { icon: "🧩", label: "Runtime Models" },
+                      { icon: "🚦", label: "Deployments" },
+                      { icon: "📈", label: "Scaling" },
+                      { icon: "🔁", label: "Rollouts" },
+                    ].map((feature, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-2 text-sm text-slate-700"
+                      >
+                        <span className="text-xl">{feature.icon}</span>
+                        <span className="font-medium">{feature.label}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto flex items-center justify-between pt-6 border-t border-slate-100">
+                    <span className="text-sm text-slate-500">
+                      ~40 min • 6 Topics
+                    </span>
+                    <div className="flex items-center gap-2 text-amber-600 font-semibold group-hover:gap-4 transition-all">
+                      <span>Start Learning</span>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 

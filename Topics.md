@@ -120,10 +120,62 @@ Purpose: concise, grouped topics for system design and cloud fundamentals. Empha
 
 ## 4) Compute & Runtime Models
 
-- Monolith vs microservices vs modular monolith; service discovery and API composition
-- Containers and orchestration: Docker hygiene, Kubernetes primitives (deployments, services, ingress), autoscaling (HPA/VPA), disruption budgets
-- Serverless and managed runtimes: Cloud Run/Functions vs container/GKE; when to pick which
+- Compute choices: process vs container vs function vs job; what is the unit of scaling?
+
+  - Why: Compute is where latency, cost, and operational complexity usually concentrate. Picking the wrong runtime (VM, container, serverless, job) can force a rewrite later.
+  - How: Start from workload shape (HTTP request/response vs event-driven vs batch) + state needs (stateless vs stateful) + scaling unit (instance/pod/function invocation) + operational model (self-managed vs managed).
+  - When: Early architecture design, platform standardization, and whenever latency/cost/operability constraints change.
+  - Trade-offs: More control (VMs/Kubernetes) usually means more operational overhead; more managed/serverless usually means tighter platform constraints and potential vendor coupling.
+
+- Monolith vs modular monolith vs microservices; service discovery and API composition
+
+  - Why: Service boundaries determine team velocity, reliability blast radius, and how hard it is to scale independent hotspots.
+  - How:
+    - Monolith: a single deployable; optimize via clear module boundaries, profiling, and caching.
+    - Modular monolith: one deployable with strong boundaries (packages/modules), clear interfaces, and migration path to services.
+    - Microservices: independently deployable services with explicit contracts; requires strong ops (CI/CD, observability) and data ownership discipline.
+    - API composition: pick between API gateway, BFF (backend-for-frontend), GraphQL federation, or direct service calls based on client needs and latency budgets.
+  - When: Monolith/modular monolith for early-stage and tight teams; microservices when independent scaling/deployments and fault isolation are worth the overhead.
+  - Trade-offs: Microservices improve independent deployments but add distributed-systems costs (network latency, versioning, debugging, consistency).
+
+- Containers and orchestration: image hygiene, Kubernetes primitives, autoscaling, and disruptions
+
+  - Why: Containers standardize packaging and environments; orchestration standardizes rollout, healing, and scaling.
+  - How:
+    - Container hygiene: minimal base images, pinned dependencies, non-root user, explicit health checks, immutable builds.
+    - Kubernetes primitives: Deployments/ReplicaSets for stateless apps, StatefulSets for stateful workloads, Services/Ingress for routing, ConfigMaps/Secrets for config.
+    - Autoscaling: HPA for horizontal scaling (CPU/memory/custom metrics), VPA for rightsizing requests/limits, and cluster/node autoscaling for capacity.
+    - Disruptions: use PodDisruptionBudgets (PDBs) to limit voluntary evictions during node drains/upgrades; tune so you don’t block maintenance.
+  - When: Containers for most production workloads; Kubernetes when you need multi-service orchestration, portable deployments, and fine-grained control.
+  - Trade-offs: Kubernetes is powerful but operationally heavy; autoscaling is only as good as your metrics, requests/limits, and readiness probes.
+
+- Serverless and managed runtimes: functions vs containers vs managed K8s
+
+  - Why: Managed runtimes can remove large chunks of undifferentiated ops work (patching, node management, autoscaling).
+  - How:
+    - Functions (FaaS): best for event-driven, small units of work; watch cold starts, execution limits, and state/external connections.
+    - Container serverless (e.g., Cloud Run/App Runner/Container Apps): best for HTTP APIs, gRPC services, and “bring-your-own-runtime” containers with simpler ops.
+    - Managed Kubernetes: best when you need deeper networking controls, daemonsets, sidecars, custom schedulers, or heterogeneous workloads.
+  - When: Prefer managed/serverless for typical web backends and event handling; choose K8s/VMs when platform constraints block you.
+  - Trade-offs: Serverless often has cold starts and constraints around networking, filesystem, and long-running workloads; K8s/VMs have more toil.
+
 - Deployment strategies: rolling, blue/green, canary, feature flags; supply-chain security and SBOMs
+
+  - Why: Rollout strategy determines user impact during releases and how quickly you can detect/rollback failures.
+  - How:
+    - Rolling: gradually replace instances; tune max unavailable/surge and use strong readiness/liveness probes.
+    - Blue/green: keep two environments; switch traffic in one step; keep the previous version for fast rollback.
+    - Canary: shift a small % of traffic, observe, then increase; requires good metrics, alerting, and automated rollback triggers.
+    - Feature flags: separate deploy from release; reduce risk by enabling features per cohort, region, or percentage.
+    - Supply-chain security: signed artifacts, provenance, dependency scanning, and SBOMs to reduce compromise risk.
+  - When: Rolling for low-risk incremental changes; blue/green for low-downtime cutovers; canary for high-risk changes with strong observability.
+  - Trade-offs: Blue/green costs extra capacity; canary needs robust telemetry and traffic control; feature flags add complexity and cleanup debt.
+
+### Visuals & Interactive Demos
+
+- Interactive: Deployment strategy simulator (rolling vs blue/green vs canary) with traffic shifting and rollback thinking
+- Diagram: Kubernetes rollout and autoscaling loop (Deployment + HPA + readiness)
+- Visual: Runtime decision tree (Function vs container serverless vs Kubernetes vs VM)
 
 ## 5) APIs, Integration & Data Movement
 

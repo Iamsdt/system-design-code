@@ -1,7 +1,8 @@
+import ComputeRuntime from "@/pages/compute-runtime"
+import DataArchitecture from "@/pages/data-architecture"
 import Foundations from "@/pages/foundations"
 import Landing from "@/pages/landing"
 import Networking from "@/pages/networking"
-import DataArchitecture from "@/pages/data-architecture"
 
 const blankRoutes = [
   {
@@ -19,6 +20,10 @@ const blankRoutes = [
   {
     path: "/data-architecture",
     element: <DataArchitecture />,
+  },
+  {
+    path: "/compute-runtime",
+    element: <ComputeRuntime />,
   },
 ]
 

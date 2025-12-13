@@ -32,6 +32,16 @@ Run the dev server:
 npm run dev
 ```
 
+Note: During local development the app uses browser history URLs (e.g. `http://localhost:3030/system-design-code/networking`). In production (GitHub Pages) the app uses hash-based routing by default; use `http://<host>/<base>/#/networking` for bookmarked routes.
+
+If you'd like to use clean browser history URLs during local development, set the environment variable as follows:
+
+```bash
+VITE_USE_BROWSER_ROUTER=true npm run dev
+```
+
+Otherwise the default is hash-based routing which avoids 404s for direct URLs on static hosts.
+
 Build for production:
 
 ```bash
