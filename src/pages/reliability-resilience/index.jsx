@@ -965,7 +965,7 @@ export default function ReliabilityResilience() {
               <button onClick={() => nav("/apis-integration")} className="btn-secondary">
                 ← Previous: APIs
               </button>
-              <button onClick={() => nav("/topics")} className="btn-primary">
+              <button onClick={() => nav("/security-governance")} className="btn-primary">
                 Next: Security →
               </button>
             </div>

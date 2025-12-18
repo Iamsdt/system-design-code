@@ -1038,7 +1038,7 @@ export default function SecurityGovernance() {
               >
                 ← Previous: Reliability
               </button>
-              <button onClick={() => nav("/topics")} className="btn-primary">
+              <button onClick={() => nav("/observability-operations")} className="btn-primary">
                 Next: Observability →
               </button>
             </div>

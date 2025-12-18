@@ -385,6 +385,7 @@ export default function Topics() {
                 5: "/apis-integration",
                 6: "/reliability-resilience",
                 7: "/security-governance",
+                8: "/observability-operations",
               }
               const topicRoute = topicRoutes[topic.id]
               return (

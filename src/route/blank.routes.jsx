@@ -7,6 +7,7 @@ import ApisIntegration from "@/pages/apis-integration"
 import Topics from "@/pages/topics"
 import ReliabilityResilience from "@/pages/reliability-resilience"
 import SecurityGovernance from "@/pages/security-governance"
+import ObservabilityOperations from "@/pages/observability-operations"
 
 const blankRoutes = [
   {
@@ -40,6 +41,10 @@ const blankRoutes = [
   {
     path: "/security-governance",
     element: <SecurityGovernance />,
+  },
+  {
+    path: "/observability-operations",
+    element: <ObservabilityOperations />,
   },
   {
     path: "/topics",
