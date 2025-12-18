@@ -179,29 +179,232 @@ Purpose: concise, grouped topics for system design and cloud fundamentals. Empha
 
 ## 5) APIs, Integration & Data Movement
 
-- REST vs gRPC vs GraphQL: when to choose, versioning, idempotency, pagination
-- API gateway patterns: routing, auth, rate limiting, payload transforms
-- Sync vs async: queues and pub/sub (ordering, DLQs, at-least/exactly-once), backpressure, retries with jitter
-- Real-time paths: WebSockets/SSE/long-polling, webhooks for server-to-server notifications
+- REST vs gRPC vs GraphQL: Deep dive into protocols, versioning, and idempotency
+
+  - Why: The protocol defines the contract, performance, and coupling between services. Choosing the wrong one can lead to chatty interfaces or rigid contracts.
+  - How:
+    - **REST (Representational State Transfer)**: Resource-oriented (Nouns over Verbs). Uses standard HTTP methods (GET, POST, PUT, DELETE).
+      - _Versioning_: URI Path (`/v1/users`), Query Param (`?v=1`), or Header (`Accept: application/vnd.v1+json`). Path is most cache-friendly; Header is most "RESTful".
+      - _Idempotency_: Critical for payments/retries. Use `Idempotency-Key` header. Server stores result of the first successful request and returns it for subsequent retries with the same key.
+      - _Pagination_: Offset-based (simple, slow on large data) vs Cursor-based (fast, stable, no random access).
+    - **GraphQL**: Client-driven queries. Solves over-fetching (getting too much data) and under-fetching (N+1 requests).
+      - _Schema_: Strongly typed contract.
+      - _Complexity_: Moves complexity to the server (resolvers). Caching is harder than REST (POST requests).
+    - **gRPC**: High-performance RPC based on Protocol Buffers (binary).
+      - _Performance_: Uses HTTP/2 (multiplexing, header compression). 7-10x faster serialization than JSON.
+      - _Streaming_: Native support for Unary, Server Streaming, Client Streaming, and Bidirectional Streaming.
+  - When: REST for public APIs (universally understood). GraphQL for complex frontends/mobile (bandwidth efficiency). gRPC for internal microservices (low latency).
+  - Trade-offs: REST is chatty. GraphQL is complex to secure (depth limits). gRPC requires generated client code and proxies for web.
+
+- API Gateway Patterns: The "Front Door" for Microservices
+
+  - Why: Decouples clients from internal service architecture. Handles cross-cutting concerns centrally.
+  - How:
+    - **Routing**: L7 routing based on path/headers.
+    - **Backend for Frontend (BFF)**: Specific gateways for Mobile vs Web to optimize payload size and auth methods.
+    - **Rate Limiting Algorithms**:
+      - _Token Bucket_: Allows bursts. Tokens refill at fixed rate.
+      - _Leaky Bucket_: Smooths traffic. Requests processed at constant rate.
+      - _Fixed Window_: Simple, but suffers from edge-case spikes.
+      - _Sliding Window_: Most accurate, higher memory cost.
+  - When: Always in distributed systems. Don't expose microservices directly.
+  - Trade-offs: Single point of failure (needs high availability). Added latency hop.
+
+- Asynchronous Messaging & Event-Driven Architecture
+
+  - Why: Synchronous (HTTP) chains availability (System A down = System B fails). Async decouples uptime and levels load.
+  - How:
+    - **Message Queues (SQS, RabbitMQ)**: Point-to-Point. One consumer gets the message. Good for work distribution.
+    - **Pub/Sub (SNS, Kafka)**: Fan-out. All subscribers get the message. Good for side-effects (email, audit log).
+    - **Resilience Patterns**:
+      - _Dead Letter Queues (DLQ)_: "Parking lot" for messages that fail processing repeatedly. Prevents poison pills from blocking the queue.
+      - _Backpressure_: Consumers signal producers to slow down when overwhelmed.
+      - _Exponential Backoff with Jitter_: When retrying, wait `2^n` seconds + `random_noise`. Prevents "Thundering Herd" where all clients retry at the exact same second, crushing the recovering server.
+  - When: Long-running tasks (video processing), decoupling critical path (checkout -> send email), and load leveling.
+  - Trade-offs: Eventual consistency. Debugging is harder (tracing across queues). Message ordering is expensive (FIFO queues often have lower throughput).
+
+- Real-time Communication: Beyond Request/Response
+
+  - Why: Users expect instant updates (chat, stock prices, notifications) without refreshing.
+  - How:
+    - **WebSockets**: Persistent, bidirectional TCP connection. Low latency. Stateful (hard to load balance).
+    - **Server-Sent Events (SSE)**: Unidirectional (Server -> Client) over HTTP. Great for news feeds. Auto-reconnects.
+    - **Long Polling**: Client opens request, server holds it until data is available. Legacy fallback.
+    - **Webhooks**: "Reverse API". Server calls a URL you provide when an event happens. Standard for B2B integration (Stripe, GitHub).
+  - When: Chat/Gaming (WebSockets), Feeds (SSE), 3rd Party Sync (Webhooks).
+  - Trade-offs: WebSockets require stateful connections (harder to scale LBs). SSE is text-only. Webhooks require public endpoints and security verification.
+
+### Visuals & Interactive Demos
+
+- Interactive: API Gateway Simulator (visualize rate limiting, routing, and auth failures).
+- Interactive: Protocol Trade-off Comparator (REST vs GraphQL vs gRPC latency/payload size).
+- Diagram: Sync vs Async flow (Request/Response vs Event-Driven).
 
 ## 6) Reliability & Resilience
 
 - SLO-driven design, error budgets, chaos/load testing
+
+  - Why: Without clear reliability targets, teams optimize for the wrong metrics. SLOs align engineering effort with business outcomes.
+  - How: Define SLIs (Service Level Indicators) like latency p99, error rate, availability. Set SLOs (targets like 99.9% uptime). Error budgets = 100% - SLO. Use error budgets to decide when to prioritize reliability vs features. Chaos engineering: intentionally inject failures (kill pods, network partitions) to test resilience. Load testing: simulate production traffic patterns.
+  - When: Establish SLOs during initial design. Run chaos tests in staging before major releases. Load test before traffic spikes (Black Friday, launches).
+  - Trade-offs: Strict SLOs (99.99%) require more redundancy and cost. Error budgets that are too loose don't drive reliability improvements. Chaos testing can cause real outages if not properly isolated.
+
 - Graceful degradation, brownouts, hedged requests, tail-latency mitigation
+
+  - Why: Not all failures are catastrophic. Systems should degrade functionality rather than fail completely.
+  - How: Graceful degradation: disable non-critical features (recommendations, analytics) when under load. Brownouts: reduce quality (lower video resolution, simplified UI) instead of rejecting requests. Hedged requests: send duplicate requests to multiple servers, use first response, cancel others (reduces tail latency). Circuit breakers: stop calling failing services after threshold failures, auto-recover after timeout.
+  - When: Design degradation paths for all non-critical features. Use hedged requests for high-priority, latency-sensitive operations. Implement circuit breakers for all external dependencies.
+  - Trade-offs: Degradation logic adds complexity. Hedged requests increase load (2x requests). Circuit breakers can cause cascading failures if misconfigured.
+
 - Rate limiting and throttling (token/sliding window); circuit breaking and bulkheads
+
+  - Why: Protect systems from traffic spikes, abuse, and cascading failures. Rate limiting prevents one user/service from overwhelming the system.
+  - How:
+    - **Token Bucket**: Tokens added at fixed rate, requests consume tokens. Allows bursts up to bucket size.
+    - **Sliding Window**: Track requests in time windows, most accurate but higher memory cost.
+    - **Fixed Window**: Simple counters per time period, but suffers from edge-case spikes at window boundaries.
+    - **Circuit Breaker**: Open circuit after failure threshold, half-open to test recovery, close when healthy.
+    - **Bulkheads**: Isolate resources (thread pools, connections) so one failing component doesn't starve others.
+  - When: Rate limit all public APIs and user-facing endpoints. Use circuit breakers for external dependencies. Apply bulkheads to critical resource pools.
+  - Trade-offs: Rate limiting can reject legitimate traffic during spikes. Circuit breakers add latency and can cause false positives. Bulkheads require careful resource allocation.
+
 - DR/backup/restore, RTO/RPO planning; active-active vs active-passive
+
+  - Why: Disasters happen (data center fires, region outages, ransomware). Recovery planning determines business continuity.
+  - How:
+    - **RTO (Recovery Time Objective)**: Maximum acceptable downtime (e.g., 4 hours). Drives backup frequency and failover automation.
+    - **RPO (Recovery Point Objective)**: Maximum acceptable data loss (e.g., 1 hour). Drives backup frequency.
+    - **Active-Passive**: Primary region serves traffic, secondary region is standby (lower cost, higher RTO).
+    - **Active-Active**: Both regions serve traffic simultaneously (lower RTO, higher cost and complexity).
+    - **Backup Strategies**: Full backups (complete snapshot), incremental (changes since last backup), continuous (streaming replication).
+  - When: Define RTO/RPO during initial architecture. Test DR procedures quarterly. Active-active for critical systems with <1 hour RTO.
+  - Trade-offs: Active-active doubles infrastructure cost. Frequent backups increase storage and network costs. Testing DR is expensive and risky.
+
+- Distributed consensus and leader election (Raft, Paxos basics)
+
+  - Why: Distributed systems need agreement on state, leader selection, and configuration changes. Consensus algorithms ensure consistency across nodes.
+  - How:
+    - **Raft**: Leader-based consensus. Leader handles all writes, replicates to followers. Leader election via majority vote. Simpler to understand than Paxos.
+    - **Paxos**: Classic consensus algorithm, more complex but proven. Multi-round voting process.
+    - **Leader Election**: Used in distributed locks, master selection, configuration management. Implement via etcd, Consul, or ZooKeeper.
+  - When: Use when you need strong consistency across distributed nodes (distributed databases, configuration stores, coordination services).
+  - Trade-offs: Consensus adds latency (network round trips). Leader election can cause brief unavailability during leader changes. Requires majority of nodes to be healthy.
+
+### Visuals & Interactive Demos
+
+- Interactive: SLO/Error Budget Calculator (input SLO, see downtime budget, track burn rate)
+- Interactive: Rate Limiter Simulator (token bucket vs sliding window, visualize request handling)
+- Interactive: Circuit Breaker State Machine (open/half-open/closed transitions with failure thresholds)
+- Interactive: DR Scenario Planner (RTO/RPO calculator, backup frequency recommendations)
+- Diagram: Active-Active vs Active-Passive architecture comparison
+- Interactive: Raft Leader Election Visualizer (show leader election process, log replication)
 
 ## 7) Security, Governance & Compliance
 
 - AuthN/AuthZ (OAuth2/OIDC, JWT), mTLS, key management and rotation
+
+  - Why: Authentication (who you are) and authorization (what you can do) are foundational security controls. Weak auth leads to data breaches.
+  - How:
+    - **OAuth2**: Delegated authorization framework. Flow: User → Authorization Server → Access Token → Resource Server. Scopes define permissions.
+    - **OIDC (OpenID Connect)**: Identity layer on OAuth2. Adds ID tokens (user identity) to access tokens (permissions).
+    - **JWT (JSON Web Tokens)**: Self-contained tokens with claims (user ID, roles, expiration). Stateless, but can't revoke before expiry.
+    - **mTLS (Mutual TLS)**: Both client and server authenticate with certificates. Used for service-to-service communication in zero-trust networks.
+    - **Key Management**: Use managed services (AWS KMS, GCP KMS, Azure Key Vault). Rotate keys regularly (90 days for high-risk, 365 for low-risk). Use key versioning for zero-downtime rotation.
+  - When: OAuth2/OIDC for user authentication. JWT for stateless API auth. mTLS for microservices in untrusted networks. Key rotation: automated for all production keys.
+  - Trade-offs: JWT can't be revoked (use short expiry + refresh tokens). mTLS adds certificate management overhead. Key rotation requires careful coordination to avoid downtime.
+
 - Network posture: VPC segmentation, WAF/DDoS protection, least-privilege IAM
+
+  - Why: Defense in depth. Network segmentation limits blast radius. WAF/DDoS protection prevents common attacks. Least-privilege IAM reduces insider threat.
+  - How:
+    - **VPC Segmentation**: Separate subnets for public (load balancers), private (app servers), and data (databases). Use security groups/firewall rules to restrict traffic.
+    - **WAF (Web Application Firewall)**: Filter HTTP traffic for SQL injection, XSS, rate limiting. Deploy at edge (CloudFront, Cloudflare) or application layer.
+    - **DDoS Protection**: Use managed services (AWS Shield, Cloudflare, GCP Armor). Rate limiting, IP filtering, and traffic analysis to detect and mitigate attacks.
+    - **Least-Privilege IAM**: Grant minimum permissions needed. Use roles (not users) for services. Regular access reviews. Principle of least privilege.
+  - When: Design network segmentation from day one. Enable WAF for all public-facing APIs. Use DDoS protection for production. Review IAM permissions quarterly.
+  - Trade-offs: Over-segmentation increases operational complexity. WAF can block legitimate traffic (false positives). Strict IAM can slow development velocity.
+
 - Secrets management, audit logging/tamper evidence, data residency controls
+
+  - Why: Secrets (API keys, passwords, certificates) must be protected. Audit logs enable compliance and incident investigation. Data residency ensures legal compliance.
+  - How:
+    - **Secrets Management**: Use managed services (AWS Secrets Manager, HashiCorp Vault, GCP Secret Manager). Never commit secrets to code. Rotate secrets automatically. Use environment variables or secret injection at runtime.
+    - **Audit Logging**: Log all authentication, authorization, data access, and configuration changes. Use immutable storage (S3 with versioning, Cloud Logging). Tamper-evident: cryptographic signatures, write-once storage.
+    - **Data Residency**: Store data in specific regions/countries per legal requirements (GDPR, data localization laws). Use regional databases, object storage, and compute. Encrypt data in transit and at rest.
+  - When: Use secrets management for all credentials. Enable audit logging for all production systems. Implement data residency during initial design (retrofitting is expensive).
+  - Trade-offs: Secrets management adds latency and operational overhead. Audit logs increase storage costs significantly. Data residency can increase latency for global users.
+
+- Zero-trust architecture and service mesh security
+
+  - Why: Traditional perimeter security (trust internal network) fails in cloud/microservices. Zero-trust: verify every request, regardless of network location.
+  - How:
+    - **Zero-Trust Principles**: Never trust, always verify. Verify identity, device, and context for every request. Least-privilege access. Assume breach (monitor and log everything).
+    - **Service Mesh**: Infrastructure layer for service-to-service communication (Istio, Linkerd). Provides mTLS, traffic policies, observability. Sidecar proxy pattern.
+    - **Implementation**: mTLS between all services. Identity-based access control (not IP-based). Continuous verification. Encrypted traffic everywhere.
+  - When: Implement zero-trust for new microservices architectures. Use service mesh when you have 10+ services and need consistent security policies.
+  - Trade-offs: Zero-trust adds latency (verification overhead). Service mesh increases resource usage (sidecar proxies). Operational complexity is high.
+
+### Visuals & Interactive Demos
+
+- Interactive: OAuth2 Flow Visualizer (authorization code flow, token exchange)
+- Interactive: JWT Token Decoder (decode and inspect JWT claims)
+- Interactive: IAM Policy Builder (visual policy creation with least-privilege recommendations)
+- Interactive: Network Segmentation Designer (VPC/subnet/security group visualizer)
+- Diagram: Zero-Trust Architecture (mTLS, identity verification, encrypted traffic)
+- Interactive: Secrets Rotation Simulator (key rotation timeline, zero-downtime strategies)
 
 ## 8) Observability & Operations
 
 - Metrics/logs/traces with sampling; OpenTelemetry and structured logging
+
+  - Why: You can't fix what you can't see. Observability (metrics, logs, traces) is essential for debugging, performance optimization, and incident response.
+  - How:
+    - **Metrics**: Numerical measurements over time (CPU, memory, request rate, error rate). Use time-series databases (Prometheus, CloudWatch, Datadog). Key metrics: RED (Rate, Errors, Duration) and USE (Utilization, Saturation, Errors).
+    - **Logs**: Event records with timestamps. Use structured logging (JSON) for machine parsing. Centralize with log aggregation (ELK, Splunk, Cloud Logging). Set retention policies (30-90 days for production).
+    - **Traces**: Request flow across services. Distributed tracing (OpenTelemetry, Jaeger, Zipkin) shows latency breakdown per service. Use sampling (1-10% of requests) to reduce overhead.
+    - **OpenTelemetry**: Vendor-neutral standard for observability. Unified SDK for metrics, logs, traces. Auto-instrumentation for common frameworks.
+  - When: Instrument all services from day one. Use sampling for high-traffic services. Enable distributed tracing for microservices. Review and optimize observability costs quarterly.
+  - Trade-offs: Full observability is expensive (storage, ingestion costs). Sampling can miss rare errors. Too many metrics create noise. Log retention costs grow linearly.
+
 - Dashboards and alert design (multi-window burn rates), SLI/SLO tracking
+
+  - Why: Dashboards provide visibility. Alerts notify on-call engineers of issues. Poor alerting causes alert fatigue and missed incidents.
+  - How:
+    - **Dashboard Design**: One dashboard per service. Show RED metrics (rate, errors, duration) prominently. Include SLO/SLI status. Use color coding (green/yellow/red). Keep dashboards simple (5-10 key metrics).
+    - **Alert Design**: Alert on symptoms (user impact), not causes. Use multi-window burn rates: alert when error budget burns faster than time (e.g., 2x burn rate). Avoid alerting on every error (use thresholds). Alert on SLO violations.
+    - **SLI/SLO Tracking**: SLI = measured metric (p99 latency, error rate). SLO = target (p99 < 200ms, error rate < 0.1%). Track error budget burn rate. Display on dashboards.
+  - When: Create dashboards during initial service development. Set up alerts before production launch. Review alert effectiveness monthly (reduce false positives).
+  - Trade-offs: Too many dashboards create confusion. Over-alerting causes fatigue. Under-alerting misses incidents. SLO tracking requires discipline.
+
 - Incident response playbooks, on-call hygiene, runbooks, game days
+
+  - Why: Incidents are inevitable. Prepared teams resolve incidents faster and learn more effectively.
+  - How:
+    - **Incident Response Playbooks**: Step-by-step procedures for common incidents (database down, API errors, DDoS). Include escalation paths, rollback procedures, communication templates.
+    - **On-Call Hygiene**: Rotate on-call schedules fairly. Limit on-call to 1 week/month. Provide on-call compensation. Use escalation chains (L1 → L2 → L3). Post-incident: blameless postmortems.
+    - **Runbooks**: Operational procedures for common tasks (deployments, scaling, troubleshooting). Keep runbooks updated. Test runbooks during game days.
+    - **Game Days**: Scheduled chaos exercises. Simulate incidents (kill services, inject latency, data corruption). Practice incident response. Improve playbooks based on learnings.
+  - When: Create playbooks for all critical services. Run game days quarterly. Update runbooks after every incident. Review on-call load monthly.
+  - Trade-offs: Playbooks can become stale. Game days require time investment. On-call can cause burnout if not managed well.
+
+- Cost optimization and resource rightsizing
+
+  - Why: Cloud costs can spiral out of control. Rightsizing reduces waste without impacting performance.
+  - How:
+    - **Resource Rightsizing**: Analyze actual usage (CPU, memory, network). Downsize over-provisioned resources. Use autoscaling to match demand. Reserved instances for predictable workloads (save 30-70%).
+    - **Cost Monitoring**: Tag all resources (team, service, environment). Set up cost alerts. Review cost reports monthly. Use cost allocation tags.
+    - **Optimization Strategies**: Use spot instances for fault-tolerant workloads. Delete unused resources. Optimize data transfer (use CDN, compress data). Choose appropriate instance types.
+  - When: Rightsize resources quarterly. Review costs monthly. Set up cost alerts immediately. Optimize continuously.
+  - Trade-offs: Aggressive rightsizing can cause performance issues. Reserved instances lock you into commitments. Cost optimization requires ongoing effort.
+
+### Visuals & Interactive Demos
+
+- Interactive: Observability Stack Builder (choose metrics/logs/traces, see cost estimates)
+- Interactive: Alert Tuning Simulator (adjust thresholds, see alert frequency)
+- Interactive: SLO Dashboard (track error budget, burn rate visualization)
+- Interactive: Cost Optimization Calculator (rightsizing recommendations, savings estimates)
+- Diagram: Distributed Tracing Flow (request across services, latency breakdown)
+- Interactive: Incident Response Playbook Builder (create and test playbooks)
 
 ## 9) Cloud Service Comparisons (managed-first bias)
 
@@ -219,14 +422,68 @@ Purpose: concise, grouped topics for system design and cloud fundamentals. Empha
 
 ## Suggested Interactive Elements
 
-- Capacity/QPS planner and availability calculator (Topic 1)
-- Load balancer and CDN path visualizer (Topic 2)
-- Database and cache selector with workload inputs (Topic 3)
-- Deployment strategy simulator (rolling/blue-green/canary) (Topic 4)
-- API gateway/rate-limit sandbox (Topic 5)
-- Chaos and retry/jitter simulator (Topic 6)
-- IAM policy builder and network segmentation sandbox (Topic 7)
-- SLO dashboard with alert tuning (Topic 8)
+### Topic 1: Core Principles
+
+- Capacity/QPS planner (DAU → QPS → bandwidth)
+- Availability calculator (downtime math, nines calculator)
+- CAP theorem interactive visualizer
+- Vertical vs horizontal scaling comparison tool
+
+### Topic 2: Networking & Edge
+
+- DNS resolution flow visualizer (Client → Root → TLD → NS)
+- CDN cache hit/miss simulator with latency comparison
+- OSI 7-layer model interactive diagram
+- Load balancer algorithm simulator (round-robin, least connections, IP hash)
+
+### Topic 3: Data Architecture
+
+- Database selector tool (access patterns → recommended DB)
+- Caching strategy simulator (cache-aside vs write-through)
+- Sharding calculator (visualize data distribution, hot shard detection)
+- Consistent hashing visualizer (add/remove nodes, key redistribution)
+- Replication topology builder (leader-follower, multi-leader, quorum)
+
+### Topic 4: Compute & Runtime
+
+- Deployment strategy simulator (rolling/blue-green/canary with traffic shifting)
+- Kubernetes rollout visualizer (Deployment + HPA + readiness)
+- Runtime decision tree (Function vs container serverless vs K8s vs VM)
+- Autoscaling simulator (HPA, VPA, cluster autoscaling)
+
+### Topic 5: APIs & Integration
+
+- API Gateway Simulator (rate limiting, routing, auth failures)
+- Protocol Trade-off Comparator (REST vs GraphQL vs gRPC latency/payload)
+- Rate Limiter Sandbox (token bucket, sliding window, leaky bucket)
+- Message Queue Simulator (pub/sub, queue patterns, DLQ handling)
+- WebSocket vs SSE vs Long Polling comparison tool
+
+### Topic 6: Reliability & Resilience
+
+- SLO/Error Budget Calculator (input SLO, see downtime budget, burn rate)
+- Circuit Breaker State Machine (open/half-open/closed transitions)
+- DR Scenario Planner (RTO/RPO calculator, backup frequency)
+- Raft Leader Election Visualizer (leader election, log replication)
+- Chaos Engineering Simulator (inject failures, see system response)
+
+### Topic 7: Security & Compliance
+
+- OAuth2 Flow Visualizer (authorization code flow, token exchange)
+- JWT Token Decoder (decode and inspect claims)
+- IAM Policy Builder (visual policy creation, least-privilege recommendations)
+- Network Segmentation Designer (VPC/subnet/security group visualizer)
+- Zero-Trust Architecture Diagram (mTLS, identity verification)
+- Secrets Rotation Simulator (key rotation timeline, zero-downtime)
+
+### Topic 8: Observability & Operations
+
+- Observability Stack Builder (choose metrics/logs/traces, cost estimates)
+- Alert Tuning Simulator (adjust thresholds, see alert frequency)
+- SLO Dashboard (error budget tracking, burn rate visualization)
+- Cost Optimization Calculator (rightsizing recommendations, savings)
+- Distributed Tracing Flow (request across services, latency breakdown)
+- Incident Response Playbook Builder (create and test playbooks)
 
 ## Keep It Current
 

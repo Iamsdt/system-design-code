@@ -366,15 +366,6 @@ export default function ComputeRuntime() {
               >
                 Back to Home
               </button>
-              <button
-                onClick={() => {
-                  const el = document.getElementById("deployment-sim")
-                  if (el) el.scrollIntoView({ behavior: "smooth" })
-                }}
-                className="btn-primary"
-              >
-                Try the Demo
-              </button>
             </div>
           </div>
         </div>
@@ -1153,8 +1144,8 @@ export default function ComputeRuntime() {
         {/* Navigation */}
         <section className="py-6">
           <div className="flex justify-between items-center">
-            <button onClick={() => nav("/networking")} className="btn-secondary">
-              ← Previous: Networking
+            <button onClick={() => nav("/data-architecture")} className="btn-secondary">
+              ← Previous: Data Architecture
             </button>
             <div className="flex items-center gap-3">
               <button
@@ -1163,8 +1154,8 @@ export default function ComputeRuntime() {
               >
                 Home
               </button>
-              <button onClick={() => nav("/data-architecture")} className="btn-primary">
-                Next: Data Architecture →
+              <button onClick={() => nav("/apis-integration")} className="btn-primary">
+                Next: APIs Integration →
               </button>
             </div>
           </div>

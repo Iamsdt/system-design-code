@@ -371,6 +371,15 @@ export default function DataArchitecture() {
               Learn when to use SQL vs NoSQL, caching strategies, sharding techniques,
               and compliance considerations for modern applications.
             </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button
+                onClick={() => nav("/")}
+                className="btn-secondary"
+              >
+                Back to Home
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -1663,20 +1672,24 @@ export default function DataArchitecture() {
         </section>
 
         {/* Navigation */}
-        <div className="flex justify-between items-center pt-8 border-t border-slate-200">
-          <button
-            onClick={() => nav("/networking")}
-            className="btn-secondary"
-          >
-            ← Previous: Networking
-          </button>
-          <button
-            onClick={() => nav("/foundations")}
-            className="btn-primary"
-          >
-            Next: Foundations →
-          </button>
-        </div>
+        <section className="py-6">
+          <div className="flex justify-between items-center">
+            <button onClick={() => nav("/networking")} className="btn-secondary">
+              ← Previous: Networking
+            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => nav("/")}
+                className="btn-tertiary"
+              >
+                Home
+              </button>
+              <button onClick={() => nav("/compute-runtime")} className="btn-primary">
+                Next: Compute Runtime →
+              </button>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   )

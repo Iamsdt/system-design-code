@@ -60,6 +60,15 @@ export default function Foundations() {
               explanations, real-world examples, and hands-on interactive
               demonstrations. Build the foundation every system architect needs.
             </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button
+                onClick={() => nav("/")}
+                className="btn-secondary"
+              >
+                Back to Home
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -1457,14 +1466,24 @@ export default function Foundations() {
         </div>
       </section>
 
-        {/* Back to Home */}
-        <section className="text-center py-12">
-          <button
-            onClick={() => nav("/")}
-            className="px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-700 hover:to-indigo-700 transition-all transform hover:scale-105 shadow-lg"
-          >
-            ← Back to Home
-          </button>
+        {/* Navigation */}
+        <section className="py-6">
+          <div className="flex justify-between items-center">
+            <button onClick={() => nav("/")} className="btn-secondary">
+              ← Previous: Home
+            </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => nav("/")}
+                className="btn-tertiary"
+              >
+                Home
+              </button>
+              <button onClick={() => nav("/networking")} className="btn-primary">
+                Next: Networking →
+              </button>
+            </div>
+          </div>
         </section>
       </div>
 

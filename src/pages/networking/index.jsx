@@ -367,6 +367,15 @@ export default function Networking() {
               modern protocols. Interactive demos and real-world examples
               included.
             </p>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+              <button
+                onClick={() => nav("/")}
+                className="btn-secondary"
+              >
+                Back to Home
+              </button>
+            </div>
           </div>
         </div>
       </section>
@@ -2325,7 +2334,7 @@ export default function Networking() {
         {/* Next Steps */}
         <section
           ref={(element) => (sectionsReference.current[7] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className="opacity-0 translate-y-8 transition-all duration-700 mb-8"
         >
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-12 text-center">
             <h2 className="text-4xl font-bold text-white mb-4">
@@ -2334,12 +2343,26 @@ export default function Networking() {
             <p className="text-xl text-blue-100 mb-8">
               You now understand how the internet connects. Let's move to data.
             </p>
-            <button
-              onClick={() => nav("/")}
-              className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-blue-50 transition-all transform hover:scale-105 shadow-lg"
-            >
-              Back to Home →
+          </div>
+        </section>
+
+        {/* Navigation */}
+        <section className="py-6">
+          <div className="flex justify-between items-center">
+            <button onClick={() => nav("/foundations")} className="btn-secondary">
+              ← Previous: Foundations
             </button>
+            <div className="flex items-center gap-3">
+              <button
+                onClick={() => nav("/")}
+                className="btn-tertiary"
+              >
+                Home
+              </button>
+              <button onClick={() => nav("/data-architecture")} className="btn-primary">
+                Next: Data Architecture →
+              </button>
+            </div>
           </div>
         </section>
       </div>

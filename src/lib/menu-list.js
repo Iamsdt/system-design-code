@@ -1,4 +1,4 @@
-import { Users, Settings, SquarePen, LayoutGrid } from "lucide-react"
+import { Users, Settings, SquarePen, LayoutGrid, Layers, Network, Database, Cpu, Share2 } from "lucide-react"
 
 const POSTS_NEW_PATH = "/posts/new"
 
@@ -13,8 +13,54 @@ const getDashboardMenuGroup = (pathname) => ({
     {
       href: "/",
       label: "Dashboard",
-      active: pathname.includes("/dashboard"),
+      active: pathname === "/",
       icon: LayoutGrid,
+      submenus: [],
+    },
+  ],
+})
+
+/**
+ * Returns the modules menu group configuration.
+ * @param {string} pathname - The current pathname.
+ * @returns {object} The modules menu group object.
+ */
+const getModulesMenuGroup = (pathname) => ({
+  groupLabel: "Modules",
+  menus: [
+    {
+      href: "/foundations",
+      label: "Foundations",
+      active: pathname.includes("/foundations"),
+      icon: Layers,
+      submenus: [],
+    },
+    {
+      href: "/networking",
+      label: "Networking",
+      active: pathname.includes("/networking"),
+      icon: Network,
+      submenus: [],
+    },
+    {
+      href: "/data-architecture",
+      label: "Data Architecture",
+      active: pathname.includes("/data-architecture"),
+      icon: Database,
+      submenus: [],
+    },
+    {
+      href: "/compute-runtime",
+      label: "Compute & Runtime",
+      active: pathname.includes("/compute-runtime"),
+      icon: Cpu,
+      submenus: [],
+    },
+    {
+      href: "/apis-integration",
+      label: "APIs & Integration",
+      active: pathname.includes("/apis-integration"),
+      icon: Share2,
       submenus: [],
     },
   ],
@@ -81,6 +127,7 @@ const getSettingsMenuGroup = (pathname) => ({
  */
 export const getMenuList = (pathname) => [
   getDashboardMenuGroup(pathname),
+  getModulesMenuGroup(pathname),
   getContentsMenuGroup(pathname),
   getSettingsMenuGroup(pathname),
 ]

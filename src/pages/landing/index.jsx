@@ -368,6 +368,73 @@ export default function Landing() {
                     </div>
                   </div>
                 </div>
+                {/* APIs Integration Tutorial Card */}
+                <div
+                  onClick={() => nav("/apis-integration")}
+                  className="group cursor-pointer bg-white border-2 border-teal-200 rounded-2xl p-6 md:p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 hover:border-teal-400 flex flex-col"
+                >
+                  <div className="flex items-start gap-6 mb-6">
+                    <div className="flex-shrink-0">
+                      <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl bg-gradient-to-br from-teal-500 to-cyan-600 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform">
+                        <span className="text-3xl">🔌</span>
+                      </div>
+                    </div>
+
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-2">
+                        <h3 className="text-2xl font-bold text-slate-900 group-hover:text-teal-600 transition-colors">
+                          APIs, Integration & Data Movement
+                        </h3>
+                        <span className="px-3 py-1 text-xs font-semibold bg-green-100 text-green-700 rounded-full">
+                          Live
+                        </span>
+                      </div>
+                      <p className="text-slate-600 leading-relaxed">
+                        Master protocols, gateway patterns, asynchronous messaging, and real-time data streaming.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 gap-4 mb-8 flex-1">
+                    {[
+                      { icon: "🌐", label: "REST/gRPC" },
+                      { icon: "🚪", label: "API Gateway" },
+                      { icon: "📨", label: "Async Messaging" },
+                      { icon: "⚡", label: "Real-time" },
+                    ].map((feature, index) => (
+                      <div
+                        key={index}
+                        className="flex items-center gap-2 text-sm text-slate-700"
+                      >
+                        <span className="text-xl">{feature.icon}</span>
+                        <span className="font-medium">{feature.label}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  <div className="mt-auto flex items-center justify-between pt-6 border-t border-slate-100">
+                    <span className="text-sm text-slate-500">
+                      ~50 min • 4 Topics
+                    </span>
+                    <div className="flex items-center gap-2 text-teal-600 font-semibold group-hover:gap-4 transition-all">
+                      <span>Start Learning</span>
+                      <svg
+                        className="w-5 h-5"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+
                 {/* Compute & Runtime Tutorial Card */}
                 <div
                   onClick={() => nav("/compute-runtime")}
@@ -386,7 +453,7 @@ export default function Landing() {
                           Compute & Runtime Models
                         </h3>
                         <span className="px-3 py-1 text-xs font-semibold bg-green-100 text-green-700 rounded-full">
-                          New
+                          Live
                         </span>
                       </div>
                       <p className="text-slate-600 leading-relaxed">
@@ -432,6 +499,47 @@ export default function Landing() {
                         />
                       </svg>
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* View All Topics Card */}
+            <div className="max-w-4xl mx-auto mb-8">
+              <div
+                onClick={() => nav("/topics")}
+                className="group cursor-pointer bg-gradient-to-br from-indigo-600 to-purple-600 border-2 border-indigo-400 rounded-2xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2"
+              >
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <div className="w-16 h-16 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center text-4xl">
+                      📚
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-2">
+                        View All Topics
+                      </h3>
+                      <p className="text-indigo-100">
+                        Explore the complete guide to all 10 system design topics
+                        with interactive demos
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-2 text-white font-semibold group-hover:gap-4 transition-all">
+                    <span>Explore</span>
+                    <svg
+                      className="w-6 h-6"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M13 7l5 5m0 0l-5 5m5-5H6"
+                      />
+                    </svg>
                   </div>
                 </div>
               </div>
