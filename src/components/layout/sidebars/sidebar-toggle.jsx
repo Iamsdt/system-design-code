@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils"
 
 const SidebarToggle = ({ isOpen, setIsOpen }) => {
   return (
-    <div className="invisible lg:visible absolute top-[12px] -right-[16px] z-20 bg-white dark:bg-primary-foreground">
+    <div className="invisible lg:visible absolute top-[12px] -right-[16px] z-20 bg-white">
       <Button
         onClick={() => setIsOpen(!isOpen)}
         className="rounded-md w-8 h-8"

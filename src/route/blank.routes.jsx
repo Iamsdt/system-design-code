@@ -8,6 +8,12 @@ import Topics from "@/pages/topics"
 import ReliabilityResilience from "@/pages/reliability-resilience"
 import SecurityGovernance from "@/pages/security-governance"
 import ObservabilityOperations from "@/pages/observability-operations"
+import CloudComparisons from "@/pages/cloud-comparisons"
+import CaseStudies from "@/pages/case-studies"
+import TwitterCaseStudy from "@/pages/case-studies/twitter"
+import UberCaseStudy from "@/pages/case-studies/uber"
+import NetflixCaseStudy from "@/pages/case-studies/netflix"
+import DiscordCaseStudy from "@/pages/case-studies/discord"
 
 const blankRoutes = [
   {
@@ -45,6 +51,30 @@ const blankRoutes = [
   {
     path: "/observability-operations",
     element: <ObservabilityOperations />,
+  },
+  {
+    path: "/cloud-comparisons",
+    element: <CloudComparisons />,
+  },
+  {
+    path: "/case-studies",
+    element: <CaseStudies />,
+  },
+  {
+    path: "/case-studies/twitter",
+    element: <TwitterCaseStudy />,
+  },
+  {
+    path: "/case-studies/uber",
+    element: <UberCaseStudy />,
+  },
+  {
+    path: "/case-studies/netflix",
+    element: <NetflixCaseStudy />,
+  },
+  {
+    path: "/case-studies/discord",
+    element: <DiscordCaseStudy />,
   },
   {
     path: "/topics",

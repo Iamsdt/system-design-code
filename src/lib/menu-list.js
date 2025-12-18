@@ -1,4 +1,4 @@
-import { Users, Settings, SquarePen, LayoutGrid, Layers, Network, Database, Cpu, Share2, ShieldCheck, Activity, Zap } from "lucide-react"
+import { Users, Settings, SquarePen, LayoutGrid, Layers, Network, Database, Cpu, Share2, ShieldCheck, Activity, Zap, Cloud, BookOpen } from "lucide-react"
 
 const POSTS_NEW_PATH = "/posts/new"
 
@@ -82,6 +82,20 @@ const getModulesMenuGroup = (pathname) => ({
       label: "Observability & Operations",
       active: pathname.includes("/observability-operations"),
       icon: Activity,
+      submenus: [],
+    },
+    {
+      href: "/cloud-comparisons",
+      label: "Cloud Comparisons",
+      active: pathname.includes("/cloud-comparisons"),
+      icon: Cloud,
+      submenus: [],
+    },
+    {
+      href: "/case-studies",
+      label: "Case Studies",
+      active: pathname.includes("/case-studies"),
+      icon: BookOpen,
       submenus: [],
     },
   ],

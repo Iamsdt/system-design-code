@@ -217,20 +217,22 @@ export default function Topics() {
     {
       id: 10,
       number: "10",
-      title: "Practice & Labs",
-      color: "pink",
-      icon: "🎯",
-      description: "Hands-on practice, labs, and classic system design problems",
+      title: "Real-World Case Studies",
+      color: "emerald",
+      icon: "📚",
+      description: "Learning from Netflix, Uber, Discord, WhatsApp, and Twitter",
       keyPoints: [
-        "Back-of-envelope drills",
-        "Terraform + CI/CD labs",
-        "Classic designs (URL shortener, rate limiter)",
-        "Multi-tier service capstone",
+        "Netflix: Chaos Engineering",
+        "Uber: Geospatial Scaling (H3)",
+        "Discord: Trillions of Messages",
+        "WhatsApp: Extreme Efficiency",
+        "Twitter: Fan-out Hybrid Model",
       ],
       demos: [
-        "Practice problem generator",
-        "Lab environment setup",
-        "Design review simulator",
+        "Timeline fan-out simulator",
+        "Geospatial visualizer",
+        "Chaos sandbox",
+        "Message sharding lab",
       ],
     },
   ]
@@ -386,6 +388,8 @@ export default function Topics() {
                 6: "/reliability-resilience",
                 7: "/security-governance",
                 8: "/observability-operations",
+                9: "/cloud-comparisons",
+                10: "/case-studies",
               }
               const topicRoute = topicRoutes[topic.id]
               return (
@@ -532,6 +536,12 @@ export default function Topics() {
                 description: "Compare rolling, blue/green, and canary",
                 link: "/compute-runtime",
               },
+              {
+                title: "Chaos Sandbox",
+                icon: "🐒",
+                description: "Simulate cascading failures (Netflix style)",
+                link: "/case-studies",
+              },
             ].map((demo, index) => (
               <div
                 key={index}
@@ -568,6 +578,11 @@ export default function Topics() {
               { step: 3, topic: "Data Architecture & Storage", link: "/data-architecture" },
               { step: 4, topic: "Compute & Runtime Models", link: "/compute-runtime" },
               { step: 5, topic: "APIs, Integration & Data Movement", link: "/apis-integration" },
+              { step: 6, topic: "Reliability & Resilience", link: "/reliability-resilience" },
+              { step: 7, topic: "Security & Governance", link: "/security-governance" },
+              { step: 8, topic: "Observability & Operations", link: "/observability-operations" },
+              { step: 9, topic: "Cloud Comparisons", link: "/cloud-comparisons" },
+              { step: 10, topic: "Real-World Case Studies", link: "/case-studies" },
             ].map((item, index) => (
               <div
                 key={index}

@@ -414,11 +414,61 @@ Purpose: concise, grouped topics for system design and cloud fundamentals. Empha
 - Storage and cache: Cloud Storage vs S3 vs Blob; Memorystore (Redis) vs ElastiCache vs Azure Cache for Redis
 - Networking: Cloud Load Balancing vs ALB/NLB vs Azure Front Door/App Gateway; Cloud CDN vs CloudFront vs Azure CDN
 
-## 10) Practice & Labs
+## 10) Real-World Case Studies
 
-- Back-of-envelope drills per topic (traffic, storage, availability math)
-- Hands-on labs: Terraform + CI/CD + Cloud Run/GKE + Pub/Sub + cache/DB choice
-- Classic designs: URL shortener, rate limiter, news feed, chat/notifications, file storage, media streaming
+- **Netflix: The Microservices Pioneer**
+
+  - **Challenge**: Transitioning from a monolithic DVD-by-mail service to a global streaming platform with zero downtime.
+  - **Solution**: Adopted a "Cloud Native" microservices architecture on AWS.
+  - **Key Innovations**:
+    - **Chaos Engineering**: Intentionally breaking things in production (Chaos Monkey) to ensure resilience.
+    - **Service Discovery**: Eureka for dynamic service registration.
+    - **API Gateway**: Zuul for routing and cross-cutting concerns.
+  - **Lesson**: Design for failure; if a component can fail, it will.
+
+- **Uber: Geospatial Scaling at Speed**
+
+  - **Challenge**: Matching millions of riders and drivers in real-time with sub-second latency.
+  - **Solution**: Hexagonal hierarchical geospatial indexing (H3).
+  - **Key Innovations**:
+    - **H3 Indexing**: Dividing the world into hexagonal cells for efficient spatial lookups and smoothing.
+    - **Ringpop**: A gossip-protocol-based library for building cooperative distributed systems.
+    - **Schemaless**: A fault-tolerant, scalable datastore built on top of MySQL.
+  - **Lesson**: Specialized data structures (like H3) are often required for domain-specific scaling challenges.
+
+- **Discord: Scaling Real-time Messaging**
+
+  - **Challenge**: Storing trillions of messages and handling massive concurrent voice/text spikes.
+  - **Solution**: Evolution from MongoDB to Cassandra, and finally to ScyllaDB.
+  - **Key Innovations**:
+    - **Read-Path Optimization**: Using Rust to rewrite performance-critical services (moving away from Go's GC pauses).
+    - **Data Locality**: Sharding messages by `channel_id` to ensure all messages for a conversation are co-located.
+  - **Lesson**: Don't be afraid to switch technologies (Go -> Rust, Cassandra -> ScyllaDB) when you hit the limits of your current stack.
+
+- **WhatsApp: The Efficiency King**
+
+  - **Challenge**: Supporting 1 billion+ users with a tiny engineering team (approx. 50 people).
+  - **Solution**: Extreme vertical scaling and the Erlang/OTP runtime.
+  - **Key Innovations**:
+    - **Erlang/OTP**: Leveraging lightweight processes for millions of concurrent connections per server.
+    - **BEAM VM**: Tuning the virtual machine and FreeBSD kernel to handle 2 million+ connections per node.
+  - **Lesson**: A small, focused team using the right high-concurrency primitives can outperform massive organizations.
+
+- **Twitter (X): The Fan-out Problem**
+  - **Challenge**: Delivering tweets to millions of followers instantly (The "Justin Bieber" problem).
+  - **Solution**: A hybrid "Push" and "Pull" model for timeline generation.
+  - **Key Innovations**:
+    - **Fan-out Service**: Pushing tweets to the Redis-based timelines of active followers.
+    - **Pull Model**: For celebrities with millions of followers, tweets are merged into the follower's timeline at read-time to avoid massive write-amplification.
+    - **Snowflake**: Distributed unique ID generation at scale.
+  - **Lesson**: One-size-fits-all architectures often fail at the extremes; hybrid models solve edge cases.
+
+### Visuals & Interactive Demos
+
+- Interactive: Timeline Fan-out Simulator (Push vs Pull vs Hybrid latency/storage)
+- Interactive: Geospatial Indexing Visualizer (H3 hexagons vs Quadtrees)
+- Interactive: Chaos Engineering Sandbox (Kill "services" and see how traffic reroutes)
+- Interactive: Message Sharding Lab (Visualize data distribution across nodes)
 
 ## Suggested Interactive Elements
 
@@ -484,6 +534,19 @@ Purpose: concise, grouped topics for system design and cloud fundamentals. Empha
 - Cost Optimization Calculator (rightsizing recommendations, savings)
 - Distributed Tracing Flow (request across services, latency breakdown)
 - Incident Response Playbook Builder (create and test playbooks)
+
+### Topic 9: Cloud Service Comparisons
+
+- Managed Service Decision Tree (PaaS vs IaaS)
+- Cloud Cost Estimator (Multi-cloud comparison)
+- Service Comparison Matrix (AWS vs GCP vs Azure)
+
+### Topic 10: Real-World Case Studies
+
+- Timeline Fan-out Simulator (Push vs Pull vs Hybrid)
+- Geospatial Indexing Visualizer (H3 hexagons)
+- Chaos Engineering Sandbox (Resilience testing)
+- Message Sharding Lab (Data distribution)
 
 ## Keep It Current
 

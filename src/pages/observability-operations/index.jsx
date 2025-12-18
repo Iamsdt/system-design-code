@@ -328,7 +328,7 @@ export default function ObservabilityOperations() {
               <button onClick={() => nav("/security-governance")} className="btn-secondary">
                 ← Previous: Security
               </button>
-              <button onClick={() => nav("/topics")} className="btn-primary">
+              <button onClick={() => nav("/cloud-comparisons")} className="btn-primary">
                 Next: Cloud Comparisons →
               </button>
             </div>
