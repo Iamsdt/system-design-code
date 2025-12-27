@@ -46,6 +46,12 @@ import AvailabilityCalculator from "@/components/availability-calculator"
 import CapacityPlanner from "@/components/capacity-planner"
 import InteractiveCAP from "@/components/interactive-cap"
 import ScalingDiagram from "@/components/scaling-diagram"
+import LatencyNumbers from "@/components/latency-numbers"
+import ConsistentHashing from "@/components/consistent-hashing"
+import InterviewCheatsheet from "@/components/interview-cheatsheet"
+import NumbersAtScale from "@/components/numbers-at-scale"
+import FormulasReference from "@/components/formulas-reference"
+import CAPDecisionTree from "@/components/cap-decision-tree"
 
 /**
  *
@@ -1218,6 +1224,174 @@ export default function Foundations() {
               </div>
             </div>
           </div>
+        </section>
+
+        {/* ============================================ */}
+        {/* NEW SECTION: Latency Numbers Every Programmer Should Know */}
+        {/* ============================================ */}
+        <section
+          ref={(element) => (sectionsReference.current[5] = element)}
+          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+        >
+          <div className="mb-8">
+            <div className="inline-block">
+              <div className="text-sm font-bold text-yellow-600 uppercase tracking-wider mb-3 flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-yellow-100 text-yellow-600 flex items-center justify-center">
+                  <span className="font-bold">06</span>
+                </div>
+                ESSENTIAL KNOWLEDGE
+              </div>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+              Latency Numbers & Performance
+            </h2>
+            <p className="text-xl text-slate-600 max-w-4xl leading-relaxed">
+              Understanding these latency numbers is crucial for making informed architectural decisions.
+              Know what operations are fast vs slow to optimize your system design.
+            </p>
+          </div>
+
+          <LatencyNumbers />
+        </section>
+
+        {/* ============================================ */}
+        {/* NEW SECTION: Consistent Hashing */}
+        {/* ============================================ */}
+        <section
+          ref={(element) => (sectionsReference.current[6] = element)}
+          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+        >
+          <div className="mb-8">
+            <div className="inline-block">
+              <div className="text-sm font-bold text-purple-600 uppercase tracking-wider mb-3 flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center">
+                  <span className="font-bold">07</span>
+                </div>
+                DISTRIBUTED SYSTEMS
+              </div>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+              Consistent Hashing
+            </h2>
+            <p className="text-xl text-slate-600 max-w-4xl leading-relaxed">
+              A fundamental technique for distributing data across servers with minimal redistribution
+              when nodes are added or removed. Essential for CDNs, caching, and load balancing.
+            </p>
+          </div>
+
+          <ConsistentHashing />
+        </section>
+
+        {/* ============================================ */}
+        {/* NEW SECTION: Interview Cheatsheet */}
+        {/* ============================================ */}
+        <section
+          ref={(element) => (sectionsReference.current[7] = element)}
+          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+        >
+          <div className="mb-8">
+            <div className="inline-block">
+              <div className="text-sm font-bold text-indigo-600 uppercase tracking-wider mb-3 flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                  <span className="font-bold">08</span>
+                </div>
+                INTERVIEW PREPARATION
+              </div>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+              System Design Interview Template
+            </h2>
+            <p className="text-xl text-slate-600 max-w-4xl leading-relaxed">
+              A comprehensive, step-by-step guide to ace your system design interviews.
+              Follow this framework to structure your approach and impress interviewers.
+            </p>
+          </div>
+
+          <InterviewCheatsheet />
+        </section>
+
+        {/* ============================================ */}
+        {/* NEW SECTION: Numbers at Scale */}
+        {/* ============================================ */}
+        <section
+          ref={(element) => (sectionsReference.current[8] = element)}
+          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+        >
+          <div className="mb-8">
+            <div className="inline-block">
+              <div className="text-sm font-bold text-indigo-600 uppercase tracking-wider mb-3 flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                  <span className="font-bold">09</span>
+                </div>
+                SCALING SCENARIOS
+              </div>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+              Real-World Scale Examples
+            </h2>
+            <p className="text-xl text-slate-600 max-w-4xl leading-relaxed">
+              See what "scale" actually means with real numbers from small startups to tech giants.
+              Understand QPS, storage, and bandwidth requirements at different scales.
+            </p>
+          </div>
+
+          <NumbersAtScale />
+        </section>
+
+        {/* ============================================ */}
+        {/* NEW SECTION: Essential Formulas */}
+        {/* ============================================ */}
+        <section
+          ref={(element) => (sectionsReference.current[9] = element)}
+          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+        >
+          <div className="mb-8">
+            <div className="inline-block">
+              <div className="text-sm font-bold text-slate-600 uppercase tracking-wider mb-3 flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-slate-100 text-slate-600 flex items-center justify-center">
+                  <span className="font-bold">10</span>
+                </div>
+                REFERENCE GUIDE
+              </div>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+              Essential Calculation Formulas
+            </h2>
+            <p className="text-xl text-slate-600 max-w-4xl leading-relaxed">
+              Quick reference for all the formulas you need for back-of-envelope calculations.
+              From QPS to storage to bandwidth - everything in one place.
+            </p>
+          </div>
+
+          <FormulasReference />
+        </section>
+
+        {/* ============================================ */}
+        {/* NEW SECTION: CAP Decision Tree */}
+        {/* ============================================ */}
+        <section
+          ref={(element) => (sectionsReference.current[10] = element)}
+          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+        >
+          <div className="mb-8">
+            <div className="inline-block">
+              <div className="text-sm font-bold text-purple-600 uppercase tracking-wider mb-3 flex items-center gap-2">
+                <div className="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center">
+                  <span className="font-bold">11</span>
+                </div>
+                DECISION FRAMEWORK
+              </div>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+              CAP Theorem Decision Tree
+            </h2>
+            <p className="text-xl text-slate-600 max-w-4xl leading-relaxed">
+              Not sure which database consistency model to choose? Answer a few questions
+              to get personalized recommendations based on your requirements.
+            </p>
+          </div>
+
+          <CAPDecisionTree />
         </section>
 
         {/* NINES AVAILABILITY REFERENCE */}

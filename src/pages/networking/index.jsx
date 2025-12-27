@@ -1,5 +1,10 @@
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
+import ProxyComparison from "../../components/proxy-comparison"
+import ApiGatewayVsLb from "../../components/api-gateway-vs-lb"
+import WebSocketDeepDive from "../../components/websocket-deep-dive"
+import Http3Quic from "../../components/http3-quic"
+import CdnAdvancedStrategies from "../../components/cdn-advanced-strategies"
 
 /**
  *
@@ -2246,9 +2251,104 @@ export default function Networking() {
           </div>
         </section>
 
-        {/* Section 6: Optimizations */}
+        {/* Section 6: Reverse Proxy vs Forward Proxy */}
         <section
           ref={(element) => (sectionsReference.current[6] = element)}
+          className="opacity-0 translate-y-8 transition-all duration-700"
+        >
+          <div className="mb-8">
+            <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
+              06 — Proxy Comparison
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Reverse Proxy vs Forward Proxy
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mb-6">
+              Understanding the key differences between these two proxy types and when to use each.
+            </p>
+          </div>
+          <ProxyComparison />
+        </section>
+
+        {/* Section 7: API Gateway vs Load Balancer */}
+        <section
+          ref={(element) => (sectionsReference.current[7] = element)}
+          className="opacity-0 translate-y-8 transition-all duration-700"
+        >
+          <div className="mb-8">
+            <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
+              07 — Gateway vs Load Balancer
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              API Gateway vs Load Balancer
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mb-6">
+              Compare these two critical infrastructure components and learn when to use each.
+            </p>
+          </div>
+          <ApiGatewayVsLb />
+        </section>
+
+        {/* Section 8: WebSocket Deep Dive */}
+        <section
+          ref={(element) => (sectionsReference.current[8] = element)}
+          className="opacity-0 translate-y-8 transition-all duration-700"
+        >
+          <div className="mb-8">
+            <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
+              08 — WebSockets
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              WebSocket Deep Dive
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mb-6">
+              Master real-time bidirectional communication, scaling challenges, and fallback strategies.
+            </p>
+          </div>
+          <WebSocketDeepDive />
+        </section>
+
+        {/* Section 9: HTTP/3 & QUIC */}
+        <section
+          ref={(element) => (sectionsReference.current[9] = element)}
+          className="opacity-0 translate-y-8 transition-all duration-700"
+        >
+          <div className="mb-8">
+            <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
+              09 — HTTP/3 & QUIC
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              HTTP/3 & QUIC Protocol
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mb-6">
+              Explore the latest HTTP evolution and why QUIC is revolutionizing web performance.
+            </p>
+          </div>
+          <Http3Quic />
+        </section>
+
+        {/* Section 10: CDN Advanced Strategies */}
+        <section
+          ref={(element) => (sectionsReference.current[10] = element)}
+          className="opacity-0 translate-y-8 transition-all duration-700"
+        >
+          <div className="mb-8">
+            <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
+              10 — CDN Advanced Strategies
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              CDN Advanced Strategies
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mb-6">
+              Production-grade CDN patterns: invalidation, pull vs push, multi-CDN, and edge computing.
+            </p>
+          </div>
+          <CdnAdvancedStrategies />
+        </section>
+
+        {/* Section 11: Optimizations */}
+        <section
+          ref={(element) => (sectionsReference.current[11] = element)}
           className="opacity-0 translate-y-8 transition-all duration-700"
         >
           <div className="mb-8">
@@ -2333,7 +2433,7 @@ export default function Networking() {
 
         {/* Next Steps */}
         <section
-          ref={(element) => (sectionsReference.current[7] = element)}
+          ref={(element) => (sectionsReference.current[12] = element)}
           className="opacity-0 translate-y-8 transition-all duration-700 mb-8"
         >
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-12 text-center">
