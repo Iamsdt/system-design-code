@@ -14,6 +14,8 @@ import TwitterCaseStudy from "@/pages/case-studies/twitter"
 import UberCaseStudy from "@/pages/case-studies/uber"
 import NetflixCaseStudy from "@/pages/case-studies/netflix"
 import DiscordCaseStudy from "@/pages/case-studies/discord"
+import CheatSheets from "@/pages/cheat-sheets"
+import PostgreSQLCheatSheet from "@/pages/cheat-sheets/postgresql"
 
 const blankRoutes = [
   {
@@ -79,6 +81,14 @@ const blankRoutes = [
   {
     path: "/topics",
     element: <Topics />,
+  },
+  {
+    path: "/cheat-sheets",
+    element: <CheatSheets />,
+  },
+  {
+    path: "/cheat-sheets/postgresql",
+    element: <PostgreSQLCheatSheet />,
   },
 ]
 

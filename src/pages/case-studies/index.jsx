@@ -1,4 +1,3 @@
-/* global IntersectionObserver, document */
 import {
   BookOpen,
   ArrowRight,
@@ -8,7 +7,6 @@ import {
   Users,
 } from "lucide-react"
 import PropTypes from "prop-types"
-import { useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 
 import { Badge } from "@/components/ui/badge"
@@ -25,31 +23,59 @@ const CaseStudyCard = ({ id, title, company, challenge, icon: Icon, tags }) => {
   const navigate = useNavigate()
   return (
     <Card
-      className="h-full flex flex-col hover:shadow-xl transition-all duration-300 cursor-pointer border-2 hover:border-primary/50 group"
+      className="h-full flex flex-col hover:shadow-xl transition-all duration-300 cursor-pointer border-2 group"
+      style={{
+        backgroundColor: '#ffffff',
+        color: '#0f172a',
+        borderColor: '#e2e8f0'
+      }}
       onClick={() => navigate(`/case-studies/${id}`)}
     >
       <CardHeader>
         <div className="flex justify-between items-start mb-2">
-          <div className="p-2 bg-primary/10 rounded-lg group-hover:bg-primary group-hover:text-white transition-colors">
-            <Icon className="w-6 h-6" />
+          <div 
+            className="p-2 rounded-lg group-hover:bg-blue-600 transition-colors"
+            style={{ backgroundColor: 'rgba(59, 130, 246, 0.1)' }}
+          >
+            <Icon 
+              className="w-6 h-6 group-hover:text-white transition-colors" 
+              style={{ color: '#334155' }}
+            />
           </div>
           <div className="flex gap-1 flex-wrap justify-end">
             {tags.map((tag) => (
-              <Badge key={tag} variant="secondary" className="text-[10px]">
+              <Badge 
+                key={tag} 
+                variant="secondary" 
+                className="text-[10px]"
+                style={{
+                  backgroundColor: '#f1f5f9',
+                  color: '#334155'
+                }}
+              >
                 {tag}
               </Badge>
             ))}
           </div>
         </div>
-        <CardTitle className="text-xl group-hover:text-primary transition-colors">
+        <CardTitle 
+          className="text-xl group-hover:text-blue-600 transition-colors"
+          style={{ color: '#0f172a' }}
+        >
           {company}: {title}
         </CardTitle>
-        <CardDescription className="font-medium line-clamp-2">
+        <CardDescription 
+          className="font-medium line-clamp-2"
+          style={{ color: '#475569' }}
+        >
           {challenge}
         </CardDescription>
       </CardHeader>
       <CardContent className="flex-grow flex flex-col justify-end">
-        <div className="flex items-center text-sm font-bold text-primary gap-2 group-hover:gap-3 transition-all">
+        <div 
+          className="flex items-center text-sm font-bold gap-2 group-hover:gap-3 transition-all"
+          style={{ color: '#3b82f6' }}
+        >
           Explore Architecture <ArrowRight className="w-4 h-4" />
         </div>
       </CardContent>
@@ -67,23 +93,42 @@ CaseStudyCard.propTypes = {
 }
 
 const HeroSection = () => (
-  <section className="mb-12 text-center py-12 bg-slate-50 rounded-3xl border border-slate-100">
-    <div className="flex items-center justify-center gap-3 mb-4">
-      <Badge variant="outline" className="px-3 py-1 bg-white">
-        Module 10
-      </Badge>
-      <span className="text-sm font-bold text-slate-500 uppercase tracking-wider">
-        Real-World Case Studies
-      </span>
+  <section 
+    className="relative gradient-overlay py-20 md:py-32 overflow-hidden mb-16"
+    style={{ backgroundColor: '#ffffff' }}
+  >
+    <div className="container-custom relative z-10">
+      <div className="max-w-4xl mx-auto text-center">
+        <div 
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border mb-6"
+          style={{
+            backgroundColor: '#faf5ff',
+            borderColor: '#f3e8ff'
+          }}
+        >
+          <span 
+            className="text-sm font-medium"
+            style={{ color: '#7c3aed' }}
+          >
+            Module 10
+          </span>
+        </div>
+        <h1 
+          className="text-4xl md:text-6xl font-bold mb-6"
+          style={{ color: '#0f172a' }}
+        >
+          Learning from the <span className="text-gradient">Giants</span>
+        </h1>
+        <p 
+          className="text-lg md:text-xl mb-8 mx-auto"
+          style={{ color: '#475569' }}
+        >
+          Theory is good, but practice is better. Explore how the world&apos;s
+          leading engineering teams solved their most difficult scaling,
+          reliability, and performance challenges.
+        </p>
+      </div>
     </div>
-    <h1 className="text-4xl md:text-5xl font-black tracking-tight mb-6 text-slate-900">
-      Learning from the <span className="text-primary">Giants</span>
-    </h1>
-    <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
-      Theory is good, but practice is better. Explore how the world&apos;s
-      leading engineering teams solved their most difficult scaling,
-      reliability, and performance challenges.
-    </p>
   </section>
 )
 
@@ -132,7 +177,7 @@ const CaseStudiesGrid = () => {
       {studies.map((study) => (
         <div
           key={study.id}
-          className="reveal-on-scroll opacity-0 translate-y-4 transition-all duration-700"
+          className="reveal-on-scroll opacity-100 translate-y-0 transition-all duration-700"
         >
           <CaseStudyCard {...study} />
         </div>
@@ -143,64 +188,72 @@ const CaseStudiesGrid = () => {
 
 const CaseStudiesPage = () => {
   const navigate = useNavigate()
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("opacity-100", "translate-y-0")
-            entry.target.classList.remove("opacity-0", "translate-y-4")
-          }
-        })
-      },
-      { threshold: 0.1 }
-    )
-
-    document
-      .querySelectorAll(".reveal-on-scroll")
-      .forEach((element) => observer.observe(element))
-    return () => observer.disconnect()
-  }, [])
+  // Animation is now handled by starting visible, so no observer needed
 
   return (
-    <div className="container mx-auto px-4 py-12 max-w-6xl">
+    <div className="min-h-screen" style={{ backgroundColor: '#ffffff' }}>
       <HeroSection />
-      <CaseStudiesGrid />
+      <div className="container mx-auto px-4 py-16 max-w-6xl">
+        <CaseStudiesGrid />
 
-      <section className="mt-16 p-12 bg-slate-900 text-white rounded-3xl text-center relative overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
-          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary rounded-full blur-[100px]" />
-          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-500 rounded-full blur-[100px]" />
-        </div>
-        <div className="relative z-10">
-          <h2 className="text-3xl md:text-4xl font-black mb-6">
-            Ready to Design Your Own?
-          </h2>
-          <p className="text-lg text-slate-300 mb-10 max-w-2xl mx-auto leading-relaxed">
-            You&apos;ve completed the essentials! From core principles to
-            real-world case studies, you now have the mental models to build
-            scalable, resilient systems.
-          </p>
-          <div className="flex flex-col sm:flex-row justify-center gap-4">
-            <Button
-              size="lg"
-              variant="default"
-              onClick={() => navigate("/topics")}
-              className="gap-2 h-14 px-8 text-lg font-bold"
-            >
-              Back to Topics <BookOpen className="w-5 h-5" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              onClick={() => navigate("/")}
-              className="gap-2 h-14 px-8 text-lg font-bold bg-transparent border-white/20 hover:bg-white/10 text-white"
-            >
-              Home <ArrowRight className="w-5 h-5" />
-            </Button>
+        <section 
+          className="mt-16 p-12 rounded-3xl text-center relative overflow-hidden"
+          style={{
+            background: 'linear-gradient(135deg, #f8fafc 0%, #eff6ff 100%)',
+            border: '1px solid #e2e8f0'
+          }}
+        >
+          <div className="absolute top-0 left-0 w-full h-full opacity-5 pointer-events-none">
+            <div 
+              className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full blur-[100px]"
+              style={{ backgroundColor: '#3b82f6' }}
+            />
+            <div 
+              className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full blur-[100px]"
+              style={{ backgroundColor: '#60a5fa' }}
+            />
           </div>
-        </div>
-      </section>
+          <div className="relative z-10">
+            <h2 
+              className="text-3xl md:text-4xl font-black mb-6"
+              style={{ color: '#0f172a' }}
+            >
+              Ready to Design Your Own?
+            </h2>
+            <p 
+              className="text-lg mb-10 max-w-2xl mx-auto leading-relaxed"
+              style={{ color: '#475569' }}
+            >
+              You&apos;ve completed the essentials! From core principles to
+              real-world case studies, you now have the mental models to build
+              scalable, resilient systems.
+            </p>
+            <div className="flex flex-col sm:flex-row justify-center gap-4">
+              <Button
+                size="lg"
+                variant="default"
+                onClick={() => navigate("/topics")}
+                className="gap-2 h-14 px-8 text-lg font-bold"
+              >
+                Back to Topics <BookOpen className="w-5 h-5" />
+              </Button>
+              <Button
+                size="lg"
+                variant="outline"
+                onClick={() => navigate("/")}
+                className="gap-2 h-14 px-8 text-lg font-bold"
+                style={{
+                  borderColor: '#cbd5e1',
+                  color: '#0f172a',
+                  backgroundColor: 'transparent'
+                }}
+              >
+                Home <ArrowRight className="w-5 h-5" />
+              </Button>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
   )
 }

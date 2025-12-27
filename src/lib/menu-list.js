@@ -1,4 +1,4 @@
-import { Users, Settings, SquarePen, LayoutGrid, Layers, Network, Database, Cpu, Share2, ShieldCheck, Activity, Zap, Cloud, BookOpen } from "lucide-react"
+import { Users, Settings, SquarePen, LayoutGrid, Layers, Network, Database, Cpu, Share2, ShieldCheck, Activity, Zap, Cloud, BookOpen, FileText } from "lucide-react"
 
 const POSTS_NEW_PATH = "/posts/new"
 
@@ -126,6 +126,13 @@ const getContentsMenuGroup = (pathname) => ({
           active: pathname === POSTS_NEW_PATH,
         },
       ],
+    },
+    {
+      href: "/cheat-sheets",
+      label: "Cheat Sheets",
+      active: pathname.includes("/cheat-sheets"),
+      icon: FileText,
+      submenus: [],
     },
   ],
 })

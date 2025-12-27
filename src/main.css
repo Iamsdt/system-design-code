@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
+/* Force light mode - disable dark mode */
+html {
+  color-scheme: light;
+}
+
 :root {
   /* Professional Color Palette */
   --color-primary: #0f172a;        /* Slate 900 - Deep navy */
@@ -63,10 +68,49 @@ body {
   background-color: var(--color-bg);
 }
 
+/* Override any dark mode styles - force light mode everywhere */
+@media (prefers-color-scheme: dark) {
+  html, body {
+    color-scheme: light !important;
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+  }
+  
+  /* Force all elements to use light mode colors */
+  * {
+    color-scheme: light !important;
+  }
+  
+  /* Override any dark backgrounds */
+  div, section, article, main, aside, nav, header, footer {
+    background-color: inherit !important;
+  }
+}
+
+/* Disable dark mode globally - force light mode */
+.dark {
+  color-scheme: light !important;
+}
+
+html.dark,
+html[data-mode="dark"],
+body.dark,
+body[data-mode="dark"] {
+  color-scheme: light !important;
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+}
+
+/* Override any Tailwind dark mode classes */
+.dark * {
+  color-scheme: light !important;
+}
+
 #root {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-color: #ffffff;
 }
 
 /* Typography */

@@ -15,9 +15,9 @@
     "format": "prettier --write \"src/**/*.{js,jsx,json,css}\"",
     "test:coverage": "vitest run --coverage && node -e \"const s=require('./coverage/coverage-summary.json').total; console.log('Overall Coverage:', ((s.lines.pct + s.statements.pct + s.functions.pct + s.branches.pct)/4).toFixed(2)+'%');\"",
     "test:report": "open coverage/index.html",
-    "test:percentage": "node -e \"const s=require('./coverage/coverage-summary.json').total; const avg=((s.lines.pct + s.statements.pct + s.functions.pct + s.branches.pct)/4).toFixed(2); const c=avg>=80?'\\x1b[32m':'\\x1b[31m'; console.log(c+'Overall Coverage: '+avg+'%\\x1b[0m');\""
-    ,"predeploy": "npm run build"
-    ,"deploy": "gh-pages -d dist"
+    "test:percentage": "node -e \"const s=require('./coverage/coverage-summary.json').total; const avg=((s.lines.pct + s.statements.pct + s.functions.pct + s.branches.pct)/4).toFixed(2); const c=avg>=80?'\\x1b[32m':'\\x1b[31m'; console.log(c+'Overall Coverage: '+avg+'%\\x1b[0m');\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
@@ -49,11 +49,14 @@
     "react-dom": "^19.1.0",
     "react-hook-form": "^7.57.0",
     "react-i18next": "^15.5.2",
+    "react-markdown": "^10.1.0",
     "react-perfect-scrollbar": "^1.5.8",
     "react-redux": "^9.2.0",
     "react-router-dom": "^7.6.1",
+    "react-syntax-highlighter": "^16.1.0",
     "redux": "^5.0.1",
     "redux-persist": "^6.0.0",
+    "remark-gfm": "^4.0.1",
     "sonner": "^2.0.5",
     "tw-animate-css": "^1.3.3",
     "zod": "^3.25.49"

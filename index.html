@@ -37,6 +37,36 @@
     />
   </head>
   <body>
+    <script>
+      // Force light mode - prevent dark mode from being applied
+      (function() {
+        // Remove any dark mode classes
+        document.documentElement.classList.remove('dark');
+        document.body.classList.remove('dark');
+        
+        // Set color scheme to light
+        document.documentElement.style.colorScheme = 'light';
+        document.body.style.backgroundColor = '#ffffff';
+        document.body.style.color = '#0f172a';
+        
+        // Prevent dark mode from being set
+        const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(function(mutation) {
+            if (mutation.attributeName === 'class') {
+              if (document.documentElement.classList.contains('dark')) {
+                document.documentElement.classList.remove('dark');
+              }
+              if (document.body.classList.contains('dark')) {
+                document.body.classList.remove('dark');
+              }
+            }
+          });
+        });
+        
+        observer.observe(document.documentElement, { attributes: true });
+        observer.observe(document.body, { attributes: true });
+      })();
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
