@@ -27,6 +27,16 @@ html {
   --color-text-tertiary: #94a3b8;  /* Slate 400 */
   --color-border: #e2e8f0;         /* Slate 200 */
   
+  /* Sidebar Colors */
+  --sidebar-background: 0 0% 98%;
+  --sidebar-foreground: 240 5.3% 26.1%;
+  --sidebar-primary: 240 5.9% 10%;
+  --sidebar-primary-foreground: 0 0% 98%;
+  --sidebar-accent: 240 4.8% 95.9%;
+  --sidebar-accent-foreground: 240 5.9% 10%;
+  --sidebar-border: 220 13% 91%;
+  --sidebar-ring: 217.2 91.2% 59.8%;
+  
   /* Glassmorphism */
   --glass-bg: rgba(255, 255, 255, 0.7);
   --glass-border: rgba(255, 255, 255, 0.18);
@@ -239,6 +249,7 @@ button:disabled {
 
 .animate-scale-in {
   animation: scaleIn 0.5s ease-out;
+}
 
 /* Module hero adjustments */
 .module-hero {
@@ -252,7 +263,6 @@ button:disabled {
 }
 .module-hero .bg-gradient-to-r { /* make hero gradient crisper */
   filter: saturate(1.05) contrast(1.05);
-}
 }
 
 /* Scrollbar Styling */
