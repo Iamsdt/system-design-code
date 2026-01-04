@@ -145,7 +145,7 @@ export default function ConsistentHashing() {
   return (
     <div className="bg-white border-2 border-slate-200 rounded-3xl shadow-xl overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-purple-600 to-indigo-600 px-8 py-6">
+      <div className="px-8 py-6">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
             <Database className="w-6 h-6 text-white" />
@@ -154,7 +154,7 @@ export default function ConsistentHashing() {
             <h3 className="text-2xl font-bold text-white">
               Consistent Hashing Visualizer
             </h3>
-            <p className="text-purple-100 text-sm mt-1">
+            <p className="text-sm mt-1">
               See how keys are distributed across servers using a hash ring
             </p>
           </div>

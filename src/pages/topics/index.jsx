@@ -1,5 +1,20 @@
 import { useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
+import { 
+  Calculator, 
+  Globe, 
+  Database, 
+  Server, 
+  Zap, 
+  Shield, 
+  Lock, 
+  Activity, 
+  Cloud, 
+  BookOpen,
+  BarChart,
+  Rocket,
+  ChevronRight
+} from "lucide-react"
 
 /**
  * Topics page component - System Design & Cloud Engineering Essentials
@@ -20,7 +35,7 @@ export default function Topics() {
           }
         })
       },
-      { threshold: 0.1, rootMargin: "0px 0px -100px 0px" }
+      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" }
     )
 
     sectionsReference.current.forEach((section) => {
@@ -36,7 +51,7 @@ export default function Topics() {
       number: "01",
       title: "Core Principles & Sizing",
       color: "blue",
-      icon: "🧮",
+      icon: <Calculator className="w-8 h-8" />,
       description: "Interview flow, performance vs scalability, back-of-envelope estimates, and scaling strategies",
       keyPoints: [
         "Interview flow & requirements mapping",
@@ -56,7 +71,7 @@ export default function Topics() {
       number: "02",
       title: "Networking & Edge Delivery",
       color: "indigo",
-      icon: "🌐",
+      icon: <Globe className="w-8 h-8" />,
       description: "DNS, protocols, load balancing, CDN, and edge computing",
       keyPoints: [
         "IP/DNS basics & geo-routing",
@@ -76,7 +91,7 @@ export default function Topics() {
       number: "03",
       title: "Data Architecture & Storage",
       color: "purple",
-      icon: "💾",
+      icon: <Database className="w-8 h-8" />,
       description: "Database selection, storage models, replication, sharding, and caching",
       keyPoints: [
         "SQL vs NoSQL selection",
@@ -96,7 +111,7 @@ export default function Topics() {
       number: "04",
       title: "Compute & Runtime Models",
       color: "amber",
-      icon: "⚙️",
+      icon: <Server className="w-8 h-8" />,
       description: "Containers, serverless, Kubernetes, and deployment strategies",
       keyPoints: [
         "Runtime choices (VM/container/function)",
@@ -116,7 +131,7 @@ export default function Topics() {
       number: "05",
       title: "APIs, Integration & Data Movement",
       color: "teal",
-      icon: "🔌",
+      icon: <Zap className="w-8 h-8" />,
       description: "REST/gRPC/GraphQL, API gateways, messaging, and real-time communication",
       keyPoints: [
         "REST vs gRPC vs GraphQL",
@@ -136,7 +151,7 @@ export default function Topics() {
       number: "06",
       title: "Reliability & Resilience",
       color: "red",
-      icon: "🛡️",
+      icon: <Shield className="w-8 h-8" />,
       description: "SLOs, error budgets, graceful degradation, circuit breakers, and disaster recovery",
       keyPoints: [
         "SLO-driven design",
@@ -157,7 +172,7 @@ export default function Topics() {
       number: "07",
       title: "Security, Governance & Compliance",
       color: "green",
-      icon: "🔒",
+      icon: <Lock className="w-8 h-8" />,
       description: "AuthN/AuthZ, network security, secrets management, and zero-trust",
       keyPoints: [
         "OAuth2/OIDC/JWT",
@@ -178,7 +193,7 @@ export default function Topics() {
       number: "08",
       title: "Observability & Operations",
       color: "cyan",
-      icon: "📊",
+      icon: <Activity className="w-8 h-8" />,
       description: "Metrics, logs, traces, dashboards, alerts, and incident response",
       keyPoints: [
         "Metrics/logs/traces",
@@ -199,7 +214,7 @@ export default function Topics() {
       number: "09",
       title: "Cloud Service Comparisons",
       color: "orange",
-      icon: "☁️",
+      icon: <Cloud className="w-8 h-8" />,
       description: "Managed service comparisons across GCP, AWS, and Azure",
       keyPoints: [
         "Database services (SQL, NoSQL, Data Warehouses)",
@@ -219,7 +234,7 @@ export default function Topics() {
       number: "10",
       title: "Real-World Case Studies",
       color: "emerald",
-      icon: "📚",
+      icon: <BookOpen className="w-8 h-8" />,
       description: "Learning from Netflix, Uber, Discord, WhatsApp, and Twitter",
       keyPoints: [
         "Netflix: Chaos Engineering",
@@ -397,7 +412,7 @@ export default function Topics() {
                   key={topic.id}
                   ref={(el) => (sectionsReference.current[index] = el)}
                   onClick={topicRoute ? () => nav(topicRoute) : undefined}
-                  className={`opacity-0 translate-y-8 transition-all duration-700 bg-white border-2 ${colors.border} rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${colors.hover} flex flex-col ${topicRoute ? "cursor-pointer" : ""}`}
+                  className={`transition-all duration-700 bg-white border-2 ${colors.border} rounded-2xl p-6 md:p-8 shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${colors.hover} flex flex-col ${topicRoute ? "cursor-pointer" : ""}`}
                 >
                   <div className="flex items-start gap-4 mb-6">
                     <div
@@ -407,7 +422,7 @@ export default function Topics() {
                     </div>
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-2">
-                        <span className="text-3xl">{topic.icon}</span>
+                        <span className={`${colors.text}`}>{topic.icon}</span>
                         <h3 className="text-xl font-bold text-slate-900">
                           {topic.title}
                         </h3>
@@ -502,43 +517,43 @@ export default function Topics() {
             {[
               {
                 title: "Capacity Planning",
-                icon: "🧮",
+                icon: <Calculator className="w-8 h-8 text-blue-600" />,
                 description: "Calculate QPS, bandwidth, and storage needs",
                 link: "/foundations",
               },
               {
                 title: "Availability Calculator",
-                icon: "📊",
+                icon: <BarChart className="w-8 h-8 text-indigo-600" />,
                 description: "Understand downtime math and nines",
                 link: "/foundations",
               },
               {
                 title: "Database Selector",
-                icon: "🗄️",
+                icon: <Database className="w-8 h-8 text-purple-600" />,
                 description: "Choose the right database for your workload",
                 link: "/data-architecture",
               },
               {
                 title: "Caching Simulator",
-                icon: "⚡",
+                icon: <Zap className="w-8 h-8 text-amber-600" />,
                 description: "Visualize cache-aside vs write-through",
                 link: "/data-architecture",
               },
               {
                 title: "API Gateway",
-                icon: "🚪",
+                icon: <Zap className="w-8 h-8 text-teal-600" />,
                 description: "Simulate rate limiting and routing",
                 link: "/apis-integration",
               },
               {
                 title: "Deployment Strategies",
-                icon: "🚀",
+                icon: <Rocket className="w-8 h-8 text-red-600" />,
                 description: "Compare rolling, blue/green, and canary",
                 link: "/compute-runtime",
               },
               {
                 title: "Chaos Sandbox",
-                icon: "🐒",
+                icon: <Activity className="w-8 h-8 text-emerald-600" />,
                 description: "Simulate cascading failures (Netflix style)",
                 link: "/case-studies",
               },
@@ -546,9 +561,9 @@ export default function Topics() {
               <div
                 key={index}
                 onClick={() => nav(demo.link)}
-                className="bg-gradient-to-br from-blue-50 to-indigo-50 border-2 border-blue-200 rounded-xl p-6 cursor-pointer hover:shadow-lg transition-all hover:-translate-y-1"
+                className="bg-white border-2 border-slate-100 rounded-xl p-6 cursor-pointer hover:shadow-lg transition-all hover:-translate-y-1 hover:border-blue-200"
               >
-                <div className="text-4xl mb-3">{demo.icon}</div>
+                <div className="mb-4">{demo.icon}</div>
                 <h3 className="text-lg font-bold text-slate-900 mb-2">
                   {demo.title}
                 </h3>

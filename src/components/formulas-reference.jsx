@@ -203,7 +203,7 @@ export default function FormulasReference() {
   return (
     <div className="bg-white border-2 border-slate-200 rounded-3xl shadow-xl overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-slate-900 to-slate-800 px-8 py-6">
+      <div className="px-8 py-6">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
             <Calculator className="w-6 h-6 text-white" />
@@ -212,7 +212,7 @@ export default function FormulasReference() {
             <h3 className="text-2xl font-bold text-white">
               Essential Formulas Reference
             </h3>
-            <p className="text-slate-400 text-sm mt-1">
+            <p className="text-sm mt-1">
               Common calculations for back-of-envelope estimation
             </p>
           </div>

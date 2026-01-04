@@ -537,7 +537,7 @@ export default function ReliabilityResilience() {
         {/* Section 1: SLO-driven Design */}
         <section
           ref={(el) => (sectionsReference.current[0] = el)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">
@@ -653,7 +653,7 @@ export default function ReliabilityResilience() {
         {/* Section 2: Graceful Degradation */}
         <section
           ref={(el) => (sectionsReference.current[1] = el)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">
@@ -708,7 +708,7 @@ export default function ReliabilityResilience() {
         {/* Section 3: Rate Limiting & Circuit Breakers */}
         <section
           ref={(el) => (sectionsReference.current[2] = el)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">
@@ -782,7 +782,7 @@ export default function ReliabilityResilience() {
         {/* Section 4: Disaster Recovery */}
         <section
           ref={(el) => (sectionsReference.current[3] = el)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">
@@ -867,7 +867,7 @@ export default function ReliabilityResilience() {
         {/* Section 5: Distributed Consensus */}
         <section
           ref={(el) => (sectionsReference.current[4] = el)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">

@@ -101,7 +101,7 @@ export default function SecurityGovernance() {
       <div className="container mx-auto px-4 py-16 max-w-7xl">
         <section
           ref={(el) => (sectionsReference.current[0] = el)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <SectionHeader
             number="01"
@@ -140,7 +140,7 @@ export default function SecurityGovernance() {
 
         <section
           ref={(el) => (sectionsReference.current[1] = el)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <SectionHeader
             number="02"
@@ -178,7 +178,7 @@ export default function SecurityGovernance() {
 
         <section
           ref={(el) => (sectionsReference.current[2] = el)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <SectionHeader
             number="03"
@@ -200,7 +200,7 @@ export default function SecurityGovernance() {
 
         <section
           ref={(el) => (sectionsReference.current[3] = el)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <SectionHeader
             number="04"
@@ -239,7 +239,7 @@ export default function SecurityGovernance() {
 
         <section
           ref={(el) => (sectionsReference.current[4] = el)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <SectionHeader
             number="05"

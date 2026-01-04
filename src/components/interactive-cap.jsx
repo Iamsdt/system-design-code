@@ -37,8 +37,8 @@ export default function InteractiveCAP({ className }) {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-6">
-        <div className="flex items-center gap-3">
+      <div className="flex flex-col gap-6">
+        <div className="flex items-center gap-3 justify-center">
           {["CA", "CP", "AP"].map((k) => (
             <button
               key={k}
@@ -94,14 +94,13 @@ export default function InteractiveCAP({ className }) {
           </div>
         </div>
 
-        <div className="hidden md:flex items-center justify-center">
+        <div className="flex items-center justify-center mt-4">
           <svg
             width="160"
             height="140"
             viewBox="0 0 140 120"
             xmlns="http://www.w3.org/2000/svg"
-            className="drop-shadow-lg"
-          >
+            className="drop-shadow-lg">
             <circle
               cx="40"
               cy="40"

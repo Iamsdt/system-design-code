@@ -1,5 +1,261 @@
 import { useState, useEffect, useRef } from "react"
 import { useNavigate } from "react-router-dom"
+import { 
+  Laptop, 
+  Wifi, 
+  Radio, 
+  Globe, 
+  Shuffle, 
+  Building2, 
+  Rocket, 
+  Lightbulb, 
+  Wrench, 
+  ShieldCheck, 
+  ArrowRight, 
+  ArrowLeft,
+  Home,
+  Server,
+  Activity,
+  Zap,
+  Lock,
+  Search,
+  Layers,
+  Cpu,
+  Database,
+  Cloud,
+  BookOpen,
+  ChevronRight,
+  ChevronLeft,
+  Monitor,
+  Smartphone,
+  Network,
+  HardDrive,
+  Box,
+  Grid,
+  Maximize,
+  Share2,
+  Store,
+  Construction,
+  ClipboardList,
+  Clock,
+  Code,
+  Target,
+  TrendingUp,
+  Truck,
+  Users,
+  BarChart,
+  Brain,
+  ChefHat,
+  Archive,
+  AlertCircle,
+  CheckCircle,
+  XCircle,
+  FileText,
+  Info,
+  Settings,
+  Bell,
+  Mail,
+  Github,
+  Linkedin,
+  ExternalLink,
+  Menu,
+  X,
+  Plus,
+  Minus,
+  Trash2,
+  Edit,
+  Save,
+  Download,
+  Upload,
+  Eye,
+  EyeOff,
+  Copy,
+  Check,
+  RefreshCw,
+  Play,
+  Pause,
+  Square,
+  Circle,
+  Triangle,
+  Star,
+  Heart,
+  ThumbsUp,
+  ThumbsDown,
+  MessageSquare,
+  MapPin,
+  Calendar,
+  Clock3,
+  Tag,
+  Filter,
+  SortAsc,
+  SortDesc,
+  MoreHorizontal,
+  MoreVertical,
+  LogOut,
+  LogIn,
+  UserPlus,
+  UserMinus,
+  User,
+  Shield,
+  Key,
+  Fingerprint,
+  CreditCard,
+  DollarSign,
+  ShoppingCart,
+  Package,
+  Gift,
+  Truck as TruckIcon,
+  Map as MapIcon,
+  Navigation,
+  Compass,
+  MapPin as MapPinIcon,
+  Phone,
+  Video,
+  Mic,
+  Volume2,
+  Image as ImageIcon,
+  Music,
+  Film,
+  Camera,
+  Paperclip,
+  Link as LinkIcon,
+  Hash,
+  AtSign,
+  Percent,
+  Terminal,
+  Command,
+  Cpu as CpuIcon,
+  HardDrive as HardDriveIcon,
+  Database as DatabaseIcon,
+  Server as ServerIcon,
+  Cloud as CloudIcon,
+  Zap as ZapIcon,
+  Activity as ActivityIcon,
+  Shield as ShieldIcon,
+  Lock as LockIcon,
+  Unlock,
+  Eye as EyeIcon,
+  EyeOff as EyeOffIcon,
+  Search as SearchIcon,
+  Settings as SettingsIcon,
+  Bell as BellIcon,
+  Mail as MailIcon,
+  Github as GithubIcon,
+  Linkedin as LinkedinIcon,
+  Twitter,
+  Facebook,
+  Instagram,
+  Youtube,
+  Slack,
+  Chrome,
+  Figma,
+  Framer,
+  Gitlab,
+  Trello,
+  Twitch,
+  Wind,
+  Sun,
+  Moon,
+  CloudRain,
+  CloudLightning,
+  CloudSnow,
+  CloudFog,
+  Thermometer,
+  Droplets,
+  Umbrella,
+  Sunrise,
+  Sunset,
+  Mountain,
+  Trees,
+  Leaf,
+  Flower2,
+  Bird,
+  Dog,
+  Cat,
+  Fish,
+  Bug,
+  Flame,
+  Ghost,
+  Skull,
+  Anchor,
+  LifeBuoy,
+  Flag,
+  Map as MapLucide,
+  Compass as CompassLucide,
+  Navigation as NavigationLucide,
+  MapPin as MapPinLucide,
+  Phone as PhoneLucide,
+  Video as VideoLucide,
+  Mic as MicLucide,
+  Volume2 as Volume2Lucide,
+  Image as ImageLucide,
+  Music as MusicLucide,
+  Film as FilmLucide,
+  Camera as CameraLucide,
+  Paperclip as PaperclipLucide,
+  Link as LinkLucide,
+  Hash as HashLucide,
+  AtSign as AtSignLucide,
+  Percent as PercentLucide,
+  Terminal as TerminalLucide,
+  Command as CommandLucide,
+  Cpu as CpuLucide,
+  HardDrive as HardDriveLucide,
+  Database as DatabaseLucide,
+  Server as ServerLucide,
+  Cloud as CloudLucide,
+  Zap as ZapLucide,
+  Activity as ActivityLucide,
+  Shield as ShieldLucide,
+  Lock as LockLucide,
+  Unlock as UnlockLucide,
+  Eye as EyeLucide,
+  EyeOff as EyeOffLucide,
+  Search as SearchLucide,
+  Settings as SettingsLucide,
+  Bell as BellLucide,
+  Mail as MailLucide,
+  Github as GithubLucide,
+  Linkedin as LinkedinLucide,
+  Twitter as TwitterLucide,
+  Facebook as FacebookLucide,
+  Instagram as InstagramLucide,
+  Youtube as YoutubeLucide,
+  Slack as SlackLucide,
+  Chrome as ChromeLucide,
+  Figma as FigmaLucide,
+  Framer as FramerLucide,
+  Gitlab as GitlabLucide,
+  Trello as TrelloLucide,
+  Twitch as TwitchLucide,
+  Wind as WindLucide,
+  Sun as SunLucide,
+  Moon as MoonLucide,
+  CloudRain as CloudRainLucide,
+  CloudLightning as CloudLightningLucide,
+  CloudSnow as CloudSnowLucide,
+  CloudFog as CloudFogLucide,
+  Thermometer as ThermometerLucide,
+  Droplets as DropletsLucide,
+  Umbrella as UmbrellaLucide,
+  Sunrise as SunriseLucide,
+  Sunset as SunsetLucide,
+  Mountain as MountainLucide,
+  Trees as TreesLucide,
+  Leaf as LeafLucide,
+  Flower2 as Flower2Lucide,
+  Bird as BirdLucide,
+  Dog as DogLucide,
+  Cat as CatLucide,
+  Fish as FishLucide,
+  Bug as BugLucide,
+  Flame as FlameLucide,
+  Ghost as GhostLucide,
+  Skull as SkullLucide,
+  Anchor as AnchorLucide,
+  LifeBuoy as LifeBuoyLucide,
+  Flag as FlagLucide
+} from "lucide-react"
 import ProxyComparison from "../../components/proxy-comparison"
 import ApiGatewayVsLb from "../../components/api-gateway-vs-lb"
 import WebSocketDeepDive from "../../components/websocket-deep-dive"
@@ -47,12 +303,12 @@ export default function Networking() {
   const [isJourneyActive, setIsJourneyActive] = useState(false)
   
   const internetHops = [
-    { id: 1, name: "Your Device", icon: "💻", desc: "Request starts here (e.g. browser)", color: "bg-slate-100" },
-    { id: 2, name: "Home Router", icon: "📶", desc: "Gateway to local network (NAT)", color: "bg-orange-100" },
-    { id: 3, name: "ISP Modem", icon: "📡", desc: "Connects house to ISP network", color: "bg-blue-100" },
-    { id: 4, name: "ISP Backbone", icon: "🌐", desc: "High-speed fiber optic cables", color: "bg-indigo-100" },
-    { id: 5, name: "IXP", icon: "🔀", desc: "Internet Exchange Point (networks meet)", color: "bg-purple-100" },
-    { id: 6, name: "Target Server", icon: "🏢", desc: "Google / Netflix / Amazon", color: "bg-green-100" },
+    { id: 1, name: "Your Device", icon: <Laptop className="w-8 h-8" />, desc: "Request starts here (e.g. browser)", color: "bg-slate-100" },
+    { id: 2, name: "Home Router", icon: <Wifi className="w-8 h-8" />, desc: "Gateway to local network (NAT)", color: "bg-orange-100" },
+    { id: 3, name: "ISP Modem", icon: <Radio className="w-8 h-8" />, desc: "Connects house to ISP network", color: "bg-blue-100" },
+    { id: 4, name: "ISP Backbone", icon: <Globe className="w-8 h-8" />, desc: "High-speed fiber optic cables", color: "bg-indigo-100" },
+    { id: 5, name: "IXP", icon: <Shuffle className="w-8 h-8" />, desc: "Internet Exchange Point (networks meet)", color: "bg-purple-100" },
+    { id: 6, name: "Target Server", icon: <Building2 className="w-8 h-8" />, desc: "Google / Netflix / Amazon", color: "bg-green-100" },
   ]
 
   // TLS Demo State
@@ -437,8 +693,8 @@ export default function Networking() {
                     {/* Node Icon */}
                     <div 
                       className={`
-                        w-20 h-20 rounded-2xl flex items-center justify-center text-4xl shadow-md transition-all duration-500 mb-4 relative
-                        ${idx <= journeyStep ? `${hop.color} scale-110 ring-4 ring-offset-2 ring-blue-100` : "bg-white border border-slate-200 opacity-50 grayscale"}
+                        w-20 h-20 rounded-2xl flex items-center justify-center shadow-md transition-all duration-500 mb-4 relative
+                        ${idx <= journeyStep ? `${hop.color} scale-110 ring-4 ring-offset-2 ring-blue-100 text-blue-600` : "bg-white border border-slate-200 opacity-50 grayscale text-slate-400"}
                       `}
                     >
                       {hop.icon}
@@ -488,7 +744,7 @@ export default function Networking() {
         {/* Section 1: OSI Model */}
         <section
           ref={(element) => (sectionsReference.current[0] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className=" transition-all duration-700"
         >
           <div className="mb-8">
             <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
@@ -578,7 +834,7 @@ export default function Networking() {
         {/* Section 2: DNS & IP */}
         <section
           ref={(element) => (sectionsReference.current[1] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className=" transition-all duration-700"
         >
           <div className="mb-8">
             <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
@@ -864,7 +1120,7 @@ export default function Networking() {
         {/* Section 3: TCP vs UDP */}
         <section
           ref={(element) => (sectionsReference.current[2] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className=" transition-all duration-700"
         >
           <div className="mb-8">
             <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
@@ -1090,7 +1346,7 @@ export default function Networking() {
         {/* Section 3B: HTTP Evolution */}
         <section
           ref={(element) => (sectionsReference.current[3] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className=" transition-all duration-700"
         >
           <div className="mb-8">
             <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
@@ -1320,7 +1576,7 @@ export default function Networking() {
         {/* Section 4: CDN & Edge (Interactive) */}
         <section
           ref={(element) => (sectionsReference.current[4] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className=" transition-all duration-700"
         >
           <div className="mb-8">
             <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
@@ -1801,7 +2057,7 @@ export default function Networking() {
         {/* Section 5: Traffic Control (LB vs Proxy) */}
         <section
           ref={(element) => (sectionsReference.current[5] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className=" transition-all duration-700"
         >
           <div className="mb-8">
             <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
@@ -2254,7 +2510,7 @@ export default function Networking() {
         {/* Section 6: Reverse Proxy vs Forward Proxy */}
         <section
           ref={(element) => (sectionsReference.current[6] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className=" transition-all duration-700"
         >
           <div className="mb-8">
             <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
@@ -2273,7 +2529,7 @@ export default function Networking() {
         {/* Section 7: API Gateway vs Load Balancer */}
         <section
           ref={(element) => (sectionsReference.current[7] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className=" transition-all duration-700"
         >
           <div className="mb-8">
             <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
@@ -2292,7 +2548,7 @@ export default function Networking() {
         {/* Section 8: WebSocket Deep Dive */}
         <section
           ref={(element) => (sectionsReference.current[8] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className=" transition-all duration-700"
         >
           <div className="mb-8">
             <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
@@ -2311,7 +2567,7 @@ export default function Networking() {
         {/* Section 9: HTTP/3 & QUIC */}
         <section
           ref={(element) => (sectionsReference.current[9] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className=" transition-all duration-700"
         >
           <div className="mb-8">
             <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
@@ -2330,7 +2586,7 @@ export default function Networking() {
         {/* Section 10: CDN Advanced Strategies */}
         <section
           ref={(element) => (sectionsReference.current[10] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className=" transition-all duration-700"
         >
           <div className="mb-8">
             <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
@@ -2349,7 +2605,7 @@ export default function Networking() {
         {/* Section 11: Optimizations */}
         <section
           ref={(element) => (sectionsReference.current[11] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700"
+          className=" transition-all duration-700"
         >
           <div className="mb-8">
             <div className="text-sm font-semibold text-blue-600 uppercase tracking-wider mb-2">
@@ -2434,7 +2690,7 @@ export default function Networking() {
         {/* Next Steps */}
         <section
           ref={(element) => (sectionsReference.current[12] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-8"
+          className=" transition-all duration-700 mb-8"
         >
           <div className="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-2xl p-12 text-center">
             <h2 className="text-4xl font-bold text-white mb-4">

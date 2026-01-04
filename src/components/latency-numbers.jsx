@@ -1,6 +1,17 @@
+import {
+  Zap,
+  Clock,
+  Database,
+  Globe,
+  HardDrive,
+  Cpu,
+  Radio,
+} from "lucide-react"
 import { useState } from "react"
-import { Zap, Clock, Database, Globe, HardDrive, Cpu, Radio } from "lucide-react"
 
+/**
+ *
+ */
 export default function LatencyNumbers() {
   const [selectedScale, setSelectedScale] = useState("log")
 
@@ -11,99 +22,99 @@ export default function LatencyNumbers() {
       ns: 0.5,
       icon: <Cpu className="w-5 h-5" />,
       color: "from-green-500 to-emerald-500",
-      category: "CPU"
+      category: "CPU",
     },
     {
       name: "Branch mispredict",
       ns: 5,
       icon: <Cpu className="w-5 h-5" />,
       color: "from-green-500 to-emerald-500",
-      category: "CPU"
+      category: "CPU",
     },
     {
       name: "L2 cache reference",
       ns: 7,
       icon: <Cpu className="w-5 h-5" />,
       color: "from-blue-500 to-cyan-500",
-      category: "CPU"
+      category: "CPU",
     },
     {
       name: "Mutex lock/unlock",
       ns: 25,
       icon: <Cpu className="w-5 h-5" />,
       color: "from-blue-500 to-cyan-500",
-      category: "CPU"
+      category: "CPU",
     },
     {
       name: "Main memory reference",
       ns: 100,
       icon: <HardDrive className="w-5 h-5" />,
       color: "from-indigo-500 to-purple-500",
-      category: "Memory"
+      category: "Memory",
     },
     {
       name: "Compress 1K with Zippy",
       ns: 3000,
       icon: <Cpu className="w-5 h-5" />,
       color: "from-purple-500 to-pink-500",
-      category: "CPU"
+      category: "CPU",
     },
     {
       name: "Send 1K over 1 Gbps network",
       ns: 10000,
       icon: <Radio className="w-5 h-5" />,
       color: "from-orange-500 to-red-500",
-      category: "Network"
+      category: "Network",
     },
     {
       name: "SSD random read",
       ns: 150000,
       icon: <HardDrive className="w-5 h-5" />,
       color: "from-red-500 to-rose-500",
-      category: "Storage"
+      category: "Storage",
     },
     {
       name: "Read 1 MB sequentially from memory",
       ns: 250000,
       icon: <HardDrive className="w-5 h-5" />,
       color: "from-rose-500 to-pink-500",
-      category: "Memory"
+      category: "Memory",
     },
     {
       name: "Round trip within datacenter",
       ns: 500000,
       icon: <Globe className="w-5 h-5" />,
       color: "from-amber-500 to-orange-500",
-      category: "Network"
+      category: "Network",
     },
     {
       name: "Read 1 MB sequentially from SSD",
       ns: 1000000,
       icon: <HardDrive className="w-5 h-5" />,
       color: "from-yellow-500 to-amber-500",
-      category: "Storage"
+      category: "Storage",
     },
     {
       name: "Disk seek",
       ns: 10000000,
       icon: <Database className="w-5 h-5" />,
       color: "from-red-600 to-rose-600",
-      category: "Storage"
+      category: "Storage",
     },
     {
       name: "Read 1 MB sequentially from disk",
       ns: 20000000,
       icon: <Database className="w-5 h-5" />,
       color: "from-red-600 to-rose-600",
-      category: "Storage"
+      category: "Storage",
     },
     {
       name: "Send packet CA → Netherlands → CA",
       ns: 150000000,
       icon: <Globe className="w-5 h-5" />,
       color: "from-purple-600 to-indigo-600",
-      category: "Network"
-    }
+      category: "Network",
+    },
   ]
 
   // Convert to human-readable format
@@ -115,7 +126,7 @@ export default function LatencyNumbers() {
   }
 
   // Get max value for scaling
-  const maxNs = Math.max(...latencies.map(l => l.ns))
+  const maxNs = Math.max(...latencies.map((l) => l.ns))
 
   // Calculate bar width based on scale
   const getBarWidth = (ns) => {
@@ -132,7 +143,7 @@ export default function LatencyNumbers() {
   const getAnalogy = (ns) => {
     const seconds = ns / 1000000000
     const scaled = seconds * 1000000000 // Scale to 1 second = 1 second
-    
+
     if (scaled < 1) return `Blink of an eye`
     if (scaled < 60) return `${Math.round(scaled)} seconds`
     if (scaled < 3600) return `${Math.round(scaled / 60)} minutes`
@@ -144,7 +155,7 @@ export default function LatencyNumbers() {
   return (
     <div className="bg-white border-2 border-slate-200 rounded-3xl shadow-xl overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-slate-900 to-slate-800 px-8 py-6">
+      <div className="px-8 py-6">
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
@@ -162,21 +173,13 @@ export default function LatencyNumbers() {
           <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg p-1">
             <button
               onClick={() => setSelectedScale("log")}
-              className={`px-4 py-2 rounded-md text-sm font-semibold transition-colors ${
-                selectedScale === "log"
-                  ? "bg-white text-slate-900"
-                  : "text-white hover:bg-white/10"
-              }`}
+              
             >
               Logarithmic
             </button>
             <button
               onClick={() => setSelectedScale("linear")}
-              className={`px-4 py-2 rounded-md text-sm font-semibold transition-colors ${
-                selectedScale === "linear"
-                  ? "bg-white text-slate-900"
-                  : "text-white hover:bg-white/10"
-              }`}
+              
             >
               Linear
             </button>
@@ -195,10 +198,13 @@ export default function LatencyNumbers() {
                 Why This Matters
               </h4>
               <p className="text-blue-800 leading-relaxed">
-                Understanding these numbers helps you make better architectural decisions. 
-                Memory is ~100x faster than SSD, SSD is ~10x faster than disk, and network calls 
-                can be orders of magnitude slower. <strong>Avoid unnecessary network hops and optimize 
-                data access patterns accordingly.</strong>
+                Understanding these numbers helps you make better architectural
+                decisions. Memory is ~100x faster than SSD, SSD is ~10x faster
+                than disk, and network calls can be orders of magnitude slower.{" "}
+                <strong>
+                  Avoid unnecessary network hops and optimize data access
+                  patterns accordingly.
+                </strong>
               </p>
             </div>
           </div>
@@ -210,7 +216,9 @@ export default function LatencyNumbers() {
             <div key={index} className="group">
               <div className="flex items-center justify-between mb-2">
                 <div className="flex items-center gap-3">
-                  <div className={`w-8 h-8 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center text-white`}>
+                  <div
+                    className={`w-8 h-8 rounded-lg bg-gradient-to-br ${item.color} flex items-center justify-center text-white`}
+                  >
                     {item.icon}
                   </div>
                   <div>

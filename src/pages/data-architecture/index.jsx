@@ -394,7 +394,7 @@ export default function DataArchitecture() {
         {/* ============================================ */}
         <section
           ref={(element) => (sectionsReference.current[0] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">
@@ -572,7 +572,7 @@ export default function DataArchitecture() {
         {/* ============================================ */}
         <section
           ref={(element) => (sectionsReference.current[1] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">
@@ -816,7 +816,7 @@ export default function DataArchitecture() {
         {/* ============================================ */}
         <section
           ref={(element) => (sectionsReference.current[2] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">
@@ -1051,7 +1051,7 @@ export default function DataArchitecture() {
         {/* ============================================ */}
         <section
           ref={(element) => (sectionsReference.current[3] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">
@@ -1257,7 +1257,7 @@ export default function DataArchitecture() {
         {/* ============================================ */}
         <section
           ref={(element) => (sectionsReference.current[4] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">
@@ -1501,7 +1501,7 @@ export default function DataArchitecture() {
         {/* ============================================ */}
         <section
           ref={(element) => (sectionsReference.current[5] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">

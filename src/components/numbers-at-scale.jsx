@@ -1,6 +1,9 @@
-import { useState } from "react"
 import { TrendingUp, Users, Database, Wifi, Clock } from "lucide-react"
+import { useState } from "react"
 
+/**
+ *
+ */
 export default function NumbersAtScale() {
   const [selectedScale, setSelectedScale] = useState("medium")
 
@@ -17,7 +20,7 @@ export default function NumbersAtScale() {
           requestsPerUser: 10,
           avgRequestKB: 50,
           writeRatio: 10,
-          metrics: null // Will be calculated
+          metrics: null, // Will be calculated
         },
         {
           name: "Internal Tool",
@@ -25,7 +28,7 @@ export default function NumbersAtScale() {
           requestsPerUser: 50,
           avgRequestKB: 20,
           writeRatio: 30,
-          metrics: null
+          metrics: null,
         },
         {
           name: "Mobile App (Niche)",
@@ -33,9 +36,9 @@ export default function NumbersAtScale() {
           requestsPerUser: 30,
           avgRequestKB: 15,
           writeRatio: 20,
-          metrics: null
-        }
-      ]
+          metrics: null,
+        },
+      ],
     },
     medium: {
       title: "Medium Scale",
@@ -49,7 +52,7 @@ export default function NumbersAtScale() {
           requestsPerUser: 100,
           avgRequestKB: 30,
           writeRatio: 20,
-          metrics: null
+          metrics: null,
         },
         {
           name: "E-commerce Site",
@@ -57,7 +60,7 @@ export default function NumbersAtScale() {
           requestsPerUser: 40,
           avgRequestKB: 100,
           writeRatio: 15,
-          metrics: null
+          metrics: null,
         },
         {
           name: "SaaS Platform",
@@ -65,9 +68,9 @@ export default function NumbersAtScale() {
           requestsPerUser: 200,
           avgRequestKB: 25,
           writeRatio: 25,
-          metrics: null
-        }
-      ]
+          metrics: null,
+        },
+      ],
     },
     large: {
       title: "Large Scale",
@@ -81,7 +84,7 @@ export default function NumbersAtScale() {
           requestsPerUser: 50,
           avgRequestKB: 500,
           writeRatio: 10,
-          metrics: null
+          metrics: null,
         },
         {
           name: "Messaging App",
@@ -89,7 +92,7 @@ export default function NumbersAtScale() {
           requestsPerUser: 300,
           avgRequestKB: 5,
           writeRatio: 50,
-          metrics: null
+          metrics: null,
         },
         {
           name: "Search Engine",
@@ -97,9 +100,9 @@ export default function NumbersAtScale() {
           requestsPerUser: 30,
           avgRequestKB: 50,
           writeRatio: 5,
-          metrics: null
-        }
-      ]
+          metrics: null,
+        },
+      ],
     },
     massive: {
       title: "Massive Scale",
@@ -113,7 +116,7 @@ export default function NumbersAtScale() {
           requestsPerUser: 100,
           avgRequestKB: 30,
           writeRatio: 20,
-          metrics: null
+          metrics: null,
         },
         {
           name: "Video Streaming (YouTube)",
@@ -121,7 +124,7 @@ export default function NumbersAtScale() {
           requestsPerUser: 40,
           avgRequestKB: 1000,
           writeRatio: 5,
-          metrics: null
+          metrics: null,
         },
         {
           name: "Messaging (WhatsApp)",
@@ -129,10 +132,10 @@ export default function NumbersAtScale() {
           requestsPerUser: 200,
           avgRequestKB: 2,
           writeRatio: 50,
-          metrics: null
-        }
-      ]
-    }
+          metrics: null,
+        },
+      ],
+    },
   }
 
   // Calculate metrics for a scenario
@@ -142,15 +145,17 @@ export default function NumbersAtScale() {
     const peakQps = Math.round(qps * 2.5)
     const writeQps = Math.round((qps * scenario.writeRatio) / 100)
     const readQps = qps - writeQps
-    
+
     const dailyDataKB = totalRequests * scenario.avgRequestKB
     const dailyDataGB = dailyDataKB / (1024 * 1024)
     const monthlyDataGB = dailyDataGB * 30
     const yearlyDataTB = (dailyDataGB * 365) / 1024
-    
+
     const bandwidthMbps = Math.round((qps * scenario.avgRequestKB * 8) / 1024)
-    const peakBandwidthMbps = Math.round((peakQps * scenario.avgRequestKB * 8) / 1024)
-    
+    const peakBandwidthMbps = Math.round(
+      (peakQps * scenario.avgRequestKB * 8) / 1024
+    )
+
     return {
       qps,
       peakQps,
@@ -160,20 +165,20 @@ export default function NumbersAtScale() {
       monthlyDataGB,
       yearlyDataTB,
       bandwidthMbps,
-      peakBandwidthMbps
+      peakBandwidthMbps,
     }
   }
 
   const currentScale = scaleScenarios[selectedScale]
-  const scenariosWithMetrics = currentScale.scenarios.map(s => ({
+  const scenariosWithMetrics = currentScale.scenarios.map((s) => ({
     ...s,
-    metrics: calculateMetrics(s)
+    metrics: calculateMetrics(s),
   }))
 
-  const formatNumber = (num) => {
-    if (num >= 1000000) return `${(num / 1000000).toFixed(2)}M`
-    if (num >= 1000) return `${(num / 1000).toFixed(2)}K`
-    return num.toFixed(2)
+  const formatNumber = (number_) => {
+    if (number_ >= 1000000) return `${(number_ / 1000000).toFixed(2)}M`
+    if (number_ >= 1000) return `${(number_ / 1000).toFixed(2)}K`
+    return number_.toFixed(2)
   }
 
   const formatStorage = (gb) => {
@@ -184,16 +189,14 @@ export default function NumbersAtScale() {
   return (
     <div className="bg-white border-2 border-slate-200 rounded-3xl shadow-xl overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-indigo-600 to-purple-600 px-8 py-6">
+      <div className=" px-8 py-6">
         <div className="flex items-center gap-4">
           <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
             <TrendingUp className="w-6 h-6 text-white" />
           </div>
           <div>
-            <h3 className="text-2xl font-bold text-white">
-              Numbers at Scale
-            </h3>
-            <p className="text-indigo-100 text-sm mt-1">
+            <h3 className="text-2xl font-bold text-white">Numbers at Scale</h3>
+            <p className="text-sm mt-1">
               Real-world system metrics across different scales
             </p>
           </div>
@@ -218,15 +221,25 @@ export default function NumbersAtScale() {
                     : "border-slate-200 bg-white hover:border-slate-300"
                 }`}
               >
-                <div className={`font-bold text-lg mb-1 ${
-                  selectedScale === key ? `text-${scale.color}-900` : "text-slate-900"
-                }`}>
+                <div
+                  className={`font-bold text-lg mb-1 ${
+                    selectedScale === key
+                      ? `text-${scale.color}-900`
+                      : "text-slate-900"
+                  }`}
+                >
                   {scale.title}
                 </div>
-                <div className="text-xs text-slate-500 mb-2">{scale.subtitle}</div>
-                <div className={`text-xs font-semibold ${
-                  selectedScale === key ? `text-${scale.color}-700` : "text-slate-600"
-                }`}>
+                <div className="text-xs text-slate-500 mb-2">
+                  {scale.subtitle}
+                </div>
+                <div
+                  className={`text-xs font-semibold ${
+                    selectedScale === key
+                      ? `text-${scale.color}-700`
+                      : "text-slate-600"
+                  }`}
+                >
                   {scale.users}
                 </div>
               </button>
@@ -235,7 +248,9 @@ export default function NumbersAtScale() {
         </div>
 
         {/* Overview Stats */}
-        <div className={`bg-${currentScale.color}-50 border border-${currentScale.color}-200 rounded-2xl p-6 mb-8`}>
+        <div
+          className={`bg-${currentScale.color}-50 border border-${currentScale.color}-200 rounded-2xl p-6 mb-8`}
+        >
           <div className="flex items-center gap-3 mb-4">
             <Users className={`w-6 h-6 text-${currentScale.color}-600`} />
             <h4 className={`font-bold text-${currentScale.color}-900 text-lg`}>
@@ -247,7 +262,9 @@ export default function NumbersAtScale() {
               <div className="text-xs font-semibold text-slate-600 uppercase tracking-wider mb-1">
                 User Base
               </div>
-              <div className={`text-xl font-bold text-${currentScale.color}-600`}>
+              <div
+                className={`text-xl font-bold text-${currentScale.color}-600`}
+              >
                 {currentScale.users}
               </div>
             </div>
@@ -279,18 +296,27 @@ export default function NumbersAtScale() {
         {/* Scenarios */}
         <div className="space-y-6">
           {scenariosWithMetrics.map((scenario, index) => (
-            <div key={index} className="bg-white border-2 border-slate-200 rounded-2xl overflow-hidden">
-              <div className={`bg-slate-50 px-6 py-4 border-b border-slate-200`}>
+            <div
+              key={index}
+              className="bg-white border-2 border-slate-200 rounded-2xl overflow-hidden"
+            >
+              <div className="bg-slate-50 px-6 py-4 border-b border-slate-200">
                 <div className="flex items-center justify-between">
                   <h5 className="font-bold text-slate-900 text-lg">
                     {scenario.name}
                   </h5>
                   <div className="flex items-center gap-4 text-sm">
                     <div className="text-slate-600">
-                      <span className="font-semibold">{formatNumber(scenario.dau)}</span> DAU
+                      <span className="font-semibold">
+                        {formatNumber(scenario.dau)}
+                      </span>{" "}
+                      DAU
                     </div>
                     <div className="text-slate-600">
-                      <span className="font-semibold">{scenario.requestsPerUser}</span> req/user
+                      <span className="font-semibold">
+                        {scenario.requestsPerUser}
+                      </span>{" "}
+                      req/user
                     </div>
                   </div>
                 </div>
@@ -367,12 +393,13 @@ export default function NumbersAtScale() {
                       </div>
                     </div>
                     <div className="text-2xl font-bold text-indigo-600">
-                      {scenario.metrics.dailyDataGB < 1000 ? 
-                        scenario.metrics.dailyDataGB.toFixed(0) : 
-                        (scenario.metrics.dailyDataGB / 1024).toFixed(1)}
+                      {scenario.metrics.dailyDataGB < 1000
+                        ? scenario.metrics.dailyDataGB.toFixed(0)
+                        : (scenario.metrics.dailyDataGB / 1024).toFixed(1)}
                     </div>
                     <div className="text-xs text-indigo-700 mt-1">
-                      {scenario.metrics.dailyDataGB < 1000 ? 'GB' : 'TB'} per day
+                      {scenario.metrics.dailyDataGB < 1000 ? "GB" : "TB"} per
+                      day
                     </div>
                   </div>
                 </div>

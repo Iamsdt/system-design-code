@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
+@custom-variant dark (&:where(.dark, .dark *, [data-mode="dark"], [data-mode="dark"] *));
+
 /* Force light mode - disable dark mode */
 html {
   color-scheme: light;
@@ -129,6 +131,16 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.2;
   color: var(--color-primary);
   margin: 0;
+}
+
+/* Ensure headings inside elements that force white text (e.g., gradient boxes) inherit that color */
+.text-white h1,
+.text-white h2,
+.text-white h3,
+.text-white h4,
+.text-white h5,
+.text-white h6 {
+  color: inherit;
 }
 
 h1 { font-size: 3rem; letter-spacing: -0.02em; }
@@ -294,4 +306,24 @@ button:disabled {
 ::selection {
   background-color: var(--color-accent);
   color: white;
+}
+/* SVG Icon Colors - Light Mode */
+svg {
+  color: currentColor;
+}
+
+/* Lucide React Icons - Ensure visibility */
+[class*="lucide"] {
+  color: inherit;
+}
+
+/* Ensure icons in buttons and links are visible */
+button svg,
+a svg {
+  color: currentColor;
+}
+
+/* Icon containers with explicit colors */
+.icon-container {
+  color: inherit;
 }

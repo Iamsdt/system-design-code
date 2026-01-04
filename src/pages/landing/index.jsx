@@ -356,23 +356,23 @@ export default function Landing() {
               {/* Cheat Sheets Card */}
               <div
                 onClick={() => nav("/cheat-sheets")}
-                className="group cursor-pointer relative overflow-hidden bg-gradient-to-br from-emerald-400 to-teal-600 rounded-2xl p-8 hover:shadow-xl transition-all duration-300"
+                className="group cursor-pointer relative overflow-hidden bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-xl hover:border-emerald-200 transition-all duration-300"
               >
-                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
+                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-emerald-50 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
                 <div className="relative z-10 flex items-center gap-6">
-                  <div className="w-16 h-16 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-inner">
-                    <FileText className="w-8 h-8 text-white" />
+                  <div className="w-16 h-16 rounded-xl bg-emerald-50 flex items-center justify-center shadow-inner">
+                    <FileText className="w-8 h-8 text-emerald-600" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white mb-1">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-1 group-hover:text-emerald-600 transition-colors">
                       Cheat Sheets & References
                     </h3>
-                    <p className="text-emerald-50 text-sm leading-relaxed opacity-90">
+                    <p className="text-slate-500 text-sm leading-relaxed">
                       Quick reference guides for PostgreSQL, Redis, and more with syntax examples and best practices
                     </p>
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-teal-600 transition-all">
-                    <ArrowRight className="w-5 h-5 text-white group-hover:text-teal-600 transition-colors" />
+                  <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-all">
+                    <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
                   </div>
                 </div>
               </div>
@@ -380,23 +380,23 @@ export default function Landing() {
               {/* View All Topics Card */}
               <div
                 onClick={() => nav("/topics")}
-                className="group cursor-pointer relative overflow-hidden bg-gradient-to-br from-indigo-400 to-purple-600 rounded-2xl p-8 hover:shadow-xl transition-all duration-300"
+                className="group cursor-pointer relative overflow-hidden bg-white rounded-2xl border border-slate-200 p-8 hover:shadow-xl hover:border-indigo-200 transition-all duration-300"
               >
-                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-white/10 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
+                <div className="absolute top-0 right-0 -mt-4 -mr-4 w-32 h-32 bg-indigo-50 rounded-full blur-2xl group-hover:scale-150 transition-transform duration-500"></div>
                 <div className="relative z-10 flex items-center gap-6">
-                  <div className="w-16 h-16 rounded-xl bg-white/20 backdrop-blur-sm flex items-center justify-center shadow-inner">
-                    <BookOpen className="w-8 h-8 text-white" />
+                  <div className="w-16 h-16 rounded-xl bg-indigo-50 flex items-center justify-center shadow-inner">
+                    <BookOpen className="w-8 h-8 text-indigo-600" />
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-white mb-1">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-1 group-hover:text-indigo-600 transition-colors">
                       All Topics & Concepts
                     </h3>
-                    <p className="text-indigo-50 text-sm leading-relaxed opacity-90">
+                    <p className="text-slate-500 text-sm leading-relaxed">
                       Explore the complete catalog of system design topics with interactive demos and visualizations
                     </p>
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-indigo-600 transition-all">
-                    <ArrowRight className="w-5 h-5 text-white group-hover:text-indigo-600 transition-colors" />
+                  <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-all">
+                    <ArrowRight className="w-5 h-5 text-slate-400 group-hover:text-white transition-colors" />
                   </div>
                 </div>
               </div>

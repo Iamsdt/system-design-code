@@ -153,7 +153,7 @@ export default function InterviewCheatsheet() {
   return (
     <div className="bg-white border-2 border-slate-200 rounded-3xl shadow-xl overflow-hidden">
       {/* Header */}
-      <div className="bg-gradient-to-r from-slate-900 to-indigo-900 px-8 py-6">
+      <div className="px-8 py-6">
         <div className="flex items-center justify-between flex-wrap gap-4">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
@@ -163,18 +163,11 @@ export default function InterviewCheatsheet() {
               <h3 className="text-2xl font-bold text-white">
                 System Design Interview Cheatsheet
               </h3>
-              <p className="text-slate-300 text-sm mt-1">
+              <p className="text-sm mt-1">
                 Step-by-step template with timing guidelines
               </p>
             </div>
           </div>
-          <button
-            onClick={downloadCheatsheet}
-            className="px-4 py-2 bg-white text-slate-900 rounded-lg font-semibold hover:bg-slate-100 transition-colors flex items-center gap-2"
-          >
-            <Download className="w-4 h-4" />
-            Download PDF
-          </button>
         </div>
       </div>
 

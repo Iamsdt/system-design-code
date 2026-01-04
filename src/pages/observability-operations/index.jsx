@@ -79,7 +79,7 @@ export default function ObservabilityOperations() {
         {/* Section 1: The Three Pillars */}
         <section
           ref={(element) => (sectionsReference.current[0] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">
@@ -155,7 +155,7 @@ export default function ObservabilityOperations() {
         {/* Section: Log Aggregation */}
         <section
           ref={(element) => (sectionsReference.current[1] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <LogAggregation />
         </section>
@@ -163,7 +163,7 @@ export default function ObservabilityOperations() {
         {/* Section: Structured Logging */}
         <section
           ref={(element) => (sectionsReference.current[2] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <StructuredLogging />
         </section>
@@ -171,7 +171,7 @@ export default function ObservabilityOperations() {
         {/* Section: Distributed Tracing */}
         <section
           ref={(element) => (sectionsReference.current[3] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <DistributedTracing />
         </section>
@@ -179,7 +179,7 @@ export default function ObservabilityOperations() {
         {/* Section: APM Tools */}
         <section
           ref={(element) => (sectionsReference.current[4] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <APMTools />
         </section>
@@ -187,7 +187,7 @@ export default function ObservabilityOperations() {
         {/* Section: Synthetic Monitoring */}
         <section
           ref={(element) => (sectionsReference.current[5] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <SyntheticMonitoring />
         </section>
@@ -195,7 +195,7 @@ export default function ObservabilityOperations() {
         {/* Section: Real User Monitoring */}
         <section
           ref={(element) => (sectionsReference.current[6] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <RealUserMonitoring />
         </section>
@@ -203,7 +203,7 @@ export default function ObservabilityOperations() {
         {/* Section: SRE Practices */}
         <section
           ref={(element) => (sectionsReference.current[7] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <SREPractices />
         </section>
@@ -211,7 +211,7 @@ export default function ObservabilityOperations() {
         {/* Section: On-Call Best Practices */}
         <section
           ref={(element) => (sectionsReference.current[8] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <OnCallBestPractices />
         </section>
@@ -219,7 +219,7 @@ export default function ObservabilityOperations() {
         {/* Section: Capacity Planning */}
         <section
           ref={(element) => (sectionsReference.current[9] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <CapacityPlanning />
         </section>
@@ -227,7 +227,7 @@ export default function ObservabilityOperations() {
         {/* Section: Service Catalog */}
         <section
           ref={(element) => (sectionsReference.current[10] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <ServiceCatalog />
         </section>
@@ -235,7 +235,7 @@ export default function ObservabilityOperations() {
         {/* Section 2: Dashboards & Alerts */}
         <section
           ref={(element) => (sectionsReference.current[11] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">
@@ -289,7 +289,7 @@ export default function ObservabilityOperations() {
         {/* Section 3: Incident Response */}
         <section
           ref={(element) => (sectionsReference.current[12] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">
@@ -362,7 +362,7 @@ export default function ObservabilityOperations() {
         {/* Section 4: Cost Optimization */}
         <section
           ref={(element) => (sectionsReference.current[13] = element)}
-          className="opacity-0 translate-y-8 transition-all duration-700 mb-24"
+          className=" transition-all duration-700 mb-24"
         >
           <div className="mb-12">
             <div className="inline-block">
