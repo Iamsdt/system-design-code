@@ -26,7 +26,7 @@ const SAMPLE_POLICY =
 
 export default function CspGuide() {
   return (
-    <div className="bg-white border-2 border-indigo-200 rounded-2xl p-6 h-full">
+    <div className="bg-white border-2 border-indigo-200 rounded-2xl p-6 h-full min-w-0">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-indigo-500 to-blue-600 flex items-center justify-center text-white text-2xl">
           🧱
@@ -40,7 +40,7 @@ export default function CspGuide() {
       <div className="grid md:grid-cols-2 gap-4 mb-4">
         <div className="bg-indigo-50 border border-indigo-200 rounded-xl p-4 space-y-2">
           <div className="text-sm font-semibold text-slate-900">Strict CSP Template</div>
-          <pre className="text-xs bg-white border border-indigo-200 rounded p-3 overflow-x-auto">
+          <pre className="text-xs bg-white border border-indigo-200 rounded p-3 overflow-x-auto break-words whitespace-pre-wrap max-w-full">
             {SAMPLE_POLICY}
           </pre>
           <div className="text-xs text-slate-700">
@@ -51,7 +51,7 @@ export default function CspGuide() {
           <div className="text-sm font-semibold text-slate-900">Core Directives</div>
           <ul className="text-xs text-slate-700 space-y-2 list-disc ml-4">
             {directives.map((item) => (
-              <li key={item.name}>
+              <li key={item.name} className="break-words whitespace-normal">
                 <span className="font-semibold">{item.name}:</span> {item.detail}
               </li>
             ))}
@@ -59,18 +59,18 @@ export default function CspGuide() {
         </div>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-3 text-xs text-slate-700">
-        <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+      <div className="grid md:grid-cols-3 gap-3 text-xs text-slate-700 min-w-0">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-3 min-w-0">
           <div className="font-semibold text-green-900 mb-1">Nonce-based</div>
-          <p>Generate a fresh nonce per response and attach it to allowed &lt;script&gt;/&lt;style&gt; tags.</p>
+          <p className="break-words whitespace-normal">Generate a fresh nonce per response and attach it to allowed &lt;script&gt;/&lt;style&gt; tags.</p>
         </div>
-        <div className="bg-amber-50 border border-amber-200 rounded-lg p-3">
+        <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 min-w-0">
           <div className="font-semibold text-amber-900 mb-1">Hash-based</div>
-          <p>Hash inline scripts/styles (sha256/384/512). Great for static sites; rehash on changes.</p>
+          <p className="break-words whitespace-normal">Hash inline scripts/styles (sha256/384/512). Great for static sites; rehash on changes.</p>
         </div>
-        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-3 min-w-0">
           <div className="font-semibold text-red-900 mb-1">Reporting</div>
-          <p>Send violations via report-to/report-uri. Start in report-only to tune before enforcing.</p>
+          <p className="break-words whitespace-normal">Send violations via report-to/report-uri. Start in report-only to tune before enforcing.</p>
         </div>
       </div>
     </div>

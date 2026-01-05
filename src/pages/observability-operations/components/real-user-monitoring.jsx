@@ -474,12 +474,12 @@ maxBatchSize: 50 // Or when 50 events accumulated`
           <div className="space-y-4">
             {performanceOptimization.map((opt, idx) => (
               <div key={idx} className="bg-slate-50 rounded-lg p-5">
-                <div className="flex items-start justify-between mb-3">
-                  <div>
+                <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-3">
+                  <div className="min-w-0">
                     <h5 className="text-lg font-bold text-slate-900">{opt.technique}</h5>
                     <p className="text-slate-600 mt-1">{opt.description}</p>
                   </div>
-                  <Badge className="bg-green-600 text-white shrink-0">{opt.impact}</Badge>
+                  <Badge className="bg-green-600 text-white mt-3 md:mt-0 px-2 py-1 text-xs md:text-sm max-w-full truncate">{opt.impact}</Badge>
                 </div>
 
                 <pre className="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-sm">

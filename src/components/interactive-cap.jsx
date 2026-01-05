@@ -45,7 +45,7 @@ export default function InteractiveCAP({ className }) {
               onClick={() => setChoice(k)}
               className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
                 choice === k
-                  ? " from-purple-500 to-pink-500 text-white shadow-lg scale-105"
+                  ? " from-purple-500 to-pink-500 shadow-lg scale-105"
                   : "bg-slate-100 text-slate-700 hover:bg-slate-200 hover:scale-102"
               }`}
             >

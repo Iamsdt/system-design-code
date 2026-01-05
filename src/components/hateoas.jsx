@@ -230,8 +230,8 @@ Accept: application/json`,
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <h5 className="font-bold text-red-700 mb-2 text-sm">❌ Without HATEOAS</h5>
-                  <pre className="text-xs bg-slate-900 text-slate-100 p-3 rounded">
-{`// Client must know all URLs
+                  <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+                    <code className="text-slate-100">{`// Client must know all URLs
 const order = await fetch('/api/orders/789')
 
 // Hardcoded logic
@@ -242,13 +242,13 @@ if (order.status === 'pending') {
   })
 }
 
-// Client breaks when API changes`}
+// Client breaks when API changes`}</code>
                   </pre>
                 </div>
                 <div>
                   <h5 className="font-bold text-green-700 mb-2 text-sm">✓ With HATEOAS</h5>
-                  <pre className="text-xs bg-slate-900 text-slate-100 p-3 rounded">
-{`// Server tells client what's possible
+                  <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+                    <code className="text-slate-100">{`// Server tells client what's possible
 const order = await fetch('/api/orders/789')
 
 // Dynamic actions from server
@@ -258,7 +258,7 @@ if (order._links.cancel) {
   })
 }
 
-// Client adapts to server changes`}
+// Client adapts to server changes`}</code>
                   </pre>
                 </div>
               </div>
@@ -316,16 +316,16 @@ if (order._links.cancel) {
             {/* Request */}
             <div>
               <div className="text-sm font-semibold text-slate-700 mb-2">Request Example</div>
-              <pre className="text-xs bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto">
-                <code>{currentExample.example}</code>
+              <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+                <code className="text-slate-100">{currentExample.example}</code>
               </pre>
             </div>
 
             {/* Response */}
             <div>
               <div className="text-sm font-semibold text-slate-700 mb-2">Response Example</div>
-              <pre className="text-xs bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto">
-                <code>{currentExample.response}</code>
+              <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+                <code className="text-slate-100">{currentExample.response}</code>
               </pre>
             </div>
           </div>
@@ -408,8 +408,8 @@ if (order._links.cancel) {
           {/* Resource Data */}
           <div className="bg-slate-50 rounded-lg p-4 mb-6">
             <div className="text-sm font-semibold text-slate-700 mb-2">Resource Data</div>
-            <pre className="text-xs text-slate-700">
-              <code>{JSON.stringify(currentResourceData.data, null, 2)}</code>
+            <pre className="bg-slate-100 text-slate-700 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+              <code className="text-slate-700">{JSON.stringify(currentResourceData.data, null, 2)}</code>
             </pre>
           </div>
 
@@ -470,15 +470,15 @@ if (order._links.cancel) {
           <div className="bg-slate-50 rounded-lg p-4">
             <div className="font-bold text-slate-900 mb-2 text-sm">self</div>
             <div className="text-xs text-slate-600 mb-2">Link to the current resource</div>
-            <pre className="text-xs bg-slate-900 text-slate-100 p-2 rounded">
-              <code>{`"self": { "href": "/api/orders/789" }`}</code>
+            <pre className="bg-slate-900 text-slate-100 p-2 sm:p-3 rounded-lg text-xs sm:text-sm overflow-x-auto break-words whitespace-pre-wrap max-w-full">
+              {`"self": { "href": "/api/orders/789" }`}
             </pre>
           </div>
 
           <div className="bg-slate-50 rounded-lg p-4">
             <div className="font-bold text-slate-900 mb-2 text-sm">next / prev</div>
             <div className="text-xs text-slate-600 mb-2">Pagination links</div>
-            <pre className="text-xs bg-slate-900 text-slate-100 p-2 rounded">
+            <pre className="text-xs bg-slate-900 text-slate-100 p-2 rounded overflow-x-auto break-words whitespace-pre-wrap max-w-full">
               <code>{`"next": { "href": "/api/orders?page=2" }`}</code>
             </pre>
           </div>
@@ -486,7 +486,7 @@ if (order._links.cancel) {
           <div className="bg-slate-50 rounded-lg p-4">
             <div className="font-bold text-slate-900 mb-2 text-sm">related</div>
             <div className="text-xs text-slate-600 mb-2">Related resource</div>
-            <pre className="text-xs bg-slate-900 text-slate-100 p-2 rounded">
+            <pre className="text-xs bg-slate-900 text-slate-100 p-2 rounded overflow-x-auto break-words whitespace-pre-wrap max-w-full">
               <code>{`"customer": { "href": "/api/customers/456" }`}</code>
             </pre>
           </div>
@@ -494,7 +494,7 @@ if (order._links.cancel) {
           <div className="bg-slate-50 rounded-lg p-4">
             <div className="font-bold text-slate-900 mb-2 text-sm">edit</div>
             <div className="text-xs text-slate-600 mb-2">Edit this resource</div>
-            <pre className="text-xs bg-slate-900 text-slate-100 p-2 rounded">
+            <pre className="text-xs bg-slate-900 text-slate-100 p-2 rounded overflow-x-auto break-words whitespace-pre-wrap max-w-full">
               <code>{`"edit": { "href": "/api/orders/789", "method": "PUT" }`}</code>
             </pre>
           </div>
@@ -502,7 +502,7 @@ if (order._links.cancel) {
           <div className="bg-slate-50 rounded-lg p-4">
             <div className="font-bold text-slate-900 mb-2 text-sm">collection</div>
             <div className="text-xs text-slate-600 mb-2">Link to parent collection</div>
-            <pre className="text-xs bg-slate-900 text-slate-100 p-2 rounded">
+            <pre className="text-xs bg-slate-900 text-slate-100 p-2 rounded overflow-x-auto break-words whitespace-pre-wrap max-w-full">
               <code>{`"collection": { "href": "/api/orders" }`}</code>
             </pre>
           </div>
@@ -510,7 +510,7 @@ if (order._links.cancel) {
           <div className="bg-slate-50 rounded-lg p-4">
             <div className="font-bold text-slate-900 mb-2 text-sm">describedby</div>
             <div className="text-xs text-slate-600 mb-2">Link to schema/documentation</div>
-            <pre className="text-xs bg-slate-900 text-slate-100 p-2 rounded">
+            <pre className="text-xs bg-slate-900 text-slate-100 p-2 rounded overflow-x-auto break-words whitespace-pre-wrap max-w-full">
               <code>{`"describedby": { "href": "/api/schema/order" }`}</code>
             </pre>
           </div>
@@ -605,8 +605,8 @@ if (order._links.cancel) {
             <p className="text-sm text-slate-600 mb-2">
               Level 3 API with comprehensive hypermedia links
             </p>
-            <pre className="text-xs bg-slate-900 text-slate-100 p-3 rounded overflow-x-auto">
-{`GET https://api.github.com/repos/facebook/react
+            <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+              <code className="text-slate-100">{`GET https://api.github.com/repos/facebook/react
 
 {
   "name": "react",
@@ -616,7 +616,7 @@ if (order._links.cancel) {
   "keys_url": "https://api.github.com/repos/facebook/react/keys{/key_id}",
   "issues_url": "https://api.github.com/repos/facebook/react/issues{/number}",
   "pulls_url": "https://api.github.com/repos/facebook/react/pulls{/number}"
-}`}
+}`}</code>
             </pre>
           </div>
 
@@ -628,8 +628,8 @@ if (order._links.cancel) {
             <p className="text-sm text-slate-600 mb-2">
               Uses HAL (Hypertext Application Language) format
             </p>
-            <pre className="text-xs bg-slate-900 text-slate-100 p-3 rounded overflow-x-auto">
-{`{
+            <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+              <code className="text-slate-100">{`{
   "id": "PAY-123",
   "state": "created",
   "links": [
@@ -649,7 +649,7 @@ if (order._links.cancel) {
       "method": "POST"
     }
   ]
-}`}
+}`}</code>
             </pre>
           </div>
         </div>

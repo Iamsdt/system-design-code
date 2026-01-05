@@ -792,8 +792,8 @@ Gradually increase v2 traffic: 10% → 50% → 100%`
 
           <div className="bg-white dark:bg-gray-800 p-4 rounded">
             <p className="font-medium mb-2">Example Architecture:</p>
-            <pre className="text-xs">
-{`External Clients
+            <pre className="bg-gray-100 dark:bg-gray-900 p-3 rounded-lg overflow-x-auto text-xs sm:text-sm max-w-full whitespace-pre">
+              <code className="text-gray-900 dark:text-gray-100">{`External Clients
       ↓
   API Gateway (Kong) ← Handle auth, rate limit
       ↓
@@ -802,7 +802,7 @@ Gradually increase v2 traffic: 10% → 50% → 100%`
       ↓
   Ambassador Proxy ← Rate limit outbound
       ↓
-  External APIs`}
+  External APIs`}</code>
             </pre>
           </div>
         </div>

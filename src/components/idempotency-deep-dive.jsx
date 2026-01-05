@@ -237,8 +237,8 @@ export default function IdempotencyDeepDive() {
           <div className="space-y-4">
             <div>
               <div className="text-sm font-semibold text-slate-700 mb-2">Schema</div>
-              <pre className="text-xs bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto">
-{`CREATE TABLE idempotency_keys (
+              <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+                <code className="text-slate-100">{`CREATE TABLE idempotency_keys (
   key TEXT PRIMARY KEY,
   status TEXT,
   response JSONB,
@@ -246,14 +246,13 @@ export default function IdempotencyDeepDive() {
 );
 
 -- Optional: multi-tenant scope
--- UNIQUE (user_id, key)`}
-              </pre>
+-- UNIQUE (user_id, key)`}</code>
+</pre>
             </div>
-
             <div>
               <div className="text-sm font-semibold text-slate-700 mb-2">Implementation</div>
-              <pre className="text-xs bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto">
-{`async function processPayment(key, amount) {
+              <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+                <code className="text-slate-100">{`async function processPayment(key, amount) {
   // 1) Claim the key (unique insert)
   if (!tryInsertKey(key)) return getCachedResponse(key)
 
@@ -263,7 +262,7 @@ export default function IdempotencyDeepDive() {
   // 3) Store response and return
   storeResponse(key, result)
   return result
-}`}
+}`}</code>
               </pre>
             </div>
           </div>
@@ -283,26 +282,26 @@ export default function IdempotencyDeepDive() {
           <div className="space-y-4">
             <div>
               <div className="text-sm font-semibold text-slate-700 mb-2">Key Generation</div>
-              <pre className="text-xs bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto">
-{`// Recommended: random UUID
+              <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+                <code className="text-slate-100">{`// Recommended: random UUID
 const key = crypto.randomUUID()
 
 // Optional: prefix style
-const key2 = 'req_' + randomAlphanumeric(12)`}
+const key2 = 'req_' + randomAlphanumeric(12)`}</code>
               </pre>
             </div>
 
             <div>
               <div className="text-sm font-semibold text-slate-700 mb-2">Client Usage</div>
-              <pre className="text-xs bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto">
-{`// Generate key once, reuse on retries
+              <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+                <code className="text-slate-100">{`// Generate key once, reuse on retries
 const idempotencyKey = generateKey()
 
 await fetch('/api/payment', {
   method: 'POST',
   headers: { 'Idempotency-Key': idempotencyKey },
   body: JSON.stringify({ amount: 100 })
-})`}
+})`}</code>
               </pre>
             </div>
           </div>
@@ -320,12 +319,12 @@ await fetch('/api/payment', {
               <Code className="w-5 h-5 text-emerald-600" />
               <h5 className="font-bold text-slate-900">Stripe API</h5>
             </div>
-            <pre className="text-xs bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto mb-3">
-{`curl https://api.stripe.com/v1/charges \\
+            <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full mb-3">
+              <code className="text-slate-100">{`curl https://api.stripe.com/v1/charges \\
   -H "Idempotency-Key: abc123xyz" \\
   -d amount=2000 -d currency=usd
 
-# Retry with same key → same response`}
+# Retry with same key → same response`}</code>
             </pre>
             <p className="text-xs text-slate-600">
               Stripe stores keys for 24 hours. Duplicate requests return same response and don't charge card again.
@@ -338,12 +337,12 @@ await fetch('/api/payment', {
               <Code className="w-5 h-5 text-orange-600" />
               <h5 className="font-bold text-slate-900">AWS DynamoDB</h5>
             </div>
-            <pre className="text-xs bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto mb-3">
-{`// Conditional write (idempotent)
+            <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full mb-3">
+              <code className="text-slate-100">{`// Conditional write (idempotent)
 await putItem({
   Item: { orderId: 'abc123' },
   ConditionExpression: 'attribute_not_exists(orderId)'
-})`}
+})`}</code>
             </pre>
             <p className="text-xs text-slate-600">
               Conditional expressions provide built-in idempotency without separate key table.

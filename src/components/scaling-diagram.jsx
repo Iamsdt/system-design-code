@@ -20,31 +20,33 @@ export default function ScalingDiagram({ className }) {
         </div>
       </div>
 
-      <div className="flex gap-3 items-center mb-6 bg-slate-50 rounded-xl p-3">
-        <button
-          onClick={() => setScale("vertical")}
-          className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-            scale === "vertical"
-              ? " from-orange-500 to-amber-500 text-white shadow-lg scale-105"
-              : "bg-white text-slate-700 hover:bg-slate-100 hover:scale-102"
-          }`}
-        >
-          ⬆️ Vertical
-        </button>
-        <button
-          onClick={() => setScale("horizontal")}
-          className={`px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
-            scale === "horizontal"
-              ? " from-orange-500 to-amber-500 text-white shadow-lg scale-105"
-              : "bg-white text-slate-700 hover:bg-slate-100 hover:scale-102"
-          }`}
-        >
-          ➡️ Horizontal
-        </button>
+      <div className="flex flex-col sm:flex-row gap-3 items-start sm:items-center mb-6 bg-slate-50 rounded-xl p-3">
+        <div className="flex w-full sm:w-auto gap-3">
+          <button
+            onClick={() => setScale("vertical")}
+            className={`flex-1 sm:flex-none w-full sm:w-auto px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+              scale === "vertical"
+                ? " from-orange-500 to-amber-500 shadow-lg scale-105"
+                : "bg-white text-slate-700 hover:bg-slate-100 hover:scale-102"
+            }`}
+          >
+            ⬆️ Vertical
+          </button>
+          <button
+            onClick={() => setScale("horizontal")}
+            className={`flex-1 sm:flex-none w-full sm:w-auto px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+              scale === "horizontal"
+                ? " from-orange-500 to-amber-500  shadow-lg scale-105"
+                : "bg-white text-slate-700 hover:bg-slate-100 hover:scale-102"
+            }`}
+          >
+            ➡️ Horizontal
+          </button>
+        </div>
 
         {scale === "horizontal" && (
-          <div className="ml-auto flex items-center gap-3 bg-white rounded-lg px-4 py-2 border border-orange-100">
-            <label className="text-sm font-semibold text-slate-700">
+          <div className="mt-3 sm:mt-0 sm:ml-auto flex items-center gap-3 bg-white rounded-lg px-3 py-2 border border-orange-100 w-full sm:w-auto min-w-0">
+            <label className="text-sm font-semibold text-slate-700 mr-2">
               Nodes:
             </label>
             <input
@@ -53,7 +55,7 @@ export default function ScalingDiagram({ className }) {
               max={50}
               value={serverCount}
               onChange={(e) => setServerCount(Number(e.target.value))}
-              className="accent-orange-500"
+              className="accent-orange-500 flex-1 min-w-0"
             />
             <div className="text-sm font-bold text-orange-600 min-w-[2rem] text-right">
               {serverCount}
@@ -89,12 +91,12 @@ export default function ScalingDiagram({ className }) {
             </div>
           </div>
         ) : (
-          <div className="flex-1 p-6  from-orange-50 to-amber-50 rounded-xl border-2 border-orange-200">
-            <div className="flex flex-wrap gap-3 justify-center mb-4">
+          <div className="flex-1 min-w-0 p-6  from-orange-50 to-amber-50 rounded-xl border-2 border-orange-200">
+            <div className="flex flex-wrap gap-3 justify-center mb-4 w-full">
               {Array.from({ length: Math.min(serverCount, 12) }).map((_, i) => (
                 <div
                   key={i}
-                  className="w-20 h-20 rounded-lg border-2 border-orange-300  from-white to-orange-50 flex flex-col items-center justify-center shadow-md hover:scale-105 transition-transform duration-200"
+                  className="w-20 h-20 rounded-lg border-2 border-orange-300  from-white to-orange-50 flex flex-col items-center justify-center shadow-md hover:scale-105 transition-transform duration-200 shrink-0"
                 >
                   <div className="text-xl">📦</div>
                   <div className="text-xs font-semibold text-slate-600">
@@ -127,7 +129,7 @@ export default function ScalingDiagram({ className }) {
           </div>
         )}
 
-        <div className="lg:w-56 p-4  from-orange-50 to-amber-50 border-2 border-orange-200 rounded-xl shadow-inner">
+        <div className="w-full lg:w-56 p-4 min-w-0 from-orange-50 to-amber-50 border-2 border-orange-200 rounded-xl shadow-inner">
           <div className="font-bold text-orange-900 mb-3 text-base">
             🎯 When to choose:
           </div>

@@ -97,7 +97,7 @@ export default function IAMPolicyBuilder() {
 
         <div className="bg-slate-900 rounded-lg p-4">
           <div className="text-sm font-semibold text-white mb-2">Generated Policy</div>
-          <pre className="text-xs text-green-400 overflow-x-auto">{JSON.stringify(policy, null, 2)}</pre>
+          <pre className="text-xs text-green-400 overflow-x-auto break-words whitespace-pre-wrap max-w-full">{JSON.stringify(policy, null, 2)}</pre>
         </div>
       </div>
     </div>

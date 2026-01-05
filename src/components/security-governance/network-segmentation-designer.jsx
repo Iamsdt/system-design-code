@@ -73,9 +73,9 @@ export default function NetworkSegmentationDesigner() {
             }`}
           >
             <div className="flex items-center justify-between mb-2">
-              <div>
-                <div className="font-semibold text-slate-900">{tier.name}</div>
-                <div className="text-xs text-slate-600">{tier.description}</div>
+              <div className="min-w-0">
+                <div className="font-semibold text-slate-900 truncate">{tier.name}</div>
+                <div className="text-xs text-slate-600 break-words whitespace-normal">{tier.description}</div>
               </div>
               <div
                 className={`px-2 py-1 rounded text-xs font-semibold ${colorClasses[tier.color]}`}
@@ -92,7 +92,7 @@ export default function NetworkSegmentationDesigner() {
                   </div>
                   <div className="text-xs text-slate-600 space-y-1">
                     {tier.subnets.map((subnet) => (
-                      <div key={subnet} className="font-mono">
+                      <div key={subnet} className="font-mono break-words whitespace-pre-wrap max-w-full">
                         {subnet}
                       </div>
                     ))}
@@ -102,7 +102,7 @@ export default function NetworkSegmentationDesigner() {
                   <div className="font-semibold text-slate-700 mb-1">
                     Allowed Inbound:
                   </div>
-                  <div className="text-xs text-slate-600">
+                  <div className="text-xs text-slate-600 break-words whitespace-normal max-w-full">
                     {tier.allowedInbound.join(", ")}
                   </div>
                 </div>
@@ -110,7 +110,7 @@ export default function NetworkSegmentationDesigner() {
                   <div className="font-semibold text-slate-700 mb-1">
                     Allowed Outbound:
                   </div>
-                  <div className="text-xs text-slate-600">
+                  <div className="text-xs text-slate-600 break-words whitespace-normal max-w-full">
                     {tier.allowedOutbound.join(", ")}
                   </div>
                 </div>

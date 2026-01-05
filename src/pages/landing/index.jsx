@@ -212,7 +212,7 @@ export default function Landing() {
               </div>
               <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">
                 Learn by{" "}
-                <span className="text-transparent bg-clip-text  from-blue-600 to-indigo-600">
+                <span className=" bg-clip-text  from-blue-600 to-indigo-600">
                   Building
                 </span>
               </h2>
@@ -549,7 +549,7 @@ export default function Landing() {
                       <Code className="w-5 h-5 text-blue-600" />
                       Featured Projects
                     </h4>
-                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
+                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-4 my-2">
                       {[
                         {
                           name: "InjectQ",
@@ -587,7 +587,7 @@ export default function Landing() {
                       <Zap className="w-5 h-5 text-blue-600" />
                       Connect
                     </h4>
-                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
+                    <div className="flex flex-wrap items-center justify-center md:justify-start gap-6 my-2">
                       {[
                         {
                           name: "GitHub",

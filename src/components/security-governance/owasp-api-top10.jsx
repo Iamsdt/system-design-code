@@ -67,7 +67,7 @@ export default function OwaspApiTop10() {
   const [expanded, setExpanded] = useState("API1")
 
   return (
-    <div className="bg-white border-2 border-amber-200 rounded-2xl p-6 h-full">
+    <div className="bg-white border-2 border-amber-200 rounded-2xl p-6 h-full min-w-0">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-amber-500 to-orange-600 flex items-center justify-center text-white text-2xl">
           🧭
@@ -87,10 +87,10 @@ export default function OwaspApiTop10() {
             }`}
             onClick={() => setExpanded(expanded === risk.id ? null : risk.id)}
           >
-            <div className="flex items-center justify-between">
-              <div>
+            <div className="flex items-center justify-between min-w-0">
+              <div className="min-w-0">
                 <div className="text-xs font-bold text-amber-700">{risk.id}</div>
-                <div className="text-sm font-semibold text-slate-900">{risk.title}</div>
+                <div className="text-sm font-semibold text-slate-900 break-words whitespace-normal">{risk.title}</div>
               </div>
               <span className="text-xs text-slate-600">{expanded === risk.id ? "Hide" : "Details"}</span>
             </div>
@@ -101,7 +101,7 @@ export default function OwaspApiTop10() {
                   <div className="text-xs font-bold text-slate-900 mb-1">Defenses</div>
                   <ul className="list-disc ml-4 space-y-1 text-xs">
                     {risk.defense.map((item) => (
-                      <li key={item}>{item}</li>
+                      <li key={item} className="break-words whitespace-normal">{item}</li>
                     ))}
                   </ul>
                 </div>

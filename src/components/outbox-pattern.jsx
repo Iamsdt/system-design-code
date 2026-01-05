@@ -639,8 +639,8 @@ await db.outbox.create({
         <h4 className="text-xl font-bold text-slate-900 mb-4">Outbox Table Schema</h4>
         
         <div className="bg-slate-50 rounded-lg p-4 border border-slate-200 mb-4">
-          <pre className="text-xs text-slate-700">
-{`CREATE TABLE outbox (
+          <pre className="bg-slate-50 text-slate-700 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre max-w-full">
+            <code className="text-slate-700">{`CREATE TABLE outbox (
   id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   aggregate_id      VARCHAR(255) NOT NULL,
   aggregate_type    VARCHAR(255) NOT NULL,
@@ -668,7 +668,7 @@ await db.outbox.create({
   "created_at": "2024-01-15T10:30:00Z",
   "published": false,
   "published_at": null
-}`}
+}`}</code>
           </pre>
         </div>
 

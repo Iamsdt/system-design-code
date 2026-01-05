@@ -108,13 +108,13 @@ export default function EventSourcing() {
 
               <div>
                 <div className="text-sm font-semibold text-slate-700 mb-2">Update Operations</div>
-                <pre className="text-xs bg-slate-900 text-slate-100 p-4 rounded-lg">
-{`// Update current state (history is overwritten)
+                <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+                  <code className="text-slate-100">{`// Update current state (history is overwritten)
 UPDATE accounts SET balance = balance + 500 WHERE account_id = 'acc_123';
 UPDATE accounts SET balance = balance - 200 WHERE account_id = 'acc_123';
 
 // Result: balance = $1000
-// But you can't replay/audit past changes ❌`}
+// But you can't replay/audit past changes ❌`}</code>
                 </pre>
               </div>
 
@@ -188,8 +188,8 @@ UPDATE accounts SET balance = balance - 200 WHERE account_id = 'acc_123';
 
               <div>
                 <div className="text-sm font-semibold text-slate-700 mb-2">Rebuilding State by Replay</div>
-                <pre className="text-xs bg-slate-900 text-slate-100 p-4 rounded-lg">
-{`// Replay events to rebuild state
+                <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+                  <code className="text-slate-100">{`// Replay events to rebuild state
 let balance = 0
 for (const e of events) {
   if (e.type === 'MoneyDeposited') balance += e.data.amount
@@ -197,7 +197,7 @@ for (const e of events) {
 }
 
 // Result: balance = $1000
-// History stays preserved ✓`}
+// History stays preserved ✓`}</code>
                 </pre>
               </div>
 
@@ -264,9 +264,9 @@ for (const e of events) {
                 <div className="text-xs text-slate-500">Type</div>
                 <div className="font-bold text-slate-900">{events[selectedEvent].type}</div>
                 <div className="text-xs text-slate-500 mt-2">Data</div>
-                <pre className="text-xs bg-slate-900 text-slate-100 p-2 rounded">
-                  {JSON.stringify(events[selectedEvent].data, null, 2)}
-                </pre>
+                <pre className="bg-slate-900 text-slate-100 p-2 sm:p-3 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+                  <code className="text-slate-100">{JSON.stringify(events[selectedEvent].data, null, 2)}</code>
+                </pre> 
               </div>
             </div>
           </div>
@@ -320,13 +320,13 @@ for (const e of events) {
           <p className="text-sm text-slate-700 mb-4">
             Events are never updated or deleted. Only append new events. This gives you an immutable audit log.
           </p>
-          <pre className="text-xs bg-slate-900 text-slate-100 p-3 rounded-lg mb-4">
-{`// Append-only write
+          <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full mb-4">
+            <code className="text-slate-100">{`// Append-only write
 eventStore.append({ aggregateId: 'acc_123', type: 'MoneyDeposited', data: { amount: 500 } })
 
 // Never update/delete events:
 // UPDATE events ...  ❌
-// DELETE FROM events ... ❌`}
+// DELETE FROM events ... ❌`}</code>
           </pre>
           <div className="text-xs text-slate-600">
             Common implementations: EventStoreDB, Kafka, PostgreSQL (with append-only constraints), AWS EventBridge
@@ -341,12 +341,12 @@ eventStore.append({ aggregateId: 'acc_123', type: 'MoneyDeposited', data: { amou
           <p className="text-sm text-slate-700 mb-4">
             Rebuild state by replaying events from the beginning. Essential for debugging, testing, and building new projections.
           </p>
-          <pre className="text-xs bg-slate-900 text-slate-100 p-3 rounded-lg mb-4">
-{`// Time-travel query (conceptual)
+          <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full mb-4">
+            <code className="text-slate-100">{`// Time-travel query (conceptual)
 const stateAt = (ts) => replay(eventStore.get('acc_123').filter(e => e.ts <= ts))
 
 // What was balance on Jan 3?
-const snapshot = stateAt('2024-01-03')`}
+const snapshot = stateAt('2024-01-03')`}</code>
           </pre>
           <div className="text-xs text-slate-600">
             Use cases: Time travel debugging, regulatory compliance, analytics, testing
@@ -361,11 +361,11 @@ const snapshot = stateAt('2024-01-03')`}
           <p className="text-sm text-slate-700 mb-4">
             Create optimized read views by processing events. Multiple projections from same events.
           </p>
-          <pre className="text-xs bg-slate-900 text-slate-100 p-3 rounded-lg mb-4">
-{`// Same events → multiple read models
+          <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full mb-4">
+            <code className="text-slate-100">{`// Same events → multiple read models
 on('MoneyDeposited', (e) => projection.balance += e.amount)
 on('MoneyDeposited', (e) => projection.monthly[getMonth(e.ts)] += e.amount)
-on('MoneyWithdrawn', (e) => projection.balance -= e.amount)`}
+on('MoneyWithdrawn', (e) => projection.balance -= e.amount)`}</code>
           </pre>
           <div className="text-xs text-slate-600">
             Projections can be rebuilt anytime by replaying events
@@ -380,13 +380,13 @@ on('MoneyWithdrawn', (e) => projection.balance -= e.amount)`}
           <p className="text-sm text-slate-700 mb-4">
             Store periodic state snapshots to avoid replaying millions of events. Trade storage for speed.
           </p>
-          <pre className="text-xs bg-slate-900 text-slate-100 p-3 rounded-lg mb-4">
-{`// Snapshot optimization (conceptual)
+          <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full mb-4">
+            <code className="text-slate-100">{`// Snapshot optimization (conceptual)
 if (version % 1000 === 0) snapshotStore.save({ aggregateId: 'acc_123', version, state })
 
 // Restore: snapshot + tail events
 const snap = snapshotStore.latest('acc_123')
-const stateNow = replay(eventStore.getAfter('acc_123', snap.version), snap.state)`}
+const stateNow = replay(eventStore.getAfter('acc_123', snap.version), snap.state)`}</code>
           </pre>
           <div className="text-xs text-slate-600">
             Example: Snapshot every 1000 events instead of replaying all 1M events
@@ -401,19 +401,19 @@ const stateNow = replay(eventStore.getAfter('acc_123', snap.version), snap.state
         <div className="space-y-4">
           <div>
             <div className="text-sm font-semibold text-slate-700 mb-2">Define Events</div>
-            <pre className="text-xs bg-slate-900 text-slate-100 p-4 rounded-lg">
-{`// Domain event (small example)
+            <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+              <code className="text-slate-100">{`// Domain event (small example)
 type AccountEvent =
   | { type: 'AccountCreated'; accountId: string }
   | { type: 'MoneyDeposited'; accountId: string; amount: number }
-  | { type: 'MoneyWithdrawn'; accountId: string; amount: number }`}
+  | { type: 'MoneyWithdrawn'; accountId: string; amount: number }`}</code>
             </pre>
           </div>
 
           <div>
             <div className="text-sm font-semibold text-slate-700 mb-2">Aggregate (Write Model)</div>
-            <pre className="text-xs bg-slate-900 text-slate-100 p-4 rounded-lg">
-{`class BankAccount {
+            <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+              <code className="text-slate-100">{`class BankAccount {
   balance = 0
   pending = []
 
@@ -425,14 +425,14 @@ type AccountEvent =
 
   deposit(amount) { this.apply({ type: 'MoneyDeposited', amount }) }
   withdraw(amount) { this.apply({ type: 'MoneyWithdrawn', amount }) }
-}`}
+}`}</code>
             </pre>
           </div>
 
           <div>
             <div className="text-sm font-semibold text-slate-700 mb-2">Event Store</div>
-            <pre className="text-xs bg-slate-900 text-slate-100 p-4 rounded-lg">
-{`class EventStore {
+            <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+              <code className="text-slate-100">{`class EventStore {
   append(aggregateId, events) { /* store (aggregateId, version, event) */ }
   getEvents(aggregateId) { /* return ordered events */ }
 
@@ -441,7 +441,7 @@ type AccountEvent =
     for (const e of this.getEvents(aggregateId)) account.apply(e)
     return account
   }
-}`}
+}`}</code>
             </pre>
           </div>
         </div>

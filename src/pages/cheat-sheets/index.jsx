@@ -1,5 +1,5 @@
-import { useNavigate } from "react-router-dom"
 import { Database, Code, Terminal, Server } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 
 /**
  * Cheat Sheets listing page
@@ -11,7 +11,8 @@ export default function CheatSheets() {
     {
       id: "postgresql",
       title: "PostgreSQL",
-      description: "Complete reference for PostgreSQL commands, functions, and best practices",
+      description:
+        "Complete reference for PostgreSQL commands, functions, and best practices",
       icon: Database,
       color: "green",
       category: "Database",
@@ -47,19 +48,18 @@ export default function CheatSheets() {
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
-              Cheat Sheets & <span className="text-gradient">Quick References</span>
+              Cheat Sheets &{" "}
+              <span className="text-gradient">Quick References</span>
             </h1>
 
             <p className="text-lg md:text-xl text-slate-600 mb-8 mx-auto">
-              Quick reference guides for common technologies, commands, and best practices.
-              Perfect for developers who need fast access to syntax and examples.
+              Quick reference guides for common technologies, commands, and best
+              practices. Perfect for developers who need fast access to syntax
+              and examples.
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-              <button
-                onClick={() => nav("/")}
-                className="btn-secondary"
-              >
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-3 my-3">
+              <button onClick={() => nav("/")} className="btn-secondary">
                 Back to Home
               </button>
             </div>
@@ -101,7 +101,9 @@ export default function CheatSheets() {
                 onClick={() => nav(sheet.href)}
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <div className={`flex-shrink-0 w-12 h-12 rounded-xl ${colorClasses[sheet.color]} flex items-center justify-center`}>
+                  <div
+                    className={`flex-shrink-0 w-12 h-12 rounded-xl ${colorClasses[sheet.color]} flex items-center justify-center`}
+                  >
                     <IconComponent className="w-6 h-6" />
                   </div>
                   <div className="flex-1">
@@ -177,4 +179,3 @@ export default function CheatSheets() {
     </div>
   )
 }
-

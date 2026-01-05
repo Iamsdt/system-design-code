@@ -313,8 +313,8 @@ export function MultiCloudStrategies() {
                 <p className="text-sm text-muted-foreground mb-3">
                   Create abstraction layers so your application code doesn't depend on cloud APIs directly.
                 </p>
-                <div className="bg-muted p-4 rounded">
-                  <code className="text-xs block whitespace-pre font-mono">
+                <div className="bg-muted p-4 rounded overflow-x-auto">
+                  <code className="text-xs block whitespace-pre-wrap break-words font-mono max-w-full">
 {`// Bad: Direct AWS SDK usage
 const s3 = new AWS.S3();
 await s3.putObject({ Bucket: 'my-bucket', Key: 'file.txt', Body: data });

@@ -32,7 +32,7 @@ const TOGGLE_ON_CLASS = "bg-slate-900 text-white border-slate-900"
 const TOGGLE_OFF_CLASS = "bg-white text-slate-700 border-slate-300"
 
 const Panel = ({ title, children }) => (
-  <div className="bg-slate-50 rounded-xl p-4">
+  <div className="bg-slate-50 rounded-xl p-4 min-w-0">
     <div className="text-sm font-bold text-slate-900 mb-3">{title}</div>
     {children}
   </div>
@@ -54,10 +54,10 @@ const ToggleRow = ({
   const handleToggle = () => onToggle(!isOn)
 
   return (
-    <div className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-3 py-2">
-      <div>
-        <div className="text-sm font-semibold text-slate-900">{title}</div>
-        <div className="text-xs text-slate-500">{description}</div>
+    <div className="flex items-center justify-between rounded-lg border border-slate-200 bg-white px-3 py-2 min-w-0">
+      <div className="min-w-0">
+        <div className="text-sm font-semibold text-slate-900 break-words whitespace-normal">{title}</div>
+        <div className="text-xs text-slate-500 break-words whitespace-normal">{description}</div>
       </div>
       <button
         type="button"
@@ -144,7 +144,7 @@ const ResponseHeadersCard = ({ headers }) => (
     <div className="text-sm font-bold text-slate-900 mb-2">
       Response headers
     </div>
-    <pre className="text-xs bg-slate-50 p-3 rounded border border-slate-200 overflow-x-auto">
+    <pre className="text-xs bg-slate-50 p-3 rounded border border-slate-200 overflow-x-auto break-words whitespace-pre-wrap max-w-full">
       {formatHeaderBlock(headers)}
     </pre>
   </div>
@@ -234,7 +234,7 @@ const CorsSimulator = () => {
   const handleAllowCredentialsToggle = (value) => setAllowCredentials(value)
 
   return (
-    <div className="bg-white border-2 border-slate-200 rounded-2xl p-6">
+    <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 min-w-0">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-slate-700 to-slate-900 flex items-center justify-center text-white text-2xl">
           🌐
@@ -247,7 +247,7 @@ const CorsSimulator = () => {
         </div>
       </div>
 
-      <div className="grid lg:grid-cols-2 gap-6">
+      <div className="grid lg:grid-cols-2 gap-6 min-w-0">
         <div className="space-y-4">
           <Panel title="Request">
             <div className="space-y-3">

@@ -394,23 +394,23 @@ app.use((req, res, next) => {
                   </AlertDescription>
                 </Alert>
 
-                <div className="grid md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <h5 className="font-semibold text-red-700 mb-3">{data.badExample.title}</h5>
-                    <pre className="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-sm">
-                      <code>{data.badExample.code}</code>
+                    <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap word-break: break-word max-w-full">
+                      <code className="text-slate-100">{data.badExample.code}</code>
                     </pre>
-                    <div className="mt-3 text-sm text-slate-600">
+                    <div className="mt-3 text-xs sm:text-sm text-slate-600">
                       Problems: Hard to parse, inconsistent format, no correlation
                     </div>
                   </div>
 
                   <div>
                     <h5 className="font-semibold text-green-700 mb-3">{data.goodExample.title}</h5>
-                    <pre className="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-sm">
-                      <code>{data.goodExample.code}</code>
+                    <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap word-break: break-word max-w-full">
+                      <code className="text-slate-100">{data.goodExample.code}</code>
                     </pre>
-                    <div className="mt-3 text-sm text-slate-600">
+                    <div className="mt-3 text-xs sm:text-sm text-slate-600">
                       Benefits: Machine parseable, consistent fields, traceable
                     </div>
                   </div>
@@ -478,8 +478,8 @@ app.use((req, res, next) => {
                   <Badge>Pattern {idx + 1}</Badge>
                 </div>
 
-                <pre className="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-sm mb-4">
-                  <code>{pattern.implementation}</code>
+                <pre className="bg-slate-900 text-slate-100 p-3 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm mb-4 break-words whitespace-pre-wrap max-w-full">
+                  <code className="text-slate-100">{pattern.implementation}</code>
                 </pre>
 
                 <div>
@@ -536,8 +536,8 @@ app.use((req, res, next) => {
           <CardTitle>Complete Example: User Login Flow</CardTitle>
         </CardHeader>
         <CardContent>
-          <pre className="bg-slate-900 text-slate-100 p-6 rounded-lg overflow-x-auto text-sm">
-            <code>{`// 1. API Gateway - Request received
+          <pre className="bg-slate-900 text-slate-100 p-3 sm:p-6 rounded-lg overflow-x-auto text-xs sm:text-sm break-words whitespace-pre-wrap max-w-full">
+            <code className="text-slate-100">{`// 1. API Gateway - Request received
 {
   "timestamp": "2024-01-15T10:30:45.123Z",
   "level": "INFO",

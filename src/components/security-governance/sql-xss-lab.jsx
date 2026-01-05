@@ -30,7 +30,7 @@ export default function SqlXssLab() {
   const current = CASES[variant]
 
   return (
-    <div className="bg-white border-2 border-red-200 rounded-2xl p-6 h-full">
+    <div className="bg-white border-2 border-red-200 rounded-2xl p-6 h-full min-w-0">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-red-500 to-rose-600 flex items-center justify-center text-white text-2xl">
           🧪
@@ -58,14 +58,14 @@ export default function SqlXssLab() {
         ))}
       </div>
 
-      <div className="grid md:grid-cols-2 gap-3">
-        <div className="bg-red-50 border border-red-200 rounded-lg p-3">
+      <div className="grid md:grid-cols-2 gap-3 min-w-0">
+        <div className="bg-red-50 border border-red-200 rounded-lg p-3 min-w-0">
           <div className="text-xs font-bold text-red-800 mb-1">Vulnerable</div>
-          <pre className="text-xs bg-white border border-red-200 rounded p-3 overflow-x-auto">{current.vulnerable}</pre>
+          <pre className="text-xs bg-white border border-red-200 rounded p-3 overflow-x-auto break-words whitespace-pre-wrap max-w-full">{current.vulnerable}</pre>
         </div>
-        <div className="bg-green-50 border border-green-200 rounded-lg p-3">
+        <div className="bg-green-50 border border-green-200 rounded-lg p-3 min-w-0">
           <div className="text-xs font-bold text-green-800 mb-1">Fixed</div>
-          <pre className="text-xs bg-white border border-green-200 rounded p-3 overflow-x-auto">{current.fixed}</pre>
+          <pre className="text-xs bg-white border border-green-200 rounded p-3 overflow-x-auto break-words whitespace-pre-wrap max-w-full">{current.fixed}</pre>
         </div>
       </div>
 

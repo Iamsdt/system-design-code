@@ -10,7 +10,7 @@ const tips = [
 
 export default function CorsOverview() {
   return (
-    <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 h-full">
+    <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 h-full min-w-0">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-slate-700 to-slate-900 flex items-center justify-center text-white text-2xl">
           🌐
@@ -26,10 +26,10 @@ export default function CorsOverview() {
           <div className="text-sm font-semibold text-slate-900">Key Rules</div>
           <ul className="text-xs text-slate-700 space-y-2 list-disc ml-4">
             {tips.map((tip) => (
-              <li key={tip}>{tip}</li>
+              <li key={tip} className="break-words whitespace-normal">{tip}</li>
             ))}
           </ul>
-          <div className="text-xs text-slate-600">
+          <div className="text-xs text-slate-600 break-words whitespace-normal">
             Preflight fails? Check allowed origin, methods, headers, and credentials alignment.
           </div>
         </div>

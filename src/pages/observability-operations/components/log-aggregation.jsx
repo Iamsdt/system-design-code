@@ -487,7 +487,7 @@ export default function LogAggregation() {
                         {example.description}
                       </p>
                       <pre className="bg-slate-900 text-slate-100 p-4 rounded-lg overflow-x-auto text-sm">
-                        <code>{example.query}</code>
+                        <pre>{example.query}</pre>
                       </pre>
                     </div>
                   ))}
