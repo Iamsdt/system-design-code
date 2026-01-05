@@ -128,7 +128,7 @@ export default function ObservabilityOperations() {
                 </div>
               </div>
 
-              <div className="bg-white border-2 border-slate-200 rounded-2xl p-8 shadow-lg">
+              <div className="bg-white border-2 border-slate-200 rounded-2xl p-8">
                 <h3 className="text-xl font-bold text-slate-900 mb-4">OpenTelemetry (OTel)</h3>
                 <p className="text-slate-700 mb-4">
                   A vendor-neutral standard for collecting telemetry. It provides a single set of APIs and libraries to instrument your applications.
@@ -264,7 +264,7 @@ export default function ObservabilityOperations() {
             </div>
           </div>
 
-          <div className="bg-white border-2 border-slate-200 rounded-2xl p-8 shadow-lg">
+          <div className="bg-white border-2 border-slate-200 rounded-2xl p-8">
             <h3 className="text-xl font-bold text-slate-900 mb-4">Effective Alerting Principles</h3>
             <div className="grid md:grid-cols-3 gap-6">
               <div className="space-y-2">
@@ -327,14 +327,14 @@ export default function ObservabilityOperations() {
             </div>
           </div>
 
-          <div className="bg-slate-900 text-white rounded-2xl p-8">
+          <div className="bg-slate-900 rounded-2xl p-8">
             <h3 className="text-2xl font-bold mb-6">The Blameless Postmortem</h3>
             <div className="grid md:grid-cols-2 gap-8">
               <div>
-                <p className="text-slate-300 mb-4">
+                <p className="mb-4">
                   Focus on <strong>how</strong> the system failed, not <strong>who</strong> failed. The goal is to identify systemic improvements.
                 </p>
-                <ul className="space-y-2 text-sm text-slate-400">
+                <ul className="space-y-2 text-sm text-slate-700">
                   <li className="flex items-center gap-2">
                     <span className="text-green-500">✔</span> What happened? (Timeline)
                   </li>
@@ -351,7 +351,7 @@ export default function ObservabilityOperations() {
               </div>
               <div className="bg-slate-800 rounded-xl p-6 border border-slate-700">
                 <div className="text-xs font-bold text-slate-500 uppercase mb-2">Pro Tip</div>
-                <p className="text-sm italic text-slate-300">
+                <p className="text-sm italic text-slate-700">
                   "If you can't find a way to make the system more resilient to human error, you haven't finished the postmortem."
                 </p>
               </div>
@@ -387,7 +387,7 @@ export default function ObservabilityOperations() {
               <CostOptimizationCalculator />
             </div>
             <div className="space-y-6">
-              <div className="bg-white border-2 border-green-200 rounded-2xl p-8 shadow-lg">
+              <div className="bg-white border-2 border-green-200 rounded-2xl p-8">
                 <h3 className="text-xl font-bold text-slate-900 mb-4">FinOps Strategies</h3>
                 <div className="space-y-4">
                   <div className="p-4 bg-green-50 rounded-xl border border-green-100">

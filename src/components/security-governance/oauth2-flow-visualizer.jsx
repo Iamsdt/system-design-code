@@ -3,40 +3,117 @@ import { useMemo, useState } from "react"
 const FLOW_LIBRARY = {
   "authorization-code": {
     label: "Authorization Code",
-    description: "Trusted web apps with a backend that can keep a client secret.",
+    description:
+      "Trusted web apps with a backend that can keep a client secret.",
     steps: [
-      { title: "User requests login", actor: "User", action: "→ Authorization Server" },
-      { title: "Authenticate user", actor: "Authorization Server", action: "Validates credentials" },
-      { title: "Return authorization code", actor: "Authorization Server", action: "→ Client" },
-      { title: "Exchange code for tokens", actor: "Client", action: "→ Authorization Server" },
-      { title: "Access API", actor: "Client", action: "→ Resource Server with access token" },
+      {
+        title: "User requests login",
+        actor: "User",
+        action: "→ Authorization Server",
+      },
+      {
+        title: "Authenticate user",
+        actor: "Authorization Server",
+        action: "Validates credentials",
+      },
+      {
+        title: "Return authorization code",
+        actor: "Authorization Server",
+        action: "→ Client",
+      },
+      {
+        title: "Exchange code for tokens",
+        actor: "Client",
+        action: "→ Authorization Server",
+      },
+      {
+        title: "Access API",
+        actor: "Client",
+        action: "→ Resource Server with access token",
+      },
     ],
-    highlights: ["Best for server-rendered apps", "Keep client secret server-side", "Use refresh tokens"],
+    highlights: [
+      "Best for server-rendered apps",
+      "Keep client secret server-side",
+      "Use refresh tokens",
+    ],
   },
   pkce: {
     label: "PKCE (SPA / Mobile)",
-    description: "Public clients without a client secret (mobile, SPA).", 
+    description: "Public clients without a client secret (mobile, SPA).",
     steps: [
-      { title: "Generate code verifier + challenge", actor: "Client", action: "Store verifier locally" },
-      { title: "Redirect to authorize", actor: "Client", action: "→ Authorization Server with challenge" },
-      { title: "User authenticates", actor: "Authorization Server", action: "Validates user" },
-      { title: "Return authorization code", actor: "Authorization Server", action: "→ Client" },
-      { title: "Swap code + verifier", actor: "Client", action: "→ Authorization Server" },
-      { title: "Get tokens", actor: "Authorization Server", action: "→ Client" },
+      {
+        title: "Generate code verifier + challenge",
+        actor: "Client",
+        action: "Store verifier locally",
+      },
+      {
+        title: "Redirect to authorize",
+        actor: "Client",
+        action: "→ Authorization Server with challenge",
+      },
+      {
+        title: "User authenticates",
+        actor: "Authorization Server",
+        action: "Validates user",
+      },
+      {
+        title: "Return authorization code",
+        actor: "Authorization Server",
+        action: "→ Client",
+      },
+      {
+        title: "Swap code + verifier",
+        actor: "Client",
+        action: "→ Authorization Server",
+      },
+      {
+        title: "Get tokens",
+        actor: "Authorization Server",
+        action: "→ Client",
+      },
     ],
-    highlights: ["No client secret in browser", "Mitigates code interception", "Recommended for mobile/SPA"],
+    highlights: [
+      "No client secret in browser",
+      "Mitigates code interception",
+      "Recommended for mobile/SPA",
+    ],
   },
   "device-code": {
     label: "Device Code",
-    description: "Input-constrained devices (TVs, consoles).", 
+    description: "Input-constrained devices (TVs, consoles).",
     steps: [
-      { title: "Obtain device & user codes", actor: "Device", action: "→ User displays code" },
-      { title: "User approves on browser", actor: "User", action: "→ Authorization Server" },
-      { title: "Device polls token endpoint", actor: "Device", action: "→ Authorization Server" },
-      { title: "Authorization granted", actor: "Authorization Server", action: "→ Device tokens" },
-      { title: "Access API", actor: "Device", action: "→ Resource Server with access token" },
+      {
+        title: "Obtain device & user codes",
+        actor: "Device",
+        action: "→ User displays code",
+      },
+      {
+        title: "User approves on browser",
+        actor: "User",
+        action: "→ Authorization Server",
+      },
+      {
+        title: "Device polls token endpoint",
+        actor: "Device",
+        action: "→ Authorization Server",
+      },
+      {
+        title: "Authorization granted",
+        actor: "Authorization Server",
+        action: "→ Device tokens",
+      },
+      {
+        title: "Access API",
+        actor: "Device",
+        action: "→ Resource Server with access token",
+      },
     ],
-    highlights: ["Great for TVs/CLI", "Short polling interval", "Expire device codes quickly"],
+    highlights: [
+      "Great for TVs/CLI",
+      "Short polling interval",
+      "Expire device codes quickly",
+    ],
   },
 }
 
@@ -47,6 +124,9 @@ const RECOMMENDATIONS = [
   "Store tokens in httpOnly secure cookies when you control the backend",
 ]
 
+/**
+ *
+ */
 export default function OAuth2FlowVisualizer() {
   const [flow, setFlow] = useState("authorization-code")
   const [activeStep, setActiveStep] = useState(0)
@@ -54,20 +134,26 @@ export default function OAuth2FlowVisualizer() {
   const selected = useMemo(() => FLOW_LIBRARY[flow], [flow])
 
   return (
-    <div className="bg-white border-2 border-green-200 rounded-2xl p-6 shadow-xl h-full">
+    <div className="bg-white border-2 border-green-200 rounded-2xl p-6 h-full">
       <div className="flex items-center gap-3 mb-6">
-        <div className="w-12 h-12 rounded-xl  from-green-500 to-emerald-600 flex items-center justify-center text-white text-2xl">
+        <div className="w-12 h-12 rounded-xl  from-green-500 to-emerald-600 flex items-center justify-center text-2xl">
           🔐
         </div>
         <div>
-          <h4 className="text-lg font-bold text-slate-900">OAuth2 Flow Visualizer</h4>
-          <div className="text-xs text-slate-500">Authorization Code, PKCE, Device</div>
+          <h4 className="text-lg font-bold text-slate-900">
+            OAuth2 Flow Visualizer
+          </h4>
+          <div className="text-xs text-slate-500">
+            Authorization Code, PKCE, Device
+          </div>
         </div>
       </div>
 
       <div className="space-y-4">
         <div className="bg-slate-50 rounded-lg p-3">
-          <label className="text-xs font-semibold text-slate-700 mb-2 block">Flow Type</label>
+          <label className="text-xs font-semibold text-slate-700 mb-2 block">
+            Flow Type
+          </label>
           <select
             value={flow}
             onChange={(event) => {
@@ -107,7 +193,9 @@ export default function OAuth2FlowVisualizer() {
                   >
                     {index + 1}
                   </div>
-                  <div className="font-semibold text-slate-900">{item.title}</div>
+                  <div className="font-semibold text-slate-900">
+                    {item.title}
+                  </div>
                 </div>
               </div>
               <p className="text-sm text-slate-700 ml-8">{item.action}</p>

@@ -33,18 +33,27 @@ const SectionHeader = ({ number, accent, label, title, description }) => {
         <div
           className={`text-sm font-bold uppercase tracking-wider mb-3 flex items-center gap-2 ${classes.text}`}
         >
-          <span className={`w-8 h-8 rounded-lg ${classes.bg} text-white flex items-center justify-center text-sm`}>
+          <span
+            className={`w-8 h-8 rounded-lg ${classes.bg} text-white flex items-center justify-center text-sm`}
+          >
             {number}
           </span>
           {label}
         </div>
       </div>
-      <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">{title}</h2>
-      <p className="text-xl text-slate-600 max-w-4xl leading-relaxed">{description}</p>
+      <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6 leading-tight">
+        {title}
+      </h2>
+      <p className="text-xl text-slate-600 max-w-4xl leading-relaxed">
+        {description}
+      </p>
     </div>
   )
 }
 
+/**
+ *
+ */
 export default function SecurityGovernance() {
   const nav = useNavigate()
   const sectionsReference = useRef([])
@@ -75,15 +84,19 @@ export default function SecurityGovernance() {
         <div className="container-custom">
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-50 border border-green-100 mb-6">
-              <span className="text-sm font-medium text-green-700">Module 7</span>
+              <span className="text-sm font-medium text-green-700">
+                Module 7
+              </span>
             </div>
 
             <h1 className="text-4xl md:text-6xl font-bold text-slate-900 mb-6">
-              Security, Governance & <span className="text-gradient">Compliance</span>
+              Security, Governance &{" "}
+              <span className="text-gradient">Compliance</span>
             </h1>
 
             <p className="text-lg md:text-xl text-slate-600 mb-8 mx-auto">
-              Master authentication, authorization, web security, encryption, and compliance with a zero-trust mindset.
+              Master authentication, authorization, web security, encryption,
+              and compliance with a zero-trust mindset.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
@@ -100,7 +113,7 @@ export default function SecurityGovernance() {
 
       <div className="container mx-auto px-4 py-16 max-w-7xl">
         <section
-          ref={(el) => (sectionsReference.current[0] = el)}
+          ref={(element) => (sectionsReference.current[0] = element)}
           className=" transition-all duration-700 mb-24"
         >
           <SectionHeader
@@ -117,29 +130,42 @@ export default function SecurityGovernance() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white border-2 border-green-200 rounded-2xl p-6 shadow-lg">
+            <div className="bg-white border-2 border-green-200 rounded-2xl p-6">
               <div className="text-3xl mb-3">🔐</div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">OAuth2</h3>
-              <p className="text-sm text-slate-700 mb-3">Delegated authorization framework for API access and third-party apps.</p>
-              <div className="text-xs text-slate-600">Scopes, audiences, short-lived access tokens.</div>
+              <p className="text-sm text-slate-700 mb-3">
+                Delegated authorization framework for API access and third-party
+                apps.
+              </p>
+              <div className="text-xs text-slate-600">
+                Scopes, audiences, short-lived access tokens.
+              </div>
             </div>
-            <div className="bg-white border-2 border-blue-200 rounded-2xl p-6 shadow-lg">
+            <div className="bg-white border-2 border-blue-200 rounded-2xl p-6">
               <div className="text-3xl mb-3">🆔</div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">OIDC</h3>
-              <p className="text-sm text-slate-700 mb-3">Identity layer on OAuth2; ID tokens and claims for SSO.</p>
-              <div className="text-xs text-slate-600">Use PKCE for SPAs/mobile; validate iss/aud/nonce.</div>
+              <p className="text-sm text-slate-700 mb-3">
+                Identity layer on OAuth2; ID tokens and claims for SSO.
+              </p>
+              <div className="text-xs text-slate-600">
+                Use PKCE for SPAs/mobile; validate iss/aud/nonce.
+              </div>
             </div>
-            <div className="bg-white border-2 border-purple-200 rounded-2xl p-6 shadow-lg">
+            <div className="bg-white border-2 border-purple-200 rounded-2xl p-6">
               <div className="text-3xl mb-3">🔒</div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">mTLS</h3>
-              <p className="text-sm text-slate-700 mb-3">Mutual TLS for service-to-service trust in zero-trust networks.</p>
-              <div className="text-xs text-slate-600">Automate cert issuance/rotation; pin SANs and CAs.</div>
+              <p className="text-sm text-slate-700 mb-3">
+                Mutual TLS for service-to-service trust in zero-trust networks.
+              </p>
+              <div className="text-xs text-slate-600">
+                Automate cert issuance/rotation; pin SANs and CAs.
+              </div>
             </div>
           </div>
         </section>
 
         <section
-          ref={(el) => (sectionsReference.current[1] = el)}
+          ref={(element) => (sectionsReference.current[1] = element)}
           className=" transition-all duration-700 mb-24"
         >
           <SectionHeader
@@ -147,7 +173,8 @@ export default function SecurityGovernance() {
             accent="indigo"
             label="NETWORK SECURITY"
             title="Segmentation, WAF, DDoS & IAM guardrails"
-            description="Defense in depth to shrink blast radius and enforce least privilege." />
+            description="Defense in depth to shrink blast radius and enforce least privilege."
+          />
 
           <div className="grid lg:grid-cols-2 gap-8 mb-8">
             <NetworkSegmentationDesigner />
@@ -155,29 +182,47 @@ export default function SecurityGovernance() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-6">
-            <div className="bg-white border-2 border-indigo-200 rounded-2xl p-6 shadow-lg">
+            <div className="bg-white border-2 border-indigo-200 rounded-2xl p-6">
               <div className="text-3xl mb-3">🛡️</div>
               <h3 className="text-lg font-bold text-slate-900 mb-2">WAF</h3>
-              <p className="text-sm text-slate-700 mb-3">Filter SQLi/XSS, enforce rate limits, and virtual patch CVEs at the edge.</p>
-              <div className="text-xs text-slate-600">Managed: CloudFront, Cloudflare, GCP Armor.</div>
+              <p className="text-sm text-slate-700 mb-3">
+                Filter SQLi/XSS, enforce rate limits, and virtual patch CVEs at
+                the edge.
+              </p>
+              <div className="text-xs text-slate-600">
+                Managed: CloudFront, Cloudflare, GCP Armor.
+              </div>
             </div>
-            <div className="bg-white border-2 border-red-200 rounded-2xl p-6 shadow-lg">
+            <div className="bg-white border-2 border-red-200 rounded-2xl p-6">
               <div className="text-3xl mb-3">⚡</div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">DDoS Protection</h3>
-              <p className="text-sm text-slate-700 mb-3">Scrub volumetric attacks, enforce per-IP quotas, and absorb bursts.</p>
-              <div className="text-xs text-slate-600">Use AWS Shield Advanced/Cloudflare for L3–L7.</div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">
+                DDoS Protection
+              </h3>
+              <p className="text-sm text-slate-700 mb-3">
+                Scrub volumetric attacks, enforce per-IP quotas, and absorb
+                bursts.
+              </p>
+              <div className="text-xs text-slate-600">
+                Use AWS Shield Advanced/Cloudflare for L3–L7.
+              </div>
             </div>
-            <div className="bg-white border-2 border-purple-200 rounded-2xl p-6 shadow-lg">
+            <div className="bg-white border-2 border-purple-200 rounded-2xl p-6">
               <div className="text-3xl mb-3">👤</div>
-              <h3 className="text-lg font-bold text-slate-900 mb-2">Least-Privilege IAM</h3>
-              <p className="text-sm text-slate-700 mb-3">Roles over users, scoped policies, short-lived credentials.</p>
-              <div className="text-xs text-slate-600">Continuously review and remove unused permissions.</div>
+              <h3 className="text-lg font-bold text-slate-900 mb-2">
+                Least-Privilege IAM
+              </h3>
+              <p className="text-sm text-slate-700 mb-3">
+                Roles over users, scoped policies, short-lived credentials.
+              </p>
+              <div className="text-xs text-slate-600">
+                Continuously review and remove unused permissions.
+              </div>
             </div>
           </div>
         </section>
 
         <section
-          ref={(el) => (sectionsReference.current[2] = el)}
+          ref={(element) => (sectionsReference.current[2] = element)}
           className=" transition-all duration-700 mb-24"
         >
           <SectionHeader
@@ -185,21 +230,22 @@ export default function SecurityGovernance() {
             accent="amber"
             label="WEB SECURITY & APPSEC"
             title="OWASP API Top 10, Injection Defenses, CORS, CSP"
-            description="Close common API and frontend attack vectors with practical mitigations." />
+            description="Close common API and frontend attack vectors with practical mitigations."
+          />
 
           <div className="grid xl:grid-cols-2 gap-8 mb-8">
             <OwaspApiTop10 />
             <SqlXssLab />
           </div>
 
-          <div className="grid xl:grid-cols-2 gap-8">
+          <div className="grid xl:grid-cols-1 gap-8">
             <CorsOverview />
             <CspGuide />
           </div>
         </section>
 
         <section
-          ref={(el) => (sectionsReference.current[3] = el)}
+          ref={(element) => (sectionsReference.current[3] = element)}
           className=" transition-all duration-700 mb-24"
         >
           <SectionHeader
@@ -207,7 +253,8 @@ export default function SecurityGovernance() {
             accent="emerald"
             label="CRYPTO, SECRETS & IDENTITY"
             title="Encryption, Key Management, SSO, and Secret Rotation"
-            description="Protect data at rest/in transit, manage keys safely, and roll out enterprise SSO." />
+            description="Protect data at rest/in transit, manage keys safely, and roll out enterprise SSO."
+          />
 
           <div className="grid xl:grid-cols-2 gap-8 mb-8">
             <EncryptionKeyManagement />
@@ -217,19 +264,33 @@ export default function SecurityGovernance() {
           <div className="grid xl:grid-cols-2 gap-8 mb-8">
             <SecretsRotationSimulator />
             <div className="space-y-6">
-              <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 shadow-lg">
-                <h3 className="text-lg font-bold text-slate-900 mb-3">Audit Logging</h3>
+              <div className="bg-white border-2 border-slate-200 rounded-2xl p-6">
+                <h3 className="text-lg font-bold text-slate-900 mb-3">
+                  Audit Logging
+                </h3>
                 <ul className="text-sm text-slate-700 space-y-1 list-disc ml-4">
-                  <li>Authentication attempts, authorization decisions, data access</li>
-                  <li>Immutable storage (versioned object storage) with signatures</li>
+                  <li>
+                    Authentication attempts, authorization decisions, data
+                    access
+                  </li>
+                  <li>
+                    Immutable storage (versioned object storage) with signatures
+                  </li>
                   <li>Retention 30–90 days; alerts on anomalies</li>
                 </ul>
               </div>
-              <div className=" from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-6 shadow-lg">
-                <h3 className="text-lg font-bold text-slate-900 mb-3">Data Residency</h3>
+              <div className=" from-amber-50 to-orange-50 border-2 border-amber-200 rounded-2xl p-6">
+                <h3 className="text-lg font-bold text-slate-900 mb-3">
+                  Data Residency
+                </h3>
                 <ul className="text-sm text-slate-700 space-y-1 list-disc ml-4">
-                  <li>Regional data stores; avoid cross-region replication by default</li>
-                  <li>Encrypt at rest/in transit; classify data by jurisdiction</li>
+                  <li>
+                    Regional data stores; avoid cross-region replication by
+                    default
+                  </li>
+                  <li>
+                    Encrypt at rest/in transit; classify data by jurisdiction
+                  </li>
                   <li>Implement residency early; retrofits are costly</li>
                 </ul>
               </div>
@@ -238,7 +299,7 @@ export default function SecurityGovernance() {
         </section>
 
         <section
-          ref={(el) => (sectionsReference.current[4] = el)}
+          ref={(element) => (sectionsReference.current[4] = element)}
           className=" transition-all duration-700 mb-24"
         >
           <SectionHeader
@@ -246,7 +307,8 @@ export default function SecurityGovernance() {
             accent="teal"
             label="GOVERNANCE & VALIDATION"
             title="Access Models, PII Handling, and Pen Testing"
-            description="Choose the right access model, meet compliance, and validate controls offensively." />
+            description="Choose the right access model, meet compliance, and validate controls offensively."
+          />
 
           <div className="grid xl:grid-cols-2 gap-8 mb-8">
             <AccessControlComparison />
@@ -255,8 +317,10 @@ export default function SecurityGovernance() {
 
           <div className="grid xl:grid-cols-2 gap-8">
             <PenTestingEssentials />
-            <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 shadow-lg">
-              <h3 className="text-lg font-bold text-slate-900 mb-3">Operational Checklist</h3>
+            <div className="bg-white border-2 border-slate-200 rounded-2xl p-6">
+              <h3 className="text-lg font-bold text-slate-900 mb-3">
+                Operational Checklist
+              </h3>
               <ul className="text-sm text-slate-700 space-y-1 list-disc ml-4">
                 <li>Threat model quarterly; update runbooks</li>
                 <li>Continuous dependency scanning and SBOM tracking</li>
@@ -273,10 +337,16 @@ export default function SecurityGovernance() {
               ← Back to Topics
             </button>
             <div className="flex items-center gap-3">
-              <button onClick={() => nav("/reliability-resilience")} className="btn-secondary">
+              <button
+                onClick={() => nav("/reliability-resilience")}
+                className="btn-secondary"
+              >
                 ← Previous: Reliability
               </button>
-              <button onClick={() => nav("/observability-operations")} className="btn-primary">
+              <button
+                onClick={() => nav("/observability-operations")}
+                className="btn-primary"
+              >
                 Next: Observability →
               </button>
             </div>
@@ -286,4 +356,3 @@ export default function SecurityGovernance() {
     </div>
   )
 }
-

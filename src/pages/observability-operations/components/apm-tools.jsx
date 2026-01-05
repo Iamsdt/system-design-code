@@ -595,7 +595,7 @@ export default function APMTools() {
                   </div>
                   <div>
                     <h5 className="text-lg font-semibold text-slate-900 mb-3">Deployment Options</h5>
-                    <Badge className="bg-slate-600">{tool.deployment}</Badge>
+                    <Badge className="">{tool.deployment}</Badge>
                   </div>
                 </div>
               </TabsContent>

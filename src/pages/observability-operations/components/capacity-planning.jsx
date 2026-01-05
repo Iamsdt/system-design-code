@@ -1,7 +1,8 @@
 import { useState } from "react"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
+
 import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Badge } from "@/components/ui/badge"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 /**
@@ -27,7 +28,8 @@ export default function CapacityPlanning() {
           Trend Analysis & Resource Forecasting
         </h2>
         <p className="text-xl text-slate-600 max-w-4xl leading-relaxed">
-          Proactively plan infrastructure capacity to avoid both over-provisioning waste and under-provisioning failures.
+          Proactively plan infrastructure capacity to avoid both
+          over-provisioning waste and under-provisioning failures.
         </p>
       </div>
 
@@ -52,17 +54,21 @@ export default function CapacityPlanning() {
                   Linear Regression
                 </h3>
                 <p className="text-sm text-slate-700 mb-4">
-                  Best for steady growth patterns. Fits a straight line through historical data points.
+                  Best for steady growth patterns. Fits a straight line through
+                  historical data points.
                 </p>
                 <div className="bg-white p-4 rounded-lg font-mono text-sm">
-                  <div className="text-slate-600">// Python with scikit-learn</div>
+                  <div className="text-slate-600">
+                    // Python with scikit-learn
+                  </div>
                   <div>from sklearn.linear_model import LinearRegression</div>
                   <div className="mt-2">model = LinearRegression()</div>
                   <div>model.fit(X_train, y_train)</div>
                   <div>future_capacity = model.predict(future_dates)</div>
                 </div>
                 <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-sm">
-                  <strong>✅ Use when:</strong> Consistent growth rate (e.g., 20% quarterly)
+                  <strong>✅ Use when:</strong> Consistent growth rate (e.g.,
+                  20% quarterly)
                 </div>
               </div>
             </TabsContent>
@@ -74,18 +80,26 @@ export default function CapacityPlanning() {
                   ARIMA / Seasonal Decomposition
                 </h3>
                 <p className="text-sm text-slate-700 mb-4">
-                  Accounts for seasonal patterns (e.g., Black Friday traffic spikes, end-of-quarter batch jobs).
+                  Accounts for seasonal patterns (e.g., Black Friday traffic
+                  spikes, end-of-quarter batch jobs).
                 </p>
                 <div className="bg-white p-4 rounded-lg font-mono text-sm">
-                  <div className="text-slate-600">// Python with statsmodels</div>
-                  <div>from statsmodels.tsa.seasonal import seasonal_decompose</div>
-                  <div className="mt-2">result = seasonal_decompose(timeseries, model='additive')</div>
+                  <div className="text-slate-600">
+                    // Python with statsmodels
+                  </div>
+                  <div>
+                    from statsmodels.tsa.seasonal import seasonal_decompose
+                  </div>
+                  <div className="mt-2">
+                    result = seasonal_decompose(timeseries, model='additive')
+                  </div>
                   <div>trend = result.trend</div>
                   <div>seasonal = result.seasonal</div>
                   <div>forecast = trend + seasonal</div>
                 </div>
                 <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-sm">
-                  <strong>✅ Use when:</strong> Recurring patterns (daily, weekly, monthly cycles)
+                  <strong>✅ Use when:</strong> Recurring patterns (daily,
+                  weekly, monthly cycles)
                 </div>
               </div>
             </TabsContent>
@@ -97,18 +111,22 @@ export default function CapacityPlanning() {
                   ML-Based Forecasting (Prophet, LSTM)
                 </h3>
                 <p className="text-sm text-slate-700 mb-4">
-                  Captures complex patterns, handles missing data, and incorporates external events.
+                  Captures complex patterns, handles missing data, and
+                  incorporates external events.
                 </p>
                 <div className="bg-white p-4 rounded-lg font-mono text-sm">
                   <div className="text-slate-600">// Facebook Prophet</div>
                   <div>from fbprophet import Prophet</div>
-                  <div className="mt-2">model = Prophet(yearly_seasonality=True)</div>
+                  <div className="mt-2">
+                    model = Prophet(yearly_seasonality=True)
+                  </div>
                   <div>model.fit(df)</div>
                   <div>future = model.make_future_dataframe(periods=90)</div>
                   <div>forecast = model.predict(future)</div>
                 </div>
                 <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-sm">
-                  <strong>✅ Use when:</strong> Complex patterns, multiple seasonalities, holiday effects
+                  <strong>✅ Use when:</strong> Complex patterns, multiple
+                  seasonalities, holiday effects
                 </div>
               </div>
             </TabsContent>
@@ -120,17 +138,23 @@ export default function CapacityPlanning() {
                   Quantile Regression
                 </h3>
                 <p className="text-sm text-slate-700 mb-4">
-                  Provides confidence intervals (P50, P90, P99) instead of a single prediction.
+                  Provides confidence intervals (P50, P90, P99) instead of a
+                  single prediction.
                 </p>
                 <div className="bg-white p-4 rounded-lg font-mono text-sm">
-                  <div className="text-slate-600">// Plan for P90 capacity needs</div>
+                  <div className="text-slate-600">
+                    // Plan for P90 capacity needs
+                  </div>
                   <div>p50_forecast = quantile_regression(0.5)</div>
                   <div>p90_forecast = quantile_regression(0.9)</div>
                   <div>p99_forecast = quantile_regression(0.99)</div>
-                  <div className="mt-2 text-slate-600">// Provision for P90 to balance cost vs risk</div>
+                  <div className="mt-2 text-slate-600">
+                    // Provision for P90 to balance cost vs risk
+                  </div>
                 </div>
                 <div className="mt-4 p-3 bg-green-50 border border-green-200 rounded-lg text-sm">
-                  <strong>✅ Use when:</strong> Need risk assessment (e.g., "90% confident we won't exceed")
+                  <strong>✅ Use when:</strong> Need risk assessment (e.g., "90%
+                  confident we won't exceed")
                 </div>
               </div>
             </TabsContent>
@@ -166,7 +190,8 @@ export default function CapacityPlanning() {
                   <li className="flex items-start gap-2">
                     <span className="text-purple-600 font-bold">•</span>
                     <div>
-                      <strong>Metrics:</strong> system.cpu.utilization, system.memory.usage
+                      <strong>Metrics:</strong> system.cpu.utilization,
+                      system.memory.usage
                     </div>
                   </li>
                 </ul>
@@ -186,13 +211,15 @@ export default function CapacityPlanning() {
                   <li className="flex items-start gap-2">
                     <span className="text-purple-600 font-bold">•</span>
                     <div>
-                      <strong>Alert:</strong> {">"} 80% (6 months lead time to provision)
+                      <strong>Alert:</strong> {">"} 80% (6 months lead time to
+                      provision)
                     </div>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-purple-600 font-bold">•</span>
                     <div>
-                      <strong>Metrics:</strong> system.filesystem.utilization, database.size
+                      <strong>Metrics:</strong> system.filesystem.utilization,
+                      database.size
                     </div>
                   </li>
                 </ul>
@@ -214,13 +241,15 @@ export default function CapacityPlanning() {
                   <li className="flex items-start gap-2">
                     <span className="text-purple-600 font-bold">•</span>
                     <div>
-                      <strong>Alert:</strong> Packet loss {">"} 0.1%, latency spikes
+                      <strong>Alert:</strong> Packet loss {">"} 0.1%, latency
+                      spikes
                     </div>
                   </li>
                   <li className="flex items-start gap-2">
                     <span className="text-purple-600 font-bold">•</span>
                     <div>
-                      <strong>Metrics:</strong> system.network.io, connections.active
+                      <strong>Metrics:</strong> system.network.io,
+                      connections.active
                     </div>
                   </li>
                 </ul>
@@ -246,7 +275,8 @@ export default function CapacityPlanning() {
                   <li className="flex items-start gap-2">
                     <span className="text-purple-600 font-bold">•</span>
                     <div>
-                      <strong>Metrics:</strong> db.connections, db.query.duration
+                      <strong>Metrics:</strong> db.connections,
+                      db.query.duration
                     </div>
                   </li>
                 </ul>
@@ -259,14 +289,17 @@ export default function CapacityPlanning() {
       {/* Scaling Triggers */}
       <Card className="border-2 border-purple-200">
         <CardHeader>
-          <CardTitle className="text-2xl">Scaling Triggers & Thresholds</CardTitle>
+          <CardTitle className="text-2xl">
+            Scaling Triggers & Thresholds
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-6">
             <Alert className="border-purple-200 bg-purple-50">
               <AlertDescription>
-                <strong>Rule of Thumb:</strong> Scale out (add instances) before you scale up (bigger instances). 
-                Horizontal scaling provides better availability and cost efficiency.
+                <strong>Rule of Thumb:</strong> Scale out (add instances) before
+                you scale up (bigger instances). Horizontal scaling provides
+                better availability and cost efficiency.
               </AlertDescription>
             </Alert>
 
@@ -278,7 +311,8 @@ export default function CapacityPlanning() {
                   Scale when CPU {">"} 70% for 5 minutes
                 </p>
                 <div className="text-xs font-mono bg-white p-2 rounded border">
-                  if avg(cpu_usage) {">"} 70:<br />
+                  if avg(cpu_usage) {">"} 70:
+                  <br />
                   &nbsp;&nbsp;scale_out(+2 instances)
                 </div>
               </div>
@@ -290,8 +324,8 @@ export default function CapacityPlanning() {
                   Pre-scale for known events (Black Friday, batch jobs)
                 </p>
                 <div className="text-xs font-mono bg-white p-2 rounded border">
-                  # Cron: Scale up at 8 AM<br />
-                  0 8 * * * scale_to(20)
+                  # Cron: Scale up at 8 AM
+                  <br />0 8 * * * scale_to(20)
                 </div>
               </div>
 
@@ -302,17 +336,21 @@ export default function CapacityPlanning() {
                   ML model predicts load 30 min ahead
                 </p>
                 <div className="text-xs font-mono bg-white p-2 rounded border">
-                  predicted_load = model()<br />
-                  if predicted {">"} threshold:<br />
+                  predicted_load = model()
+                  <br />
+                  if predicted {">"} threshold:
+                  <br />
                   &nbsp;&nbsp;scale_proactively()
                 </div>
               </div>
             </div>
 
             <div className="bg-slate-900 text-white p-6 rounded-xl">
-              <h4 className="font-bold mb-4 text-lg">AWS Auto Scaling Example</h4>
+              <h4 className="font-bold mb-4 text-lg">
+                AWS Auto Scaling Example
+              </h4>
               <pre className="text-xs overflow-x-auto bg-slate-800 p-4 rounded">
-{`# CloudFormation / Terraform
+                {`# CloudFormation / Terraform
 AutoScalingPolicy:
   Type: AWS::AutoScaling::ScalingPolicy
   Properties:
@@ -330,7 +368,9 @@ AutoScalingPolicy:
       {/* Lead Time Calculator */}
       <Card className="border-2 border-purple-200">
         <CardHeader>
-          <CardTitle className="text-2xl">Capacity Planning Lead Times</CardTitle>
+          <CardTitle className="text-2xl">
+            Capacity Planning Lead Times
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
@@ -339,8 +379,12 @@ AutoScalingPolicy:
                 <thead>
                   <tr className="border-b-2 border-slate-200">
                     <th className="text-left p-3 font-bold">Resource Type</th>
-                    <th className="text-left p-3 font-bold">Provisioning Time</th>
-                    <th className="text-left p-3 font-bold">Planning Horizon</th>
+                    <th className="text-left p-3 font-bold">
+                      Provisioning Time
+                    </th>
+                    <th className="text-left p-3 font-bold">
+                      Planning Horizon
+                    </th>
                     <th className="text-left p-3 font-bold">Notes</th>
                   </tr>
                 </thead>
@@ -348,42 +392,62 @@ AutoScalingPolicy:
                   <tr className="border-b border-slate-100">
                     <td className="p-3">Cloud VM (Auto-scaled)</td>
                     <td className="p-3">
-                      <Badge variant="outline" className="bg-green-50">2-5 minutes</Badge>
+                      <Badge variant="outline" className="bg-green-50">
+                        2-5 minutes
+                      </Badge>
                     </td>
                     <td className="p-3">Same day</td>
-                    <td className="p-3 text-xs text-slate-600">Near-instant capacity</td>
+                    <td className="p-3 text-xs text-slate-600">
+                      Near-instant capacity
+                    </td>
                   </tr>
                   <tr className="border-b border-slate-100">
                     <td className="p-3">Reserved Instances</td>
                     <td className="p-3">
-                      <Badge variant="outline" className="bg-yellow-50">1-2 weeks</Badge>
+                      <Badge variant="outline" className="bg-yellow-50">
+                        1-2 weeks
+                      </Badge>
                     </td>
                     <td className="p-3">3-6 months</td>
-                    <td className="p-3 text-xs text-slate-600">For cost savings (up to 70%)</td>
+                    <td className="p-3 text-xs text-slate-600">
+                      For cost savings (up to 70%)
+                    </td>
                   </tr>
                   <tr className="border-b border-slate-100">
                     <td className="p-3">Database (RDS, managed)</td>
                     <td className="p-3">
-                      <Badge variant="outline" className="bg-yellow-50">10-30 minutes</Badge>
+                      <Badge variant="outline" className="bg-yellow-50">
+                        10-30 minutes
+                      </Badge>
                     </td>
                     <td className="p-3">1-2 months</td>
-                    <td className="p-3 text-xs text-slate-600">Vertical scaling requires downtime</td>
+                    <td className="p-3 text-xs text-slate-600">
+                      Vertical scaling requires downtime
+                    </td>
                   </tr>
                   <tr className="border-b border-slate-100">
                     <td className="p-3">Bare Metal Servers</td>
                     <td className="p-3">
-                      <Badge variant="outline" className="bg-red-50">4-8 weeks</Badge>
+                      <Badge variant="outline" className="bg-red-50">
+                        4-8 weeks
+                      </Badge>
                     </td>
                     <td className="p-3">6-12 months</td>
-                    <td className="p-3 text-xs text-slate-600">Procurement, delivery, setup</td>
+                    <td className="p-3 text-xs text-slate-600">
+                      Procurement, delivery, setup
+                    </td>
                   </tr>
                   <tr className="border-b border-slate-100">
                     <td className="p-3">Data Center Rack Space</td>
                     <td className="p-3">
-                      <Badge variant="outline" className="bg-red-50">3-6 months</Badge>
+                      <Badge variant="outline" className="bg-red-50">
+                        3-6 months
+                      </Badge>
                     </td>
                     <td className="p-3">12-24 months</td>
-                    <td className="p-3 text-xs text-slate-600">Contract negotiation, wiring, cooling</td>
+                    <td className="p-3 text-xs text-slate-600">
+                      Contract negotiation, wiring, cooling
+                    </td>
                   </tr>
                 </tbody>
               </table>
@@ -391,8 +455,9 @@ AutoScalingPolicy:
 
             <Alert className="border-orange-200 bg-orange-50">
               <AlertDescription>
-                <strong>⚠️ Plan Ahead:</strong> The longer the provisioning time, the further ahead you must forecast. 
-                For bare metal, you need 12-18 month capacity forecasts.
+                <strong>⚠️ Plan Ahead:</strong> The longer the provisioning
+                time, the further ahead you must forecast. For bare metal, you
+                need 12-18 month capacity forecasts.
               </AlertDescription>
             </Alert>
           </div>
@@ -402,7 +467,9 @@ AutoScalingPolicy:
       {/* Best Practices */}
       <Card className="border-2 border-purple-200">
         <CardHeader>
-          <CardTitle className="text-2xl">Capacity Planning Best Practices</CardTitle>
+          <CardTitle className="text-2xl">
+            Capacity Planning Best Practices
+          </CardTitle>
         </CardHeader>
         <CardContent>
           <div className="grid md:grid-cols-2 gap-6">
@@ -486,7 +553,9 @@ AutoScalingPolicy:
                   ✗
                 </div>
                 <div>
-                  <h4 className="font-bold mb-1">Over-provision "To Be Safe"</h4>
+                  <h4 className="font-bold mb-1">
+                    Over-provision "To Be Safe"
+                  </h4>
                   <p className="text-sm text-slate-600">
                     Wastes money. Use data-driven P90/P95 targets
                   </p>
@@ -510,7 +579,7 @@ AutoScalingPolicy:
       </Card>
 
       {/* Tools */}
-      <Card className=" from-purple-900 to-blue-900 text-white border-0">
+      <Card className=" from-purple-900 to-blue-900 border-2">
         <CardHeader>
           <CardTitle className="text-2xl">Capacity Planning Tools</CardTitle>
         </CardHeader>
@@ -518,30 +587,30 @@ AutoScalingPolicy:
           <div className="grid md:grid-cols-3 gap-4">
             <div className="bg-white/10 backdrop-blur p-4 rounded-lg">
               <h4 className="font-bold mb-2">📊 Grafana + Prometheus</h4>
-              <p className="text-sm text-slate-200 mb-2">
+              <p className="text-sm mb-2">
                 Time-series visualization with prediction plugins
               </p>
-              <div className="text-xs text-slate-300">
+              <div className="text-xs">
                 Plugin: grafana-ml-forecasting
               </div>
             </div>
 
             <div className="bg-white/10 backdrop-blur p-4 rounded-lg">
               <h4 className="font-bold mb-2">☁️ AWS Compute Optimizer</h4>
-              <p className="text-sm text-slate-200 mb-2">
+              <p className="text-sm mb-2">
                 ML-powered rightsizing recommendations
               </p>
-              <div className="text-xs text-slate-300">
+              <div className="text-xs">
                 Free with AWS account
               </div>
             </div>
 
             <div className="bg-white/10 backdrop-blur p-4 rounded-lg">
               <h4 className="font-bold mb-2">🐍 Python Ecosystem</h4>
-              <p className="text-sm text-slate-200 mb-2">
+              <p className="text-sm mb-2">
                 Prophet, ARIMA, pandas for custom models
               </p>
-              <div className="text-xs text-slate-300">
+              <div className="text-xs">
                 fbprophet, statsmodels, scikit-learn
               </div>
             </div>

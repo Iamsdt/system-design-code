@@ -1,35 +1,39 @@
-import React from 'react';
-import { Card } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
-import { Alert, AlertDescription } from '@/components/ui/alert';
+import React from "react"
 
-export function HybridCloud() {
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { Badge } from "@/components/ui/badge"
+import { Card } from "@/components/ui/card"
+
+/**
+ *
+ */
+export const HybridCloud = () => {
   const useCases = [
     {
-      name: 'Data Residency',
-      icon: '🌍',
-      description: 'Keep sensitive data on-premises for compliance',
-      example: 'Healthcare patient records in on-prem DB, analytics in cloud'
+      name: "Data Residency",
+      icon: "🌍",
+      description: "Keep sensitive data on-premises for compliance",
+      example: "Healthcare patient records in on-prem DB, analytics in cloud",
     },
     {
-      name: 'Gradual Migration',
-      icon: '🚚',
-      description: 'Migrate workloads to cloud incrementally',
-      example: 'Legacy ERP on-prem, new microservices in cloud'
+      name: "Gradual Migration",
+      icon: "🚚",
+      description: "Migrate workloads to cloud incrementally",
+      example: "Legacy ERP on-prem, new microservices in cloud",
     },
     {
-      name: 'Burst Capacity',
-      icon: '⚡',
-      description: 'Use cloud for peak demand, on-prem for baseline',
-      example: 'E-commerce: on-prem normally, cloud during Black Friday'
+      name: "Burst Capacity",
+      icon: "⚡",
+      description: "Use cloud for peak demand, on-prem for baseline",
+      example: "E-commerce: on-prem normally, cloud during Black Friday",
     },
     {
-      name: 'Disaster Recovery',
-      icon: '🛡️',
-      description: 'Cloud as backup for on-premises systems',
-      example: 'Primary in data center, failover to AWS'
-    }
-  ];
+      name: "Disaster Recovery",
+      icon: "🛡️",
+      description: "Cloud as backup for on-premises systems",
+      example: "Primary in data center, failover to AWS",
+    },
+  ]
 
   return (
     <div className="space-y-8">
@@ -37,7 +41,10 @@ export function HybridCloud() {
         <h3 className="text-2xl font-semibold mb-4">What is Hybrid Cloud?</h3>
         <Card className="p-6">
           <p className="text-muted-foreground mb-4">
-            Hybrid cloud combines on-premises infrastructure with public cloud services, allowing data and applications to be shared between them. This provides greater flexibility, more deployment options, and helps optimize existing infrastructure.
+            Hybrid cloud combines on-premises infrastructure with public cloud
+            services, allowing data and applications to be shared between them.
+            This provides greater flexibility, more deployment options, and
+            helps optimize existing infrastructure.
           </p>
           <div className="grid md:grid-cols-2 gap-4 text-sm">
             <div className="p-4 bg-blue-50 dark:bg-blue-900/20 rounded">
@@ -65,13 +72,15 @@ export function HybridCloud() {
       <div>
         <h3 className="text-2xl font-semibold mb-4">Common Use Cases</h3>
         <div className="grid md:grid-cols-2 gap-4">
-          {useCases.map((useCase, idx) => (
-            <Card key={idx} className="p-6">
+          {useCases.map((useCase, index) => (
+            <Card key={index} className="p-6">
               <div className="flex items-center gap-3 mb-3">
                 <div className="text-3xl">{useCase.icon}</div>
                 <h4 className="text-lg font-semibold">{useCase.name}</h4>
               </div>
-              <p className="text-sm text-muted-foreground mb-3">{useCase.description}</p>
+              <p className="text-sm text-muted-foreground mb-3">
+                {useCase.description}
+              </p>
               <div className="bg-muted p-3 rounded">
                 <p className="text-xs font-semibold mb-1">Example</p>
                 <p className="text-xs">{useCase.example}</p>
@@ -92,10 +101,14 @@ export function HybridCloud() {
             <div className="space-y-3 text-sm">
               <div>
                 <Badge className="mb-1">Challenge</Badge>
-                <p className="text-muted-foreground">Secure, high-bandwidth connection between on-prem and cloud</p>
+                <p className="text-muted-foreground">
+                  Secure, high-bandwidth connection between on-prem and cloud
+                </p>
               </div>
               <div>
-                <Badge variant="outline" className="mb-1">Solutions</Badge>
+                <Badge variant="outline" className="mb-1">
+                  Solutions
+                </Badge>
                 <ul className="space-y-1 text-xs">
                   <li>• AWS Direct Connect (1-100 Gbps)</li>
                   <li>• Azure ExpressRoute</li>
@@ -114,10 +127,14 @@ export function HybridCloud() {
             <div className="space-y-3 text-sm">
               <div>
                 <Badge className="mb-1">Challenge</Badge>
-                <p className="text-muted-foreground">Network latency between on-prem and cloud (10-100ms)</p>
+                <p className="text-muted-foreground">
+                  Network latency between on-prem and cloud (10-100ms)
+                </p>
               </div>
               <div>
-                <Badge variant="outline" className="mb-1">Solutions</Badge>
+                <Badge variant="outline" className="mb-1">
+                  Solutions
+                </Badge>
                 <ul className="space-y-1 text-xs">
                   <li>• Caching at both ends</li>
                   <li>• Async communication</li>
@@ -136,10 +153,14 @@ export function HybridCloud() {
             <div className="space-y-3 text-sm">
               <div>
                 <Badge className="mb-1">Challenge</Badge>
-                <p className="text-muted-foreground">Consistent security policies across environments</p>
+                <p className="text-muted-foreground">
+                  Consistent security policies across environments
+                </p>
               </div>
               <div>
-                <Badge variant="outline" className="mb-1">Solutions</Badge>
+                <Badge variant="outline" className="mb-1">
+                  Solutions
+                </Badge>
                 <ul className="space-y-1 text-xs">
                   <li>• Unified IAM (Okta, Azure AD)</li>
                   <li>• Network segmentation</li>
@@ -158,10 +179,14 @@ export function HybridCloud() {
             <div className="space-y-3 text-sm">
               <div>
                 <Badge className="mb-1">Challenge</Badge>
-                <p className="text-muted-foreground">Different tools and processes for on-prem vs cloud</p>
+                <p className="text-muted-foreground">
+                  Different tools and processes for on-prem vs cloud
+                </p>
               </div>
               <div>
-                <Badge variant="outline" className="mb-1">Solutions</Badge>
+                <Badge variant="outline" className="mb-1">
+                  Solutions
+                </Badge>
                 <ul className="space-y-1 text-xs">
                   <li>• Unified management (Azure Arc, AWS Outposts)</li>
                   <li>• Kubernetes everywhere</li>
@@ -175,13 +200,17 @@ export function HybridCloud() {
       </div>
 
       <div>
-        <h3 className="text-2xl font-semibold mb-4">Data Synchronization Strategies</h3>
+        <h3 className="text-2xl font-semibold mb-4">
+          Data Synchronization Strategies
+        </h3>
         <div className="space-y-4">
           <Card className="p-6">
             <div className="flex items-start gap-4">
               <div className="text-3xl">1️⃣</div>
               <div className="flex-1">
-                <h4 className="text-lg font-semibold mb-2">Database Replication</h4>
+                <h4 className="text-lg font-semibold mb-2">
+                  Database Replication
+                </h4>
                 <p className="text-sm text-muted-foreground mb-3">
                   Keep data in sync between on-prem and cloud databases
                 </p>
@@ -203,12 +232,15 @@ export function HybridCloud() {
             <div className="flex items-start gap-4">
               <div className="text-3xl">2️⃣</div>
               <div className="flex-1">
-                <h4 className="text-lg font-semibold mb-2">Event-Driven Sync</h4>
+                <h4 className="text-lg font-semibold mb-2">
+                  Event-Driven Sync
+                </h4>
                 <p className="text-sm text-muted-foreground mb-3">
                   Publish events from one environment, consume in the other
                 </p>
                 <div className="bg-muted p-3 rounded font-mono text-xs">
-                  On-prem → Kafka → Cloud Consumer<br />
+                  On-prem → Kafka → Cloud Consumer
+                  <br />
                   Cloud → EventBridge → On-prem Consumer
                 </div>
               </div>
@@ -219,7 +251,9 @@ export function HybridCloud() {
             <div className="flex items-start gap-4">
               <div className="text-3xl">3️⃣</div>
               <div className="flex-1">
-                <h4 className="text-lg font-semibold mb-2">Object Storage Sync</h4>
+                <h4 className="text-lg font-semibold mb-2">
+                  Object Storage Sync
+                </h4>
                 <p className="text-sm text-muted-foreground mb-3">
                   Replicate files/objects between on-prem storage and cloud
                 </p>
@@ -245,7 +279,9 @@ export function HybridCloud() {
               <li>• Establish security policies</li>
               <li>• Test with non-critical workload</li>
             </ul>
-            <p className="text-xs text-muted-foreground mt-3">Duration: 1-2 months</p>
+            <p className="text-xs text-muted-foreground mt-3">
+              Duration: 1-2 months
+            </p>
           </Card>
 
           <Card className="p-6">
@@ -256,7 +292,9 @@ export function HybridCloud() {
               <li>• Set up data replication</li>
               <li>• Gradually move production</li>
             </ul>
-            <p className="text-xs text-muted-foreground mt-3">Duration: 6-12 months</p>
+            <p className="text-xs text-muted-foreground mt-3">
+              Duration: 6-12 months
+            </p>
           </Card>
 
           <Card className="p-6">
@@ -267,7 +305,9 @@ export function HybridCloud() {
               <li>• Refactor for cloud-native</li>
               <li>• Continuous improvement</li>
             </ul>
-            <p className="text-xs text-muted-foreground mt-3">Duration: Ongoing</p>
+            <p className="text-xs text-muted-foreground mt-3">
+              Duration: Ongoing
+            </p>
           </Card>
         </div>
       </div>
@@ -331,9 +371,12 @@ export function HybridCloud() {
 
       <Alert>
         <AlertDescription>
-          <strong>🎯 Bottom Line:</strong> Hybrid cloud is ideal for gradual migration, compliance requirements, or leveraging existing on-prem investments. However, it's more complex than pure cloud. Consider if the benefits justify the additional operational overhead.
+          <strong>🎯 Bottom Line:</strong> Hybrid cloud is ideal for gradual
+          migration, compliance requirements, or leveraging existing on-prem
+          investments. However, it's more complex than pure cloud. Consider if
+          the benefits justify the additional operational overhead.
         </AlertDescription>
       </Alert>
     </div>
-  );
+  )
 }

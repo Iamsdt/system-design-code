@@ -43,7 +43,14 @@ Panel.propTypes = {
   children: PropTypes.node.isRequired,
 }
 
-const ToggleRow = ({ title, description, isOn, onToggle, onLabel, offLabel }) => {
+const ToggleRow = ({
+  title,
+  description,
+  isOn,
+  onToggle,
+  onLabel,
+  offLabel,
+}) => {
   const handleToggle = () => onToggle(!isOn)
 
   return (
@@ -75,7 +82,10 @@ ToggleRow.propTypes = {
 }
 
 const useCorsOutcome = ({ request, server }) => {
-  return useMemo(() => computeCorsOutcome({ request, server }), [request, server])
+  return useMemo(
+    () => computeCorsOutcome({ request, server }),
+    [request, server]
+  )
 }
 
 const VerdictCard = ({ outcome }) => {
@@ -107,11 +117,15 @@ const PreflightCard = ({ outcome }) => (
     <div className="text-sm font-bold text-slate-900 mb-2">Preflight</div>
     <div className="text-sm text-slate-700">
       Needed{" "}
-      <span className="font-semibold">{outcome.preflight.needed ? "Yes" : "No"}</span>
+      <span className="font-semibold">
+        {outcome.preflight.needed ? "Yes" : "No"}
+      </span>
     </div>
     <div className="text-sm text-slate-700">
       Would pass{" "}
-      <span className="font-semibold">{outcome.preflight.allowed ? "Yes" : "No"}</span>
+      <span className="font-semibold">
+        {outcome.preflight.allowed ? "Yes" : "No"}
+      </span>
     </div>
   </div>
 )
@@ -127,7 +141,9 @@ PreflightCard.propTypes = {
 
 const ResponseHeadersCard = ({ headers }) => (
   <div className="bg-white border border-slate-200 rounded-xl p-4">
-    <div className="text-sm font-bold text-slate-900 mb-2">Response headers</div>
+    <div className="text-sm font-bold text-slate-900 mb-2">
+      Response headers
+    </div>
     <pre className="text-xs bg-slate-50 p-3 rounded border border-slate-200 overflow-x-auto">
       {formatHeaderBlock(headers)}
     </pre>
@@ -155,9 +171,8 @@ BlockReasonsCard.propTypes = {
 
 const TipCard = () => (
   <div className="bg-yellow-50 border border-yellow-200 rounded-xl p-4 text-sm text-yellow-900">
-    Tip: set allow-origin to{" "}
-    <span className="font-semibold">*</span> and turn credentials ON to see the
-    common misconfiguration.
+    Tip: set allow-origin to <span className="font-semibold">*</span> and turn
+    credentials ON to see the common misconfiguration.
   </div>
 )
 
@@ -183,7 +198,12 @@ const CorsSimulator = () => {
   )
 
   const server = useMemo(
-    () => ({ allowOriginsCsv, allowMethodsCsv, allowHeadersCsv, allowCredentials }),
+    () => ({
+      allowOriginsCsv,
+      allowMethodsCsv,
+      allowHeadersCsv,
+      allowCredentials,
+    }),
     [allowOriginsCsv, allowMethodsCsv, allowHeadersCsv, allowCredentials]
   )
 
@@ -199,7 +219,8 @@ const CorsSimulator = () => {
 
   const handleOriginChange = (event) => setOrigin(event.target.value)
   const handleMethodChange = (event) => setMethod(event.target.value)
-  const handleHeadersChange = (event) => setRequestHeadersCsv(event.target.value)
+  const handleHeadersChange = (event) =>
+    setRequestHeadersCsv(event.target.value)
   const handleContentTypeChange = (event) => setContentType(event.target.value)
 
   const handleAllowOriginsChange = (event) =>
@@ -213,7 +234,7 @@ const CorsSimulator = () => {
   const handleAllowCredentialsToggle = (value) => setAllowCredentials(value)
 
   return (
-    <div className="bg-white border-2 border-slate-200 rounded-2xl p-6 shadow-xl">
+    <div className="bg-white border-2 border-slate-200 rounded-2xl p-6">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-slate-700 to-slate-900 flex items-center justify-center text-white text-2xl">
           🌐

@@ -1,10 +1,23 @@
 import { useMemo, useState } from "react"
 
 const STRATEGIES = [
-  { id: "zero-downtime", label: "Zero-Downtime", notes: ["Run old + new keys in parallel", "Gracefully deprecate"], color: "bg-green-50 border-green-300" },
-  { id: "scheduled", label: "Scheduled", notes: ["Rotate during maintenance", "Synchronous updates"], color: "bg-yellow-50 border-yellow-300" },
+  {
+    id: "zero-downtime",
+    label: "Zero-Downtime",
+    notes: ["Run old + new keys in parallel", "Gracefully deprecate"],
+    color: "bg-green-50 border-green-300",
+  },
+  {
+    id: "scheduled",
+    label: "Scheduled",
+    notes: ["Rotate during maintenance", "Synchronous updates"],
+    color: "bg-yellow-50 border-yellow-300",
+  },
 ]
 
+/**
+ *
+ */
 export default function SecretsRotationSimulator() {
   const [rotationPeriod, setRotationPeriod] = useState(90)
   const [currentKey, setCurrentKey] = useState(1)
@@ -13,27 +26,31 @@ export default function SecretsRotationSimulator() {
   const rotationTimeline = useMemo(() => {
     const timeline = []
     const now = new Date()
-    for (let i = 0; i < 5; i += 1) {
+    for (let index = 0; index < 5; index += 1) {
       const date = new Date(now)
-      date.setDate(date.getDate() + i * rotationPeriod)
+      date.setDate(date.getDate() + index * rotationPeriod)
       timeline.push({
         date,
-        keyVersion: currentKey + i,
-        status: i === 0 ? "active" : i === 1 ? "next" : "future",
+        keyVersion: currentKey + index,
+        status: index === 0 ? "active" : index === 1 ? "next" : "future",
       })
     }
     return timeline
   }, [rotationPeriod, currentKey])
 
   return (
-    <div className="bg-white border-2 border-amber-200 rounded-2xl p-6 shadow-xl h-full">
+    <div className="bg-white border-2 border-amber-200 rounded-2xl p-6 h-full">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-amber-500 to-orange-600 flex items-center justify-center text-white text-2xl">
           🔑
         </div>
         <div>
-          <h4 className="text-lg font-bold text-slate-900">Secrets Rotation Simulator</h4>
-          <div className="text-xs text-slate-500">Key rotation timeline and strategies</div>
+          <h4 className="text-lg font-bold text-slate-900">
+            Secrets Rotation Simulator
+          </h4>
+          <div className="text-xs text-slate-500">
+            Key rotation timeline and strategies
+          </div>
         </div>
       </div>
 
@@ -58,7 +75,9 @@ export default function SecretsRotationSimulator() {
         </div>
 
         <div>
-          <label className="text-sm font-semibold text-slate-700 mb-2 block">Rotation Strategy</label>
+          <label className="text-sm font-semibold text-slate-700 mb-2 block">
+            Rotation Strategy
+          </label>
           <div className="grid grid-cols-2 gap-2">
             {STRATEGIES.map((strategy) => (
               <button
@@ -78,7 +97,9 @@ export default function SecretsRotationSimulator() {
         </div>
 
         <div className="bg-slate-50 rounded-lg p-4">
-          <div className="text-sm font-semibold text-slate-900 mb-3">Rotation Timeline</div>
+          <div className="text-sm font-semibold text-slate-900 mb-3">
+            Rotation Timeline
+          </div>
           <div className="space-y-2">
             {rotationTimeline.map((item) => (
               <div
@@ -87,14 +108,18 @@ export default function SecretsRotationSimulator() {
                   item.status === "active"
                     ? "bg-green-50 border-green-300"
                     : item.status === "next"
-                    ? "bg-yellow-50 border-yellow-300"
-                    : "bg-slate-100 border-slate-200"
+                      ? "bg-yellow-50 border-yellow-300"
+                      : "bg-slate-100 border-slate-200"
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <div className="font-semibold text-slate-900">Key Version {item.keyVersion}</div>
-                    <div className="text-xs text-slate-600">{item.date.toLocaleDateString()}</div>
+                    <div className="font-semibold text-slate-900">
+                      Key Version {item.keyVersion}
+                    </div>
+                    <div className="text-xs text-slate-600">
+                      {item.date.toLocaleDateString()}
+                    </div>
                   </div>
                   <div className="text-xs font-semibold">
                     {item.status === "active" && "✓ Active"}
@@ -109,7 +134,9 @@ export default function SecretsRotationSimulator() {
 
         <div className="bg-amber-50 border border-amber-300 rounded-lg p-3 text-xs text-amber-800">
           <div className="font-semibold mb-1">
-            {rotationStrategy === "zero-downtime" ? "Zero-Downtime Strategy" : "Scheduled Strategy"}
+            {rotationStrategy === "zero-downtime"
+              ? "Zero-Downtime Strategy"
+              : "Scheduled Strategy"}
           </div>
           {rotationStrategy === "zero-downtime" ? (
             <ul className="space-y-1 ml-4">

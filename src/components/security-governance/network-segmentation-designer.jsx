@@ -14,7 +14,11 @@ const TIERS = [
     description: "Application servers",
     subnets: ["10.0.10.0/24", "10.0.11.0/24"],
     allowedInbound: ["Public Tier"],
-    allowedOutbound: ["Data Tier", "Internet (updates via NAT)", "Observability"] ,
+    allowedOutbound: [
+      "Data Tier",
+      "Internet (updates via NAT)",
+      "Observability",
+    ],
     color: "blue",
   },
   {
@@ -33,18 +37,25 @@ const colorClasses = {
   green: "bg-green-50 border-green-200 text-green-900",
 }
 
+/**
+ *
+ */
 export default function NetworkSegmentationDesigner() {
   const [selectedTier, setSelectedTier] = useState(null)
 
   return (
-    <div className="bg-white border-2 border-indigo-200 rounded-2xl p-6 shadow-xl h-full">
+    <div className="bg-white border-2 border-indigo-200 rounded-2xl p-6 h-full">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-indigo-500 to-purple-600 flex items-center justify-center text-white text-2xl">
           🌐
         </div>
         <div>
-          <h4 className="text-lg font-bold text-slate-900">Network Segmentation Designer</h4>
-          <div className="text-xs text-slate-500">VPC/subnet/security group visualization</div>
+          <h4 className="text-lg font-bold text-slate-900">
+            Network Segmentation Designer
+          </h4>
+          <div className="text-xs text-slate-500">
+            VPC/subnet/security group visualization
+          </div>
         </div>
       </div>
 
@@ -52,7 +63,9 @@ export default function NetworkSegmentationDesigner() {
         {TIERS.map((tier, index) => (
           <div
             key={tier.name}
-            onClick={() => setSelectedTier(selectedTier === index ? null : index)}
+            onClick={() =>
+              setSelectedTier(selectedTier === index ? null : index)
+            }
             className={`p-4 rounded-lg border-2 cursor-pointer transition-all ${
               selectedTier === index
                 ? "border-indigo-500 bg-indigo-50"
@@ -64,7 +77,9 @@ export default function NetworkSegmentationDesigner() {
                 <div className="font-semibold text-slate-900">{tier.name}</div>
                 <div className="text-xs text-slate-600">{tier.description}</div>
               </div>
-              <div className={`px-2 py-1 rounded text-xs font-semibold ${colorClasses[tier.color]}`}>
+              <div
+                className={`px-2 py-1 rounded text-xs font-semibold ${colorClasses[tier.color]}`}
+              >
                 Tier {index + 1}
               </div>
             </div>
@@ -72,7 +87,9 @@ export default function NetworkSegmentationDesigner() {
             {selectedTier === index && (
               <div className="mt-3 space-y-2 text-sm">
                 <div>
-                  <div className="font-semibold text-slate-700 mb-1">Subnets:</div>
+                  <div className="font-semibold text-slate-700 mb-1">
+                    Subnets:
+                  </div>
                   <div className="text-xs text-slate-600 space-y-1">
                     {tier.subnets.map((subnet) => (
                       <div key={subnet} className="font-mono">
@@ -82,12 +99,20 @@ export default function NetworkSegmentationDesigner() {
                   </div>
                 </div>
                 <div>
-                  <div className="font-semibold text-slate-700 mb-1">Allowed Inbound:</div>
-                  <div className="text-xs text-slate-600">{tier.allowedInbound.join(", ")}</div>
+                  <div className="font-semibold text-slate-700 mb-1">
+                    Allowed Inbound:
+                  </div>
+                  <div className="text-xs text-slate-600">
+                    {tier.allowedInbound.join(", ")}
+                  </div>
                 </div>
                 <div>
-                  <div className="font-semibold text-slate-700 mb-1">Allowed Outbound:</div>
-                  <div className="text-xs text-slate-600">{tier.allowedOutbound.join(", ")}</div>
+                  <div className="font-semibold text-slate-700 mb-1">
+                    Allowed Outbound:
+                  </div>
+                  <div className="text-xs text-slate-600">
+                    {tier.allowedOutbound.join(", ")}
+                  </div>
                 </div>
               </div>
             )}

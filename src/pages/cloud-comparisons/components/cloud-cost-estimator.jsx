@@ -49,14 +49,18 @@ const CloudCostEstimator = () => {
   }, [stack])
 
   return (
-    <div className="bg-white border-2 border-blue-200 rounded-2xl p-6 shadow-xl">
+    <div className="bg-white border-2 border-blue-200 rounded-2xl p-6">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-blue-500 to-indigo-600 flex items-center justify-center text-white text-2xl">
           💰
         </div>
         <div>
-          <h4 className="text-lg font-bold text-slate-900">Cloud Cost Estimator</h4>
-          <div className="text-xs text-slate-500">Rough monthly estimate comparison</div>
+          <h4 className="text-lg font-bold text-slate-900">
+            Cloud Cost Estimator
+          </h4>
+          <div className="text-xs text-slate-500">
+            Rough monthly estimate comparison
+          </div>
         </div>
       </div>
 
@@ -70,7 +74,9 @@ const CloudCostEstimator = () => {
             min="1"
             max="20"
             value={stack.compute}
-            onChange={(e) => setStack({ ...stack, compute: Number(e.target.value) })}
+            onChange={(e) =>
+              setStack({ ...stack, compute: Number(e.target.value) })
+            }
             className="w-full accent-blue-600"
           />
         </div>
@@ -84,7 +90,9 @@ const CloudCostEstimator = () => {
             max="2000"
             step="10"
             value={stack.storage}
-            onChange={(e) => setStack({ ...stack, storage: Number(e.target.value) })}
+            onChange={(e) =>
+              setStack({ ...stack, storage: Number(e.target.value) })
+            }
             className="w-full accent-blue-600"
           />
         </div>
@@ -98,7 +106,9 @@ const CloudCostEstimator = () => {
             max="5000"
             step="100"
             value={stack.bandwidth}
-            onChange={(e) => setStack({ ...stack, bandwidth: Number(e.target.value) })}
+            onChange={(e) =>
+              setStack({ ...stack, bandwidth: Number(e.target.value) })
+            }
             className="w-full accent-blue-600"
           />
         </div>
@@ -106,19 +116,26 @@ const CloudCostEstimator = () => {
 
       <div className="grid grid-cols-1 gap-3">
         {estimates.map((est) => (
-          <div key={est.id} className={`${est.bg} rounded-xl p-4 flex items-center justify-between border border-slate-100`}>
+          <div
+            key={est.id}
+            className={`${est.bg} rounded-xl p-4 flex items-center justify-between border border-slate-100`}
+          >
             <div>
               <div className={`font-bold ${est.color}`}>{est.name}</div>
-              <div className="text-[10px] text-slate-500 uppercase font-bold">Estimated Monthly</div>
+              <div className="text-[10px] text-slate-500 uppercase font-bold">
+                Estimated Monthly
+              </div>
             </div>
-            <div className="text-2xl font-black text-slate-900">${est.total}</div>
+            <div className="text-2xl font-black text-slate-900">
+              ${est.total}
+            </div>
           </div>
         ))}
       </div>
 
       <p className="mt-4 text-[10px] text-slate-400 italic">
-        * Estimates are based on average list prices and do not include free tiers, 
-        committed use discounts, or regional variations.
+        * Estimates are based on average list prices and do not include free
+        tiers, committed use discounts, or regional variations.
       </p>
     </div>
   )

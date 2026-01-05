@@ -164,7 +164,7 @@ const ManagedServiceDecisionTree = () => {
   const current = DECISIONS[step]
 
   return (
-    <div className="bg-white border-2 border-purple-200 rounded-2xl p-6 shadow-xl min-h-[400px] flex flex-col">
+    <div className="bg-white border-2 border-purple-200 rounded-2xl p-6 min-h-[400px] flex flex-col">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-purple-500 to-pink-600 flex items-center justify-center text-white text-2xl">
           🌳

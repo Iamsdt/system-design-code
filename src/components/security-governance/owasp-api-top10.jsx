@@ -67,7 +67,7 @@ export default function OwaspApiTop10() {
   const [expanded, setExpanded] = useState("API1")
 
   return (
-    <div className="bg-white border-2 border-amber-200 rounded-2xl p-6 shadow-xl h-full">
+    <div className="bg-white border-2 border-amber-200 rounded-2xl p-6 h-full">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-amber-500 to-orange-600 flex items-center justify-center text-white text-2xl">
           🧭

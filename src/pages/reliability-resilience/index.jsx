@@ -38,7 +38,7 @@ function SLOErrorBudgetCalculator() {
   }, [slo, timeWindow])
 
   return (
-    <div className="bg-white border-2 border-red-200 rounded-2xl p-6 shadow-xl">
+    <div className="bg-white border-2 border-red-200 rounded-2xl p-6">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-red-500 to-pink-600 flex items-center justify-center text-white text-2xl">
           📊
@@ -161,7 +161,7 @@ function RateLimiterSimulator() {
   }, [requests, algorithm, rate, burst])
 
   return (
-    <div className="bg-white border-2 border-indigo-200 rounded-2xl p-6 shadow-xl">
+    <div className="bg-white border-2 border-indigo-200 rounded-2xl p-6">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-indigo-500 to-purple-600 flex items-center justify-center text-white text-2xl">
           🚦
@@ -289,7 +289,7 @@ function CircuitBreakerSimulator() {
   }
 
   return (
-    <div className="bg-white border-2 border-amber-200 rounded-2xl p-6 shadow-xl">
+    <div className="bg-white border-2 border-amber-200 rounded-2xl p-6">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-amber-500 to-orange-600 flex items-center justify-center text-white text-2xl">
           ⚡
@@ -317,7 +317,7 @@ function CircuitBreakerSimulator() {
           />
         </div>
 
-        <div className={`${stateColors[state]} text-white rounded-xl p-4 text-center`}>
+        <div className={`${stateColors[state]} rounded-xl p-4 text-center`}>
           <div className="text-sm font-semibold mb-1">Current State</div>
           <div className="text-2xl font-bold uppercase">{state}</div>
           <div className="text-xs mt-2 opacity-90">
@@ -391,7 +391,7 @@ function DRScenarioPlanner() {
   }, [rto, rpo])
 
   return (
-    <div className="bg-white border-2 border-blue-200 rounded-2xl p-6 shadow-xl">
+    <div className="bg-white border-2 border-blue-200 rounded-2xl p-6">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-blue-500 to-cyan-600 flex items-center justify-center text-white text-2xl">
           🛡️
@@ -575,7 +575,7 @@ export default function ReliabilityResilience() {
                 </div>
               </div>
 
-              <div className="bg-white border-2 border-slate-200 rounded-2xl p-8 shadow-lg">
+              <div className="bg-white border-2 border-slate-200 rounded-2xl p-8">
                 <h3 className="text-xl font-bold text-slate-900 mb-4">
                   Key Concepts
                 </h3>
@@ -617,7 +617,7 @@ export default function ReliabilityResilience() {
             </div>
           </div>
 
-          <div className="bg-white border-2 border-slate-200 rounded-2xl p-8 shadow-lg">
+          <div className="bg-white border-2 border-slate-200 rounded-2xl p-8">
             <h3 className="text-xl font-bold text-slate-900 mb-4">
               Chaos Engineering & Load Testing
             </h3>
@@ -740,7 +740,7 @@ export default function ReliabilityResilience() {
             </div>
           </div>
 
-          <div className="bg-white border-2 border-slate-200 rounded-2xl p-8 shadow-lg">
+          <div className="bg-white border-2 border-slate-200 rounded-2xl p-8">
             <h3 className="text-xl font-bold text-slate-900 mb-4">
               Rate Limiting Algorithms
             </h3>
@@ -806,7 +806,7 @@ export default function ReliabilityResilience() {
               <DRScenarioPlanner />
             </div>
             <div className="space-y-6">
-              <div className="bg-white border-2 border-blue-200 rounded-2xl p-8 shadow-lg">
+              <div className="bg-white border-2 border-blue-200 rounded-2xl p-8">
                 <h3 className="text-xl font-bold text-slate-900 mb-4">
                   Active-Active vs Active-Passive
                 </h3>
@@ -832,7 +832,7 @@ export default function ReliabilityResilience() {
                 </div>
               </div>
 
-              <div className="bg-white border-2 border-slate-200 rounded-2xl p-8 shadow-lg">
+              <div className="bg-white border-2 border-slate-200 rounded-2xl p-8">
                 <h3 className="text-xl font-bold text-slate-900 mb-4">
                   Backup Strategies
                 </h3>
@@ -888,7 +888,7 @@ export default function ReliabilityResilience() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 mb-8">
-            <div className="bg-white border-2 border-purple-200 rounded-2xl p-8 shadow-lg">
+            <div className="bg-white border-2 border-purple-200 rounded-2xl p-8">
               <h3 className="text-xl font-bold text-slate-900 mb-4">Raft Algorithm</h3>
               <div className="space-y-3">
                 <p className="text-slate-700">
@@ -909,7 +909,7 @@ export default function ReliabilityResilience() {
               </div>
             </div>
 
-            <div className="bg-white border-2 border-purple-200 rounded-2xl p-8 shadow-lg">
+            <div className="bg-white border-2 border-purple-200 rounded-2xl p-8">
               <h3 className="text-xl font-bold text-slate-900 mb-4">Paxos Algorithm</h3>
               <div className="space-y-3">
                 <p className="text-slate-700">

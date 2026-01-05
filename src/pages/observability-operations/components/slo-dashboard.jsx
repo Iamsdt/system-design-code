@@ -18,7 +18,7 @@ export default function SLODashboard() {
   }, [slo, burnRate]);
 
   return (
-    <div className="bg-white border-2 border-indigo-200 rounded-2xl p-6 shadow-xl">
+    <div className="bg-white border-2 border-indigo-200 rounded-2xl p-6">
       <div className="flex items-center gap-3 mb-6">
         <div className="w-12 h-12 rounded-xl  from-indigo-500 to-purple-600 flex items-center justify-center text-white text-2xl">
           📈

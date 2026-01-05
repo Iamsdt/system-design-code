@@ -44,7 +44,7 @@ const HeroSection = () => (
 
       <h1 className="text-5xl md:text-7xl font-black text-slate-900 mb-8 leading-tight reveal transition-all duration-700 delay-100">
         Cloud Service <br />
-        <span className="text-transparent bg-clip-text  from-blue-600 to-purple-600">
+        <span className=" bg-clip-text  from-blue-600 to-purple-600">
           Comparisons
         </span>
       </h1>
@@ -79,7 +79,7 @@ const HeroSection = () => (
 const PhilosophyCard = ({ item, index }) => (
   <div
     key={item.title}
-    className="bg-white p-8 rounded-2xl shadow-xl border border-slate-100 reveal transition-all duration-700"
+    className="bg-white p-8 rounded-2xl border-2 border-slate-100 reveal transition-all duration-700"
     style={{ transitionDelay: `${index * 100}ms` }}
   >
     <div

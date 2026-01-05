@@ -1,28 +1,28 @@
-import { useNavigate } from "react-router-dom"
-import { 
-  BookOpen, 
-  Calculator, 
-  Briefcase, 
-  FileText, 
-  Github, 
-  Linkedin, 
+import {
+  BookOpen,
+  Calculator,
+  Briefcase,
+  FileText,
+  Github,
+  Linkedin,
   Mail,
-  Server, 
-  TrendingUp, 
-  Scale, 
-  Layers, 
-  Globe, 
-  Zap, 
-  Rocket, 
-  Database, 
-  HardDrive, 
-  Copy, 
+  Server,
+  TrendingUp,
+  Scale,
+  Layers,
+  Globe,
+  Zap,
+  Rocket,
+  Database,
+  HardDrive,
+  Copy,
   ShieldCheck,
   ArrowRight,
   Monitor,
   CheckCircle,
-  Code
+  Code,
 } from "lucide-react"
+import { useNavigate } from "react-router-dom"
 
 /**
  * Landing page component for System Design learning platform
@@ -48,15 +48,22 @@ export default function Landing() {
             {/* Main Heading */}
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight">
               Master System Design &<br />
-              <span className="text-transparent bg-clip-text  from-blue-600 to-indigo-600"> 
+              <span className="text-transparent bg-clip-text  from-blue-600 to-indigo-600">
                 Cloud Architecture
               </span>
             </h1>
 
             {/* Subheading */}
             <p className="text-lg md:text-xl text-slate-600 mb-10 mx-auto leading-relaxed">
-              Learn through <span className="font-semibold text-slate-900">interactive tutorials</span> and <span className="font-semibold text-slate-900">real-world examples</span>. 
-              Build production-ready distributed systems with confidence.
+              Learn through{" "}
+              <span className="font-semibold text-slate-900">
+                interactive tutorials
+              </span>{" "}
+              and{" "}
+              <span className="font-semibold text-slate-900">
+                real-world examples
+              </span>
+              . Build production-ready distributed systems with confidence.
             </p>
 
             {/* Stats Row */}
@@ -88,8 +95,8 @@ export default function Landing() {
                 <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
 
-              <button 
-                onClick={() => nav("/cheat-sheets")} 
+              <button
+                onClick={() => nav("/cheat-sheets")}
                 className="w-full sm:w-auto px-8 py-3.5 bg-white text-slate-900 font-bold rounded-lg border border-slate-200 shadow-sm hover:bg-slate-50 hover:scale-[1.02] transition-all duration-200 flex items-center justify-center gap-2"
               >
                 <FileText className="w-5 h-5 text-slate-500" />
@@ -103,17 +110,36 @@ export default function Landing() {
                 ST
               </div>
               <div className="text-left">
-                <p className="text-sm font-bold text-slate-900">Shudipto Trafder</p>
-                <p className="text-xs text-slate-500">VP of Engineering at 10xScale</p>
+                <p className="text-sm font-bold text-slate-900">
+                  Shudipto Trafder
+                </p>
+                <p className="text-xs text-slate-500">
+                  VP of Engineering at 10xScale
+                </p>
               </div>
               <div className="flex items-center gap-3 ml-2 pl-4 border-l border-slate-100">
-                <a href="https://github.com/Iamsdt" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-slate-700 transition-colors">
+                <a
+                  href="https://github.com/Iamsdt"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-slate-400 hover:text-slate-700 transition-colors"
+                >
                   <Github className="w-5 h-5" />
                 </a>
-                <a href="https://linkedin.com/in/iamsdt" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-blue-700 transition-colors">
+                <a
+                  href="https://linkedin.com/in/iamsdt"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-slate-400 hover:text-blue-700 transition-colors"
+                >
                   <Linkedin className="w-5 h-5" />
                 </a>
-                <a href="https://medium.com/@iamsdt" target="_blank" rel="noreferrer" className="text-slate-400 hover:text-slate-800 transition-colors">
+                <a
+                  href="https://medium.com/@iamsdt"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-slate-400 hover:text-slate-800 transition-colors"
+                >
                   <BookOpen className="w-5 h-5" />
                 </a>
               </div>
@@ -132,9 +158,12 @@ export default function Landing() {
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-blue-50 mb-6 group-hover:bg-blue-100 transition-colors">
                   <Monitor className="w-7 h-7 text-blue-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Hands-On Learning</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                  Hands-On Learning
+                </h3>
                 <p className="text-slate-500 text-sm leading-relaxed">
-                  Interactive calculators, live demos, and real-time visualizations for practical understanding
+                  Interactive calculators, live demos, and real-time
+                  visualizations for practical understanding
                 </p>
               </div>
 
@@ -143,9 +172,12 @@ export default function Landing() {
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-indigo-50 mb-6 group-hover:bg-indigo-100 transition-colors">
                   <CheckCircle className="w-7 h-7 text-indigo-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Production-Ready</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                  Production-Ready
+                </h3>
                 <p className="text-slate-500 text-sm leading-relaxed">
-                  Learn patterns and practices used by top tech companies to build scalable systems
+                  Learn patterns and practices used by top tech companies to
+                  build scalable systems
                 </p>
               </div>
 
@@ -154,9 +186,12 @@ export default function Landing() {
                 <div className="inline-flex items-center justify-center w-14 h-14 rounded-xl bg-purple-50 mb-6 group-hover:bg-purple-100 transition-colors">
                   <Layers className="w-7 h-7 text-purple-600" />
                 </div>
-                <h3 className="text-xl font-bold text-slate-900 mb-3">Comprehensive Coverage</h3>
+                <h3 className="text-xl font-bold text-slate-900 mb-3">
+                  Comprehensive Coverage
+                </h3>
                 <p className="text-slate-500 text-sm leading-relaxed">
-                  From fundamentals to advanced topics - networking, data architecture, and cloud patterns
+                  From fundamentals to advanced topics - networking, data
+                  architecture, and cloud patterns
                 </p>
               </div>
             </div>
@@ -176,10 +211,13 @@ export default function Landing() {
                 </span>
               </div>
               <h2 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-6">
-                Learn by <span className="text-transparent bg-clip-text  from-blue-600 to-indigo-600">Building</span>
+                Learn by{" "}
+                <span className="text-transparent bg-clip-text  from-blue-600 to-indigo-600">
+                  Building
+                </span>
               </h2>
               <p className="text-lg text-slate-500 mx-auto leading-relaxed">
-                Master system design through hands-on tutorials with live demos, 
+                Master system design through hands-on tutorials with live demos,
                 interactive calculators, and real-time visualizations
               </p>
             </div>
@@ -208,20 +246,39 @@ export default function Landing() {
                     Foundations & Back-of-Envelope
                   </h3>
                   <p className="text-slate-500 text-sm leading-relaxed mb-8">
-                    Capacity planning, scaling strategies, and core architectural patterns for building robust systems.
+                    Capacity planning, scaling strategies, and core
+                    architectural patterns for building robust systems.
                   </p>
 
                   {/* Features List */}
                   <div className="space-y-4 mb-8">
                     {[
-                      { icon: <Server className="w-5 h-5 text-blue-500" />, label: "Client-Server" },
-                      { icon: <Calculator className="w-5 h-5 text-indigo-500" />, label: "Calculator" },
-                      { icon: <TrendingUp className="w-5 h-5 text-purple-500" />, label: "Scaling" },
-                      { icon: <Scale className="w-5 h-5 text-pink-500" />, label: "Trade-offs" },
+                      {
+                        icon: <Server className="w-5 h-5 text-blue-500" />,
+                        label: "Client-Server",
+                      },
+                      {
+                        icon: (
+                          <Calculator className="w-5 h-5 text-indigo-500" />
+                        ),
+                        label: "Calculator",
+                      },
+                      {
+                        icon: (
+                          <TrendingUp className="w-5 h-5 text-purple-500" />
+                        ),
+                        label: "Scaling",
+                      },
+                      {
+                        icon: <Scale className="w-5 h-5 text-pink-500" />,
+                        label: "Trade-offs",
+                      },
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center gap-3">
                         <span className="text-xl">{feature.icon}</span>
-                        <span className="text-sm font-semibold text-slate-700">{feature.label}</span>
+                        <span className="text-sm font-semibold text-slate-700">
+                          {feature.label}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -263,19 +320,34 @@ export default function Landing() {
                     Networking & Edge
                   </h3>
                   <p className="text-slate-500 text-sm leading-relaxed mb-8">
-                    OSI model, DNS resolution, TCP/UDP protocols, and Content Delivery Networks for global scale.
+                    OSI model, DNS resolution, TCP/UDP protocols, and Content
+                    Delivery Networks for global scale.
                   </p>
 
                   <div className="space-y-4 mb-8">
                     {[
-                      { icon: <Layers className="w-5 h-5 text-blue-500" />, label: "OSI Model" },
-                      { icon: <Globe className="w-5 h-5 text-indigo-500" />, label: "DNS Flow" },
-                      { icon: <Zap className="w-5 h-5 text-purple-500" />, label: "Protocols" },
-                      { icon: <Rocket className="w-5 h-5 text-pink-500" />, label: "CDN & Edge" },
+                      {
+                        icon: <Layers className="w-5 h-5 text-blue-500" />,
+                        label: "OSI Model",
+                      },
+                      {
+                        icon: <Globe className="w-5 h-5 text-indigo-500" />,
+                        label: "DNS Flow",
+                      },
+                      {
+                        icon: <Zap className="w-5 h-5 text-purple-500" />,
+                        label: "Protocols",
+                      },
+                      {
+                        icon: <Rocket className="w-5 h-5 text-pink-500" />,
+                        label: "CDN & Edge",
+                      },
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center gap-3">
                         <span className="text-xl">{feature.icon}</span>
-                        <span className="text-sm font-semibold text-slate-700">{feature.label}</span>
+                        <span className="text-sm font-semibold text-slate-700">
+                          {feature.label}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -287,8 +359,7 @@ export default function Landing() {
                         ~45 min
                       </span>
                       <span className="flex items-center gap-1.5">
-                        <BookOpen className="w-3.5 h-3.5" />
-                        7 Topics
+                        <BookOpen className="w-3.5 h-3.5" />7 Topics
                       </span>
                     </div>
                     <ArrowRight className="w-5 h-5 text-indigo-600 group-hover:translate-x-1 transition-transform" />
@@ -316,19 +387,34 @@ export default function Landing() {
                     Data Architecture & Storage
                   </h3>
                   <p className="text-slate-500 text-sm leading-relaxed mb-8">
-                    Database selection, caching strategies, sharding techniques, and compliance considerations.
+                    Database selection, caching strategies, sharding techniques,
+                    and compliance considerations.
                   </p>
 
                   <div className="space-y-4 mb-8">
                     {[
-                      { icon: <Database className="w-5 h-5 text-blue-500" />, label: "SQL vs NoSQL" },
-                      { icon: <HardDrive className="w-5 h-5 text-indigo-500" />, label: "Storage Models" },
-                      { icon: <Copy className="w-5 h-5 text-purple-500" />, label: "Replication" },
-                      { icon: <ShieldCheck className="w-5 h-5 text-pink-500" />, label: "Compliance" },
+                      {
+                        icon: <Database className="w-5 h-5 text-blue-500" />,
+                        label: "SQL vs NoSQL",
+                      },
+                      {
+                        icon: <HardDrive className="w-5 h-5 text-indigo-500" />,
+                        label: "Storage Models",
+                      },
+                      {
+                        icon: <Copy className="w-5 h-5 text-purple-500" />,
+                        label: "Replication",
+                      },
+                      {
+                        icon: <ShieldCheck className="w-5 h-5 text-pink-500" />,
+                        label: "Compliance",
+                      },
                     ].map((feature, index) => (
                       <div key={index} className="flex items-center gap-3">
                         <span className="text-xl">{feature.icon}</span>
-                        <span className="text-sm font-semibold text-slate-700">{feature.label}</span>
+                        <span className="text-sm font-semibold text-slate-700">
+                          {feature.label}
+                        </span>
                       </div>
                     ))}
                   </div>
@@ -340,9 +426,7 @@ export default function Landing() {
                         ~60 min
                       </span>
                       <span className="flex items-center gap-1.5">
-         
-                        <BookOpen className="w-3.5 h-3.5" />
-                        6 Topics
+                        <BookOpen className="w-3.5 h-3.5" />6 Topics
                       </span>
                     </div>
                     <ArrowRight className="w-5 h-5 text-purple-600 group-hover:translate-x-1 transition-transform" />
@@ -368,7 +452,8 @@ export default function Landing() {
                       Cheat Sheets & References
                     </h3>
                     <p className="text-slate-500 text-sm leading-relaxed">
-                      Quick reference guides for PostgreSQL, Redis, and more with syntax examples and best practices
+                      Quick reference guides for PostgreSQL, Redis, and more
+                      with syntax examples and best practices
                     </p>
                   </div>
                   <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-all">
@@ -392,7 +477,8 @@ export default function Landing() {
                       All Topics & Concepts
                     </h3>
                     <p className="text-slate-500 text-sm leading-relaxed">
-                      Explore the complete catalog of system design topics with interactive demos and visualizations
+                      Explore the complete catalog of system design topics with
+                      interactive demos and visualizations
                     </p>
                   </div>
                   <div className="w-10 h-10 rounded-full bg-slate-50 flex items-center justify-center group-hover:bg-indigo-600 group-hover:text-white transition-all">
@@ -418,7 +504,8 @@ export default function Landing() {
             {/* Section Header */}
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
-                Meet <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r  from-blue-400 to-teal-400">
+                Meet{" "}
+                <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r  from-blue-400 to-teal-400">
                   the Creator
                   <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r  from-blue-400 to-teal-400"></div>
                 </span>
@@ -426,11 +513,11 @@ export default function Landing() {
             </div>
 
             {/* Creator Card */}
-            <div className="bg-white/95 backdrop-blur rounded-3xl p-8 md:p-12 shadow-2xl border border-white/10">
+            <div className="bg-white/95 backdrop-blur rounded-3xl p-8 md:p-12 shadow-xl border border-white/10">
               <div className="flex flex-col md:flex-row gap-12 items-center md:items-start">
                 {/* Avatar */}
                 <div className="flex-shrink-0">
-                  <div className="w-32 h-32 rounded-2xl  from-blue-600 to-indigo-600 flex items-center justify-center text-4xl font-bold shadow-xl shadow-blue-500/30 transform hover:rotate-3 transition-transform duration-300">
+                  <div className="w-32 h-32 rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600 flex items-center justify-center text-4xl font-bold transform hover:rotate-3 transition-transform duration-300">
                     ST
                   </div>
                 </div>
@@ -444,14 +531,17 @@ export default function Landing() {
                     <Briefcase className="w-5 h-5" />
                     VP of Engineering at 10xScale
                   </p>
-                  
+
                   <p className="text-slate-500 leading-relaxed mb-8 text-lg">
-                    Leading engineering teams at 10xScale, I specialize in building reliable, scalable distributed systems 
-                    and AI-driven tooling. My work includes multi-agent orchestration with AgentFlow, alongside creating 
-                    open-source projects that help teams ship faster and operate with confidence.
+                    Leading engineering teams at 10xScale, I specialize in
+                    building reliable, scalable distributed systems and
+                    AI-driven tooling. My work includes multi-agent
+                    orchestration with AgentFlow, alongside creating open-source
+                    projects that help teams ship faster and operate with
+                    confidence.
                   </p>
 
-                  <div className="my-2"/>
+                  <div className="my-2" />
 
                   {/* Projects */}
                   <div className="mb-10">
@@ -461,10 +551,22 @@ export default function Landing() {
                     </h4>
                     <div className="flex flex-wrap items-center justify-center md:justify-start gap-4">
                       {[
-                        { name: "InjectQ", url: "https://github.com/10xHub/injectq" },
-                        { name: "SnowflakeKit", url: "https://github.com/10xHub/snowflakekit" },
-                        { name: "Style Guide", url: "https://github.com/10xHub/react-style-guide" },
-                        { name: "AgentFlow", url: "https://github.com/10xHub/agentflow" },
+                        {
+                          name: "InjectQ",
+                          url: "https://github.com/10xHub/injectq",
+                        },
+                        {
+                          name: "SnowflakeKit",
+                          url: "https://github.com/10xHub/snowflakekit",
+                        },
+                        {
+                          name: "Style Guide",
+                          url: "https://github.com/10xHub/react-style-guide",
+                        },
+                        {
+                          name: "AgentFlow",
+                          url: "https://github.com/10xHub/agentflow",
+                        },
                       ].map((project, index) => (
                         <a
                           key={index}
@@ -487,10 +589,26 @@ export default function Landing() {
                     </h4>
                     <div className="flex flex-wrap items-center justify-center md:justify-start gap-6">
                       {[
-                        { name: "GitHub", url: "https://github.com/Iamsdt", icon: <Github className="w-6 h-6" /> },
-                        { name: "LinkedIn", url: "https://www.linkedin.com/in/iamsdt/", icon: <Linkedin className="w-6 h-6" /> },
-                        { name: "Medium", url: "https://medium.com/@iamsdt", icon: <BookOpen className="w-6 h-6" /> },
-                        { name: "Email", url: "mailto:shudiptotrafder@gmail.com", icon: <Mail className="w-6 h-6" /> },
+                        {
+                          name: "GitHub",
+                          url: "https://github.com/Iamsdt",
+                          icon: <Github className="w-6 h-6" />,
+                        },
+                        {
+                          name: "LinkedIn",
+                          url: "https://www.linkedin.com/in/iamsdt/",
+                          icon: <Linkedin className="w-6 h-6" />,
+                        },
+                        {
+                          name: "Medium",
+                          url: "https://medium.com/@iamsdt",
+                          icon: <BookOpen className="w-6 h-6" />,
+                        },
+                        {
+                          name: "Email",
+                          url: "mailto:shudiptotrafder@gmail.com",
+                          icon: <Mail className="w-6 h-6" />,
+                        },
                       ].map((social, index) => (
                         <a
                           key={index}
@@ -516,21 +634,22 @@ export default function Landing() {
   )
 }
 
-function ActivityIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
-    </svg>
-  )
-}
+/**
+ *
+ */
+const ActivityIcon = (properties) => (
+  <svg
+    {...properties}
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+  </svg>
+)
