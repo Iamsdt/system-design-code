@@ -505,7 +505,7 @@ export default function Landing() {
             <div className="text-center mb-16">
               <h2 className="text-4xl md:text-5xl font-extrabold mb-4">
                 Meet{" "}
-                <span className="relative inline-block text-transparent bg-clip-text bg-gradient-to-r  from-blue-400 to-teal-400">
+                <span className="relative inline-block  bg-clip-text bg-gradient-to-r  from-blue-400 to-teal-400">
                   the Creator
                   <div className="absolute -bottom-2 left-0 w-full h-1 bg-gradient-to-r  from-blue-400 to-teal-400"></div>
                 </span>

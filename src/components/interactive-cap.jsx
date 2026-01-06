@@ -28,7 +28,7 @@ export default function InteractiveCAP({ className }) {
       <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-purple-100">
         <div className="text-3xl">🎯</div>
         <div className="flex-1">
-          <h4 className="text-2xl font-bold  from-purple-600 to-pink-600 bg-clip-text text-transparent">
+          <h4 className="text-2xl font-bold  from-purple-600 to-pink-600 bg-clip-text ">
             CAP Theorem — Interactive
           </h4>
           <div className="text-sm text-slate-600 mt-1">
